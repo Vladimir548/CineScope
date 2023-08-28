@@ -3,12 +3,8 @@ import { useQuery } from '@tanstack/react-query';
 import { GenreResponse } from '@/interface/IGenres';
 import { QueryGenres } from '@/query/QueryGenres';
 
-interface IGen {
-  id: number;
-}
-
 interface IGenreName {
-  genreId: IGen[];
+  genreId: number[];
 }
 
 export default function GenreName({ genreId }: IGenreName) {
