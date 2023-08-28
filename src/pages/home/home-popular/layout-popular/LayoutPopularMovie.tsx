@@ -13,23 +13,23 @@ import { Card, CardBody, CardFooter, CardHeader, Image } from '@nextui-org/react
 import { AiFillStar } from 'react-icons/ai';
 import { twMerge } from 'tailwind-merge';
 import { cn } from '@/lib/utils';
+import { MoviesResponse } from '@/interface/IMovie';
 
-interface ILayoutPopular {
-  data?: IMulti;
-  type: string;
+interface ILayoutPopularMovie {
+  data?: MoviesResponse;
   title: string;
 }
 
-export default function LayoutPopular({ data, type, title }: ILayoutPopular) {
+export default function LayoutPopularMovie({ data, title }: ILayoutPopularMovie) {
   return (
     <div className="flex flex-col  ">
       <div className="flex items-start flex-col">
-        <Link href={`/${type}/popular`}>
+        <Link href={`/movie/popular`}>
           <h2 className={style.header}>{title}</h2>
         </Link>
         <Link
           className="bg-zinc-700 p-3 rounded-lg ease-in duration-300 hover:bg-zinc-800"
-          href={`/${type}/popular`}
+          href={`/movie/popular`}
         >
           Посмотреть больше
         </Link>
@@ -63,7 +63,7 @@ export default function LayoutPopular({ data, type, title }: ILayoutPopular) {
         {data?.results?.map((item) => (
           <SwiperSlide key={item.id}>
             <Card key={item.id} className=" border-transparent border-2   flex ">
-              <Link className="flex flex-col" href={`/${type}/${item.id}`}>
+              <Link className="flex flex-col" href={`/movie/${item.id}`}>
                 <CardHeader className="flex justify-between items-center p-0 px-4 ">
                   <h4 className={cn('font-bold text-large flex items-center', style.rating)}>
                     <span>
@@ -72,12 +72,7 @@ export default function LayoutPopular({ data, type, title }: ILayoutPopular) {
                     {item.vote_average}
                   </h4>
                   <h4 className={cn('font-bold text-large', style.year)}>
-                    {
-                      (item.release_date
-                        ? item.release_date || ''
-                        : item.first_air_date || ''
-                      ).split('-')[0]
-                    }
+                    {item.release_date.split('-')[0]}
                   </h4>
                 </CardHeader>
                 <CardBody className="overflow-visible py-2 ">
@@ -90,7 +85,7 @@ export default function LayoutPopular({ data, type, title }: ILayoutPopular) {
                       src={`${process.env.NEXT_PUBLIC_IMAGE_URL}w500${item.poster_path}`}
                       width={360}
                       height={500}
-                      alt={item.title ? item.title : item.name}
+                      alt={item.title}
                     />
                   ) : (
                     <Image
@@ -104,11 +99,9 @@ export default function LayoutPopular({ data, type, title }: ILayoutPopular) {
                   )}
                 </CardBody>
                 <CardFooter className="pb-2 pt-2 px-4 flex flex-col items-start">
-                  <h2 className={twMerge('font-bold text-6xl ', style.title)}>
-                    {item.title ? item.title : item.name}
-                  </h2>
+                  <h2 className={twMerge('font-bold text-6xl ', style.title)}>{item.title}</h2>
                   <small className={twMerge('text-default-500 ', style.subtitle)}>
-                    {item.original_title ? item.original_title : item.original_name}
+                    {item.original_title}
                   </small>
                 </CardFooter>
               </Link>

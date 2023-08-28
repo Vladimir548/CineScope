@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { TvResponse } from '@/interface/ITv';
-import { ICreditsTv, ISeries } from '@/interface/ITvId';
 import { ITvCredits } from '@/interface/TvCredits';
 import { ISeasons } from '@/interface/tv/ISeasons';
+import { ISeries } from '@/interface/ITvId';
 
 const key = process.env.NEXT_PUBLIC_KEY_TMDB;
 

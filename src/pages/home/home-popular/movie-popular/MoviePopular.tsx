@@ -1,16 +1,14 @@
 'use client';
 import { useQuery } from '@tanstack/react-query';
-import { TrendingResponse } from '@/interface/ITrending';
-import LayoutPopular from '@/pages/home/home-popular/layout-popular/LayoutPopular';
 import { QueryMovie } from '@/query/QueryMovie';
+import LayoutPopularMovie from '../layout-popular/LayoutPopularMovie';
 
 export default function MoviePopular() {
   const { data } = useQuery(['get-popular-movie'], () => QueryMovie.getMoviePopular(), {});
-  console.log(data);
 
   return (
     <div>
-      <LayoutPopular data={data!} type={'movie'} title={'Популярные фильмы'} />
+      <LayoutPopularMovie data={data} title={'Популярные фильмы'} />
     </div>
   );
 }
