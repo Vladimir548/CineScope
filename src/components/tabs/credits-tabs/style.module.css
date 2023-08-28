@@ -1,0 +1,90 @@
+.profile {
+    width: 185px;
+    height: 100%;
+}
+
+.footer {
+    width: 185px;
+}
+
+@media (max-width: 870px) {
+    .profile {
+        width: 140px;
+    }
+
+    .footer {
+        width: 140px;
+    }
+
+    .name {
+        font-size: 14px;
+        line-height: 16px;
+    }
+
+    .character {
+        font-size: 12px;
+        line-height: 14px;
+    }
+}
+
+@media (max-width: 690px) {
+    .profile {
+        width: 120px;
+    }
+
+    .footer {
+        width: 120px;
+    }
+
+
+}
+
+@media (max-width: 470px) {
+    .profile {
+        width: 120px;
+    }
+
+    .footer {
+        width: 120px;
+    }
+
+    .name {
+        font-size: 10px;
+        line-height: 12px;
+    }
+
+    .character {
+        font-size: 10px;
+        line-height: 12px;
+    }
+
+    .job {
+        font-size: 10px;
+        line-height: 12px;
+    }
+}
+
+@media (max-width: 320px) {
+    .profile {
+        width: 100px;
+    }
+
+    .footer {
+        width: 100px;
+    }
+
+    .name {
+        font-size: 8px;
+        line-height: 10px;
+    }
+
+    .character {
+        font-size: 6px;
+        line-height: 8px;
+    }
+
+    .job {
+        font-size: 6px;
+        line-height: 8px;
+    }
+}

@@ -1,0 +1,149 @@
+'use client';
+import { Tabs, Tab, Card, CardBody } from '@nextui-org/react';
+import style from './style.module.css';
+import { twMerge } from 'tailwind-merge';
+import { ISeries } from '@/interface/ITvId';
+import ActingTvTabs from '@/pages/tv/tabs-tv/credits-tabs/ActingTvTabs';
+import CrewTvTabs from '@/pages/tv/tabs-tv/credits-tabs/CrewTvTabs';
+import SeasonsTvTabs from '@/pages/tv/tabs-tv/seasons-tabs/SeasonsTvTabs';
+import SimilarTvTabs from '@/pages/tv/tabs-tv/similar-tabs/SimilarTvTabs';
+
+interface ITabs {
+  data: ISeries;
+  isSuccess: boolean;
+}
+
+export default function TabsTv({ data, isSuccess }: ITabs) {
+  return (
+    <div className="flex w-full flex-col ">
+      <Tabs
+        aria-label="Options"
+        classNames={{
+          tabList: ' scrollbar-default overflow-x-auto snap-mandatory snap-x',
+        }}
+      >
+        <Tab className={'text-xl'} key="overview" title="Описание">
+          <Card>
+            <CardBody className={style.text}>{data?.overview}</CardBody>
+          </Card>
+        </Tab>
+        <Tab className={'text-xl'} key="information" title="Информация">
+          <Card>
+            <CardBody>
+              <ul className={style.list}>
+                <li className={style.block_info}>
+                  <div className={style.text}>Рейтинг</div>
+                  <div className={twMerge('flex ', style.text)}>
+                    TMDB {data.vote_average.toFixed(1)}
+                  </div>
+                </li>
+                <li className={style.block_info}>
+                  <div className={style.text}>Жанр</div>
+                  <div className="flex flex-wrap">
+                    {data.genres?.map((genre) => (
+                      <span key={genre.id}>
+                        <p className={twMerge('capitalize pr-2', style.text)}>{genre.name}</p>
+                      </span>
+                    ))}
+                  </div>
+                </li>
+                <li className={style.block_info}>
+                  <div className={style.text}>Время</div>
+                  <div className={twMerge('flex ', style.text)}>
+                    {data.last_episode_to_air.runtime} мин
+                  </div>
+                </li>
+                <li className={style.block_info}>
+                  <div className={style.text}>Сезонов</div>
+                  <div className={twMerge('flex ', style.text)}>{data.number_of_seasons}</div>
+                </li>
+                <li className={style.block_info}>
+                  <div className={style.text}>Серий</div>
+                  <div className={twMerge('flex ', style.text)}>{data.number_of_episodes}</div>
+                </li>
+                <li className={style.block_info}>
+                  <div className={style.text}>Дата выхода</div>
+                  <div className={twMerge('flex ', style.text)}>{data.first_air_date}</div>
+                </li>
+                <li className={style.block_info}>
+                  <div className={style.text}>Дата окончания</div>
+                  <div className={twMerge('flex ', style.text)}>{data.last_air_date}</div>
+                </li>
+                <li className={style.block_info}>
+                  <div className={style.text}>Создатель</div>
+                  <div className={twMerge('flex flex-wrap', style.text)}>
+                    {data.created_by.map((create) => (
+                      <span key={create.id}>{create.name + ''}</span>
+                    ))}
+                  </div>
+                </li>
+
+                <li className={style.block_info}>
+                  <div className={style.text}>Страна</div>
+                  <div className="flex flex-wrap">
+                    {data.production_countries.map((country) => (
+                      <span className={twMerge('pr-2', style.text)} key={country.iso_3166_1}>
+                        {country.name}
+                      </span>
+                    ))}
+                  </div>
+                </li>
+                <li className={style.block_info}>
+                  <div className={style.text}>Компания</div>
+                  <div className="flex flex-wrap">
+                    {data.production_companies.map((company) => (
+                      <span className={twMerge('pr-2', style.text)} key={company.id}>
+                        {company.name}
+                      </span>
+                    ))}
+                  </div>
+                </li>
+
+                <li className={style.block_info}>
+                  <div className={style.text}>Статус</div>
+                  <div className={twMerge('flex', style.text)}>{data.status}</div>
+                </li>
+              </ul>
+            </CardBody>
+          </Card>
+        </Tab>
+        <Tab className={'text-xl'} key="seasons" title="Сезоны">
+          <Card>
+            <CardBody>
+              <SeasonsTvTabs seasons={data.seasons} />
+            </CardBody>
+          </Card>
+        </Tab>
+        <Tab className={'text-xl'} key="acting" title="Актеры">
+          <Card>
+            <CardBody>
+              <ActingTvTabs />
+            </CardBody>
+          </Card>
+        </Tab>
+        <Tab className={'text-xl'} key="Crew" title="Фильмография">
+          <Card>
+            <CardBody>
+              <CrewTvTabs />
+            </CardBody>
+          </Card>
+        </Tab>
+        <Tab className={'text-xl'} key="similar" title="Похожие">
+          <Card>
+            <CardBody>
+              <SimilarTvTabs />
+            </CardBody>
+          </Card>
+        </Tab>
+
+        {/*<Tab className={'text-xl'} key="companies" title="Компания">*/}
+        {/*  <Card>*/}
+        {/*    <CardBody>*/}
+        {/*      <CompanyTabs companies={data.production_companies} />*/}
+        {/*    </CardBody>*/}
+        {/*  </Card>*/}
+        {/*</Tab>*/}
+      </Tabs>
+    </div>
+  );
+}
