@@ -49,7 +49,7 @@ export default function HomeSlider() {
 
                 <NextImage
                   priority={true}
-                  alt={item!.title ? item!.title : item.name}
+                  alt={item!.title ? item!.title || '' : item!.name || ''}
                   className={cn('object-cover rounded-sm')}
                   src={`${process.env.NEXT_PUBLIC_IMAGE_URL}original/${item.backdrop_path}`}
                   width={2000}
