@@ -7,7 +7,7 @@ import CrewTabs from '@/components/tabs/credits-tabs/crew-tabs/CrewTabs';
 import ImageTabs from '@/components/tabs/image-tabs/ImageTabs';
 import { twMerge } from 'tailwind-merge';
 import CompanyTabs from '@/components/tabs/company-tabs/CompanyTabs';
-import SimilarMovieTv from '@/components/tabs/similar-tabs/SimilarMovieTv';
+
 import CollectionTabsMovie from '@/components/tabs/collection-tabs-movie/CollectionTabsMovie';
 
 interface ITabs {

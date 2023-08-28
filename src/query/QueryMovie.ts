@@ -19,7 +19,7 @@ export const QueryMovie = {
     });
     return data as MoviesResponse;
   },
-  async getMoviePopular(page: number) {
+  async getMoviePopular(page?: number) {
     const { data } = await axios.get<MoviesResponse>('/api/movie/popular', {
       params: {
         language: 'ru-RU',

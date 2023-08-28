@@ -76,7 +76,7 @@ export default function Search() {
   return (
     <div className="mt-[50px]  ">
       <form className=" relative flex">
-        <div className="relative w-[100vw] ">
+        <div className="relative w-[90vw] ">
           <input
             onKeyUp={(e) => handlerKey(e)}
             className={style.input}

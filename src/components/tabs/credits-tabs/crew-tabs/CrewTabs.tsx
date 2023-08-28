@@ -11,13 +11,20 @@ interface ICrew {
 }
 
 export default function CrewTabs({ crews }: ICrew) {
-  const res = crews.reduce((acc: any, cur) => {
-    if (!acc[cur.id]) {
-      acc[cur.id] = { id: cur.id, profile_path: cur.profile_path, name: cur.name, jobs: [] };
-    }
-    acc[cur.id].jobs.push(cur.job);
-    return acc;
-  }, []);
+  const res = crews.reduce(
+    (
+      acc: Record<number, { id: number; profile_path: string; name: string; jobs: string[] }>,
+      cur,
+    ) => {
+      if (!acc[cur.id]) {
+        // @ts-ignore
+        acc[cur.id] = { id: cur.id, profile_path: cur.profile_path, name: cur.name, jobs: [] };
+      }
+      acc[cur.id].jobs.push(cur.job);
+      return acc;
+    },
+    [],
+  );
 
   const resultArray = Object.values(res);
   return (

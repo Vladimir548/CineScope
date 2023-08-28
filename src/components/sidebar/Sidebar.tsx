@@ -16,15 +16,11 @@ import { HiMiniComputerDesktop } from 'react-icons/hi2';
 import { useTypedSelector } from '@/redux/hooks/useTypedSelector';
 import { useDispatch } from 'react-redux';
 import { toggleSidebar } from '@/redux/slices/sidebar-slice';
-
-interface ISidebar {
-  children: React.ReactNode;
-}
+import { IRoutes } from '@/interface/IRoutes';
 
 export const Sidebar = () => {
   // const dispatch = useAppDispatch()
   const pathname = usePathname();
-  const mainRef = useRef<any>();
   const routes = useMemo(
     () => [
       {
@@ -119,12 +115,15 @@ export const Sidebar = () => {
     <div className={style.sidebar}>
       <div className={`${isActive ? style.block : style.block_close}`}>
         <Box className={`${isActive ? style.box : style.box}`}>
-          <span onClick={() => dispatch(toggleSidebar())} className={style.btn_toggle}>
-            {isActive ? <AiOutlineArrowRight size={24} /> : <AiOutlineArrowLeft size={24} />}
-          </span>
-          {isActive && <p className={style.logo}>СineScope</p>}
+          <div className="flex justify-center items-center pt-2">
+            <div onClick={() => dispatch(toggleSidebar())} className={style.btn_toggle}>
+              <span></span>
+            </div>
+            {isActive && <p className={style.logo}>СineScope</p>}
+          </div>
           <div className={style.routes}>
             {routes.map((item) => (
+              // @ts-ignore
               <SidebarItem key={item.id} {...item} />
             ))}
           </div>

@@ -7,9 +7,10 @@ import { QueryMovie } from '@/query/QueryMovie';
 export default function MoviePopular() {
   const { data } = useQuery(['get-popular-movie'], () => QueryMovie.getMoviePopular(), {});
   console.log(data);
+
   return (
     <div>
-      <LayoutPopular data={data} type={'movie'} title={'Популярные фильмы'} />
+      <LayoutPopular data={data!} type={'movie'} title={'Популярные фильмы'} />
     </div>
   );
 }
