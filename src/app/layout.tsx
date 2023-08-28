@@ -21,9 +21,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={inter.className}>
-        <QueryProvider>
-          <ReduxProvider>
-            <UIProvider>
+        <ReduxProvider>
+          <UIProvider>
+            <QueryProvider>
               <main className="dark text-foreground bg-background flex ">
                 <aside className="">
                   <Sidebar />
@@ -36,9 +36,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </div>
                 <ButtonUp />
               </main>
-            </UIProvider>
-          </ReduxProvider>
-        </QueryProvider>
+            </QueryProvider>
+          </UIProvider>
+        </ReduxProvider>
       </body>
     </html>
   );
