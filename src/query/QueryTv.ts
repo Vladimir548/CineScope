@@ -1,3 +1,4 @@
+require('dotenv').config();
 import axios from 'axios';
 import { TvResponse } from '@/interface/ITv';
 import { ITvCredits } from '@/interface/TvCredits';

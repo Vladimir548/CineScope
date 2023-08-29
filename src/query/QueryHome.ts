@@ -1,3 +1,4 @@
+require('dotenv').config();
 import axios from 'axios';
 import { TrendingResponse } from '@/interface/ITrending';
 

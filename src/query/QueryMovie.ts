@@ -1,3 +1,4 @@
+require('dotenv').config();
 import { MovieRes, MoviesResponse } from '@/interface/IMovie';
 import axios from 'axios';
 import { IMovie } from '@/interface/IMovieId';
