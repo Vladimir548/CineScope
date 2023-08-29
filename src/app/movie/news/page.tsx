@@ -1,4 +1,4 @@
-import MovieNews from '@/pages/movie/news/MovieNews';
+import MovieNews from '@/app/pages-ui/movie-page/news/MovieNews';
 
 export default function Page() {
   return (

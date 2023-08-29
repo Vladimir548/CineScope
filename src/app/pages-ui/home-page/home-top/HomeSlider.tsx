@@ -7,7 +7,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-coverflow';
 import { Image } from '@nextui-org/react';
-import './slider-styles.css';
+import './slider.css';
 import { Autoplay, Navigation } from 'swiper/modules';
 import NextImage from 'next/image';
 import Link from 'next/link';

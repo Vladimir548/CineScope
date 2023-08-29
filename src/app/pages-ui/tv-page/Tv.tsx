@@ -1,9 +1,6 @@
 'use client';
-import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { QueryTv } from '@/query/QueryTv';
-
-import { Pagination } from '@nextui-org/react';
 import LayoutSkeleton from '@/layout/LayoutSkeleton';
 import LayoutTv from '@/layout/LayoutTv';
 import { useSearchParams } from 'next/navigation';

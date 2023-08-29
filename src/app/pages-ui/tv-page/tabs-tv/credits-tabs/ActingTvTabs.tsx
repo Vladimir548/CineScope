@@ -33,7 +33,7 @@ export default function ActingTvTabs() {
               <h2 className={twMerge(style.name)}>{acting.name}</h2>
               <small
                 className={twMerge(
-                  'text-default-500 text-sm pt-1 overflow-y-auto h-[100px]',
+                  'text-default-500 text-sm pt-1 overflow-y-auto max-h-[100px]',
                   style.character,
                 )}
               >

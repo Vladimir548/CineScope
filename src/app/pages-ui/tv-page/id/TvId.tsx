@@ -8,7 +8,7 @@ import { BiSolidCircle } from 'react-icons/bi';
 import { Image } from '@nextui-org/react';
 import { twMerge } from 'tailwind-merge';
 import { QueryTv } from '@/query/QueryTv';
-import TabsTv from '@/pages/tv/tabs-tv/TabsTv';
+import TabsTv from '@/app/pages-ui/tv-page/tabs-tv/TabsTv';
 
 export default function TvId() {
   const params = useParams();

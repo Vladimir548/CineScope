@@ -1,6 +1,4 @@
-import HomePage from '@/pages/home/HomePage';
-import { Suspense } from 'react';
-import LoadingCircular from '@/components/loading/LoadingCircular';
+import HomePage from '@/app/pages-ui/home-page/HomePage';
 
 export default async function Home() {
   return (

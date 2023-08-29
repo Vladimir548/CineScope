@@ -1,4 +1,4 @@
-import Tv from '@/pages/tv/Tv';
+import Tv from '@/app/pages-ui/tv-page/Tv';
 
 export default function Page() {
   return (

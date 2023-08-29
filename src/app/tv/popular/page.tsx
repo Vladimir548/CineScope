@@ -1,4 +1,4 @@
-import TvPopular from '@/pages/tv/popular/TvPopular';
+import TvPopular from '@/app/pages-ui/tv-page/popular/TvPopular';
 
 export default function Page() {
   return (

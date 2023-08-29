@@ -1,4 +1,4 @@
-import TvNews from '@/pages/tv/news/TvNews';
+import TvNews from '@/app/pages-ui/tv-page/news/TvNews';
 
 export default function Page() {
   return (

@@ -62,6 +62,7 @@ export default function SeasonsTvTabs({ seasons }: ISeasonsTabs) {
                               <div className="flex justify-between items-start">
                                 <div className="flex flex-col gap-0">
                                   <h2 className="font-bold ">{episode.name}</h2>
+                                  <span>Серия {episode.episode_number}</span>
                                   <h3 className="text-md text-foreground/80">{episode.air_date}</h3>
                                   <p className={'font-normal overflow-y-auto max-h-[100px]'}>
                                     {episode.overview}

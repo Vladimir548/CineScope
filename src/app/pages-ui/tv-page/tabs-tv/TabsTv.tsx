@@ -3,10 +3,10 @@ import { Tabs, Tab, Card, CardBody } from '@nextui-org/react';
 import style from './style.module.css';
 import { twMerge } from 'tailwind-merge';
 import { ISeries } from '@/interface/ITvId';
-import ActingTvTabs from '@/pages/tv/tabs-tv/credits-tabs/ActingTvTabs';
-import CrewTvTabs from '@/pages/tv/tabs-tv/credits-tabs/CrewTvTabs';
-import SeasonsTvTabs from '@/pages/tv/tabs-tv/seasons-tabs/SeasonsTvTabs';
-import SimilarTvTabs from '@/pages/tv/tabs-tv/similar-tabs/SimilarTvTabs';
+import SeasonsTvTabs from '@/app/pages-ui/tv-page/tabs-tv/seasons-tabs/SeasonsTvTabs';
+import ActingTvTabs from '@/app/pages-ui/tv-page/tabs-tv/credits-tabs/ActingTvTabs';
+import CrewTvTabs from '@/app/pages-ui/tv-page/tabs-tv/credits-tabs/CrewTvTabs';
+import SimilarTvTabs from '@/app/pages-ui/tv-page/tabs-tv/similar-tabs/SimilarTvTabs';
 
 interface ITabs {
   data: ISeries;
@@ -135,14 +135,6 @@ export default function TabsTv({ data, isSuccess }: ITabs) {
             </CardBody>
           </Card>
         </Tab>
-
-        {/*<Tab className={'text-xl'} key="companies" title="Компания">*/}
-        {/*  <Card>*/}
-        {/*    <CardBody>*/}
-        {/*      <CompanyTabs companies={data.production_companies} />*/}
-        {/*    </CardBody>*/}
-        {/*  </Card>*/}
-        {/*</Tab>*/}
       </Tabs>
     </div>
   );

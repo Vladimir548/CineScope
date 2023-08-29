@@ -36,7 +36,7 @@ export default function CrewTvTabs() {
               <h2 className={twMerge('font-bold', style.name)}>{crew.name}</h2>
               <small
                 className={twMerge(
-                  'text-default-500 text-sm pt-1 overflow-y-auto h-[100px]',
+                  'text-default-500 text-sm pt-1 overflow-y-auto max-h-[100px]',
                   style.job,
                 )}
               >

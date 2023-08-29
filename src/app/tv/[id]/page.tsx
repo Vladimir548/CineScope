@@ -1,4 +1,4 @@
-import TvId from '@/pages/tv/id/TvId';
+import TvId from '@/app/pages-ui/tv-page/id/TvId';
 
 export default function Page() {
   return (

@@ -10,9 +10,9 @@ import { useTypedSelector } from '@/redux/hooks/useTypedSelector';
 import { useDispatch } from 'react-redux';
 import { clearSearch, searchPush } from '@/redux/slices/search-slice';
 import { MdClear } from 'react-icons/md';
-import SearchPopular from '@/pages/search/SearchPopular';
 import { QuerySearch } from '@/query/QuerySearch';
 import LayoutSkeleton from '@/layout/LayoutSkeleton';
+import SearchPopular from '@/app/pages-ui/search-page/SearchPopular';
 
 export default function Search() {
   const { search } = useTypedSelector((state) => state.search);

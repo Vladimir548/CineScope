@@ -1,4 +1,4 @@
-import MovieIdPc from '@/pages/movie/id/movie-id-pc/MovieIdPC';
+import MovieIdPc from '@/app/pages-ui/movie-page/id/movie-id-pc/MovieIdPC';
 
 export default function MovieId() {
   return (

@@ -2,8 +2,6 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import LayoutMulti from '@/layout/LayoutMulti';
 import { useEffect } from 'react';
-import { TrendingResponse } from '@/interface/ITrending';
-import { QueryTv } from '@/query/QueryTv';
 import { QueryHome } from '@/query/QueryHome';
 import LayoutSkeleton from '@/layout/LayoutSkeleton';
 
