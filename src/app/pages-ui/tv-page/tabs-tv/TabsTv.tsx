@@ -18,7 +18,7 @@ export default function TabsTv({ data, isSuccess }: ITabs) {
   return (
     <div className="flex w-full flex-col ">
       <Tabs
-        aria-label="Options"
+        aria-label="Dynamic tabs"
         classNames={{
           tabList: ' scrollbar-default overflow-x-auto snap-mandatory snap-x',
         }}

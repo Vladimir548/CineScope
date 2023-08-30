@@ -24,7 +24,12 @@ export default function TabsMovie({ data, isSuccess }: ITabs) {
 
   return (
     <div className="flex w-full flex-col">
-      <Tabs aria-label="Options">
+      <Tabs
+        aria-label="Dynamic tabs"
+        classNames={{
+          tabList: ' scrollbar-default overflow-x-auto snap-mandatory snap-x',
+        }}
+      >
         <Tab className={'text-xl'} key="overview" title="Описание">
           <Card>
             <CardBody className={style.text}>{data?.overview}</CardBody>
