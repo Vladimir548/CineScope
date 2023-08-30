@@ -47,7 +47,8 @@ export default function MovieIdPc() {
         <div
           className={style.top_content}
           style={{
-            backgroundImage: `linear-gradient(to bottom, rgba(${colorPalletOne},.6) 90%, rgba(0,0,0,.9) 100%`,
+            boxShadow: `0px -99px 45px 70px rgba(${colorPalletOne},.8)`,
+            backgroundImage: `linear-gradient(to bottom, rgba(${colorPalletOne},.8) 90%, rgba(0,0,0,.8) 100%`,
           }}
         >
           <div className={style.poster}>
@@ -67,17 +68,11 @@ export default function MovieIdPc() {
             </div>
             <div className={style.block_top_info}>
               <div className={'flex items-center gap-y-3 mt-2'}>
-                <div
-                  style={{ backgroundColor: `rgb(${colorPalletTwo}` }}
-                  className="px-2 py-2 inline-flex items-center rounded-lg"
-                >
-                  <span className={'p-1 text-xl bg-cyan-500 rounded-lg'}>TMDB</span>
+                <div className="px-2 py-2 inline-flex items-center rounded-lg bg-black/50">
+                  <span className={'p-1 text-xl bg-cyan-500 rounded-lg '}>TMDB</span>
                   <span className={'text-xl pl-1'}>{data?.vote_average?.toFixed(1)}</span>
                 </div>
-                <div
-                  style={{ backgroundColor: `rgb(${colorPalletTwo}` }}
-                  className="px-2 py-2 inline-flex items-center rounded-lg ml-3"
-                >
+                <div className="px-2 py-2 inline-flex items-center rounded-lg ml-3 bg-black/50">
                   <span className={'text-xl'}>{data?.release_date}</span>
                   <span className={'text-sm px-1'}>
                     <BiSolidCircle />
@@ -85,12 +80,11 @@ export default function MovieIdPc() {
                   <span className={'text-xl'}>{formattedRuntime}</span>
                 </div>
               </div>
-              <ul className="flex items-center mt-3 ">
+              <ul className="flex items-center mt-3 flex-wrap ">
                 {data?.genres.map((genre) => (
                   <li
                     key={genre.id}
-                    className={'text-xl p-2 rounded-lg mr-2 capitalize'}
-                    style={{ backgroundColor: `rgb(${colorPalletTwo}` }}
+                    className={'text-xl p-2 mt-1 rounded-lg mr-2 capitalize bg-black/50'}
                   >
                     {genre.name}
                   </li>

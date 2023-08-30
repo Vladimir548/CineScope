@@ -17,6 +17,8 @@ import { useTypedSelector } from '@/redux/hooks/useTypedSelector';
 import { useDispatch } from 'react-redux';
 import { toggleSidebar } from '@/redux/slices/sidebar-slice';
 import { IRoutes } from '@/interface/IRoutes';
+import HeaderRoute from '@/components/header/HeaderRoute';
+import { BsPeople } from 'react-icons/bs';
 
 export const Sidebar = () => {
   // const dispatch = useAppDispatch()
@@ -103,6 +105,12 @@ export const Sidebar = () => {
             description: 'Высокооцененные критиками и зрителями произведения',
           },
         ],
+      },
+      {
+        id: 5,
+        icon: BsPeople,
+        name: 'Актеры',
+        link: '/actors',
       },
     ],
     [pathname],

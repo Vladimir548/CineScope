@@ -60,7 +60,7 @@ export const QueryMovie = {
     const { data } = await axios.get(`/api/movie/${id}`, {
       params: {
         language: 'ru-RU',
-        append_to_response: 'release_dates,images,credits',
+        append_to_response: 'release_dates,images,credits,videos',
         include_image_language: 'en,ru,ja',
       },
       headers: {

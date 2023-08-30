@@ -1,0 +1,64 @@
+.sidebar_bottom {
+    display: none;
+}
+
+@media (max-width: 769px) {
+    .sidebar_bottom {
+        position: fixed;
+        display: flex;
+        left: 0;
+        bottom: 0;
+        height: 50px;
+        background: rgba(15, 15, 15, 0.55);
+        backdrop-filter: blur(5px);
+        z-index: 999;
+        width: 100%;
+        padding: 0 5px;
+    }
+}
+
+.link {
+    @apply flex flex-col justify-center items-center px-1 w-full ;
+    /*width: 120px;*/
+    column-gap: 5px;
+
+}
+
+.active_link {
+    background: rgb(255, 0, 0);
+    border-radius: 5px;
+}
+
+.name {
+    font-size: 18px;
+}
+
+@media (max-width: 470px) {
+    .name {
+        font-size: 16px;
+    }
+
+    .icon {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 470px) {
+    .name {
+        font-size: 14px;
+    }
+
+    .icon {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 470px) {
+    .name {
+        font-size: 10px;
+    }
+
+    .icon {
+        font-size: 16px;
+    }
+}

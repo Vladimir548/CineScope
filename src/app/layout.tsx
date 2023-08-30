@@ -9,6 +9,7 @@ import Header from '@/components/header/Header';
 import ButtonUp from '@/components/btn-up/ButtonUP';
 import Footer from '@/components/footer/Footer';
 import NavigationMenu from '@/components/navigation-menu/NavigationMenu';
+import SidebarBottom from '@/components/sidebar-bottom/SidebarBottom';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -35,6 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   <Footer />
                 </div>
                 <ButtonUp />
+                <SidebarBottom />
               </main>
             </UIProvider>
           </ReduxProvider>

@@ -7,6 +7,7 @@ import SeasonsTvTabs from '@/app/pages-ui/tv-page/tabs-tv/seasons-tabs/SeasonsTv
 import ActingTvTabs from '@/app/pages-ui/tv-page/tabs-tv/credits-tabs/ActingTvTabs';
 import CrewTvTabs from '@/app/pages-ui/tv-page/tabs-tv/credits-tabs/CrewTvTabs';
 import SimilarTvTabs from '@/app/pages-ui/tv-page/tabs-tv/similar-tabs/SimilarTvTabs';
+import ImagesTvTabs from '@/app/pages-ui/tv-page/tabs-tv/images-tabs/ImagesTvTabs';
 
 interface ITabs {
   data: ISeries;
@@ -89,6 +90,14 @@ export default function TabsTv({ data, isSuccess }: ITabs) {
                   </div>
                 </li>
                 <li className={style.block_info}>
+                  <div className={style.text}>Платформа</div>
+                  <div className={twMerge('flex ', style.text)}>
+                    {data.networks.map((network) => (
+                      <span key={network.id}>{network.name + ' '}</span>
+                    ))}
+                  </div>
+                </li>
+                <li className={style.block_info}>
                   <div className={style.text}>Компания</div>
                   <div className="flex flex-wrap">
                     {data.production_companies.map((company) => (
@@ -125,6 +134,13 @@ export default function TabsTv({ data, isSuccess }: ITabs) {
           <Card>
             <CardBody>
               <CrewTvTabs />
+            </CardBody>
+          </Card>
+        </Tab>
+        <Tab className={'text-xl'} key="images" title="Изображения">
+          <Card>
+            <CardBody>
+              <ImagesTvTabs images={data.images} isSuccess={isSuccess} />
             </CardBody>
           </Card>
         </Tab>

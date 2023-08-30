@@ -1,3 +1,5 @@
+import { Backdrop, Logo, Poster } from '@/interface/IMovieId';
+
 export interface ISeries {
   backdrop_path: string;
   created_by: CreatedBy[];
@@ -25,6 +27,7 @@ export interface ISeries {
   overview: string;
   popularity: number;
   poster_path: string;
+  images: IImages;
   production_companies: ProductionCompany[];
   production_countries: ProductionCountry[];
   seasons: ITvSeason[];
@@ -124,4 +127,11 @@ export interface Crew {
   credit_id: string;
   department: string;
   job: string;
+}
+
+export interface IImages {
+  backdrops: Backdrop[];
+  id: number;
+  logos: Logo[];
+  posters: Poster[];
 }

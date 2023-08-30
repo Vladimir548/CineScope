@@ -41,7 +41,9 @@ export const SidebarItem: React.FC<IRoutes> = ({
                 <span className={style.icon}>
                   <Icon />
                 </span>{' '}
-                <p className={style.link_name}>{name}</p>
+                <p className={style.link_name}>
+                  {name} <span>{subLink ? <BsChevronRight /> : ''}</span>
+                </p>
               </div>
               <ul className={style.subLink}>
                 <div key={mainLink.id}>
@@ -65,7 +67,7 @@ export const SidebarItem: React.FC<IRoutes> = ({
                 <div>
                   {subLink.map((sub) => (
                     <li className="cursor-pointer" key={sub.id}>
-                      <Link className={` ${isActive ? '' : ''}`} href={sub.link}>
+                      <Link href={sub.link}>
                         <div className={`${style.sub_name} ${isActive ? 'bg-slate-700' : ''}`}>
                           <span>{<sub.icon size={24} />}</span>
                           <div className="flex flex-col ">

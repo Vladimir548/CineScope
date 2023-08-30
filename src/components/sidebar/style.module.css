@@ -277,6 +277,18 @@
 
 .link_name {
     padding-left: 20px;
+    display: flex;
+    align-items: center;
+
+}
+
+.link_name span {
+    transition: .3s ease-in-out;
+}
+
+.link_name:hover span {
+    transition: .3s ease-in-out;
+    transform: rotate(-180deg);
 }
 
 .block_close .link_name {

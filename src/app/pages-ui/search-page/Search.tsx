@@ -74,7 +74,7 @@ export default function Search() {
   }, [fetchNextPage, hasNextPage]);
 
   return (
-    <div className="mt-[50px]  ">
+    <div className="  ">
       <form className=" relative flex">
         <div className="relative w-[90vw] ">
           <input

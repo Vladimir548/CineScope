@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { QueryTv } from '@/query/QueryTv';
 import { ITvSeason } from '@/interface/ITvId';
 import { useState } from 'react';
-import { Tabs, Tab, Card, CardBody, Image, ScrollShadow } from '@nextui-org/react';
+import { Tabs, Tab, Card, CardBody, Image, ScrollShadow, Skeleton } from '@nextui-org/react';
 import NextImage from 'next/image';
 import LayoutSeasonsSkeleton from '@/layout/LayoutSeasonsSkeleton';
 
@@ -15,7 +15,6 @@ interface ISeasonsTabs {
 export default function SeasonsTvTabs({ seasons }: ISeasonsTabs) {
   const params = useParams();
   const [isSeason, setIsSeason] = useState<number>(1);
-  console.log(isSeason);
   const { data, isSuccess } = useQuery(['get-seasons', params!.id, isSeason], () =>
     QueryTv.getIdTvSeasons(Number(params!.id), isSeason),
   );
@@ -49,12 +48,12 @@ export default function SeasonsTvTabs({ seasons }: ISeasonsTabs) {
                             <div className="relative col-span-6 md:col-span-3">
                               <Image
                                 as={NextImage}
-                                alt="Album cover"
+                                alt={episode.name}
                                 className="object-cover"
                                 height={185}
                                 shadow="md"
-                                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}w300/${episode.still_path}`}
-                                width={300}
+                                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}original/${episode.still_path}`}
+                                width={500}
                               />
                             </div>
 
@@ -62,9 +61,16 @@ export default function SeasonsTvTabs({ seasons }: ISeasonsTabs) {
                               <div className="flex justify-between items-start">
                                 <div className="flex flex-col gap-0">
                                   <h2 className="font-bold ">{episode.name}</h2>
+
                                   <span>Серия {episode.episode_number}</span>
+
                                   <h3 className="text-md text-foreground/80">{episode.air_date}</h3>
-                                  <p className={'font-normal overflow-y-auto max-h-[100px]'}>
+
+                                  <p
+                                    className={
+                                      'font-normal text-medium overflow-y-auto max-h-[100px]'
+                                    }
+                                  >
                                     {episode.overview}
                                   </p>
                                 </div>

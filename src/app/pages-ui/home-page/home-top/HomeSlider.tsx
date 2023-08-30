@@ -6,7 +6,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-coverflow';
-import { Image } from '@nextui-org/react';
+import { Image, Skeleton } from '@nextui-org/react';
 import './slider.css';
 import { Autoplay, Navigation } from 'swiper/modules';
 import NextImage from 'next/image';
@@ -17,7 +17,7 @@ import { cn } from '@/lib/utils';
 import { QueryHome } from '@/query/QueryHome';
 
 export default function HomeSlider() {
-  const { data } = useQuery(['get-trending-all'], () => QueryHome.getTrending(), {});
+  const { data, isSuccess } = useQuery(['get-trending-all'], () => QueryHome.getTrending(), {});
 
   return (
     <div>
@@ -47,7 +47,8 @@ export default function HomeSlider() {
               <SwiperSlide className={style.slide} key={item.id}>
                 <div className={style.bg_blur}></div>
 
-                <NextImage
+                <Image
+                  as={NextImage}
                   priority={true}
                   alt={item!.title ? item!.title || '' : item!.name || ''}
                   className={cn('object-cover rounded-sm')}

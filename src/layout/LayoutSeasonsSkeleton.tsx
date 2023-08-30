@@ -16,7 +16,7 @@ export default function LayoutSeasonsSkeleton() {
                   height={185}
                   shadow="md"
                   src={`https://fakeimg.pl/240x400?text=KinoScope&font=bebas`}
-                  width={300}
+                  width={500}
                 />
               </div>
             </Skeleton>
@@ -24,13 +24,16 @@ export default function LayoutSeasonsSkeleton() {
               <div className="flex justify-between items-start">
                 <div className="flex flex-col gap-0">
                   <Skeleton className="w-full rounded-lg">
-                    <h2 className="font-bold "></h2>
+                    <h2 className="font-bold ">Название</h2>
                   </Skeleton>
                   <Skeleton className="w-full rounded-lg">
-                    <h3 className="text-md text-foreground/80"></h3>
+                    <span className="font-bold ">Серия</span>
                   </Skeleton>
                   <Skeleton className="w-full rounded-lg">
-                    <p className={'font-normal overflow-y-auto max-h-[100px]'}></p>
+                    <h3 className="text-md text-foreground/80">Год</h3>
+                  </Skeleton>
+                  <Skeleton className="w-full rounded-lg">
+                    <p className={'font-normal overflow-y-auto max-h-[100px]'}>Описание</p>
                   </Skeleton>
                 </div>
               </div>

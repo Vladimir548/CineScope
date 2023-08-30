@@ -36,13 +36,13 @@ export default function LayoutMulti({
                 <Link className={style.link} key={item.id} href={`/${item.media_type}/${item.id}`}>
                   {item.media_type !== 'person' && (
                     <CardHeader className="flex justify-between items-center p-0 px-4 ">
-                      <h4 className="font-bold text-large flex items-center">
+                      <h4 className="font-bold text-base flex items-center lg:text-xl">
                         <span>
                           <AiFillStar size={22} />
                         </span>{' '}
                         {item.vote_average?.toFixed(1)}
                       </h4>
-                      <h4 className="font-bold text-large">
+                      <h4 className="font-bold text-base lg:text-xl">
                         {
                           (item.release_date ? item.release_date : item.first_air_date)?.split(
                             '-',
