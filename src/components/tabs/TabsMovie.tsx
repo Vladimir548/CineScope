@@ -24,12 +24,7 @@ export default function TabsMovie({ data, isSuccess }: ITabs) {
 
   return (
     <div className="flex w-full flex-col">
-      <Tabs
-        aria-label="Options"
-        classNames={{
-          tabList: ' scrollbar-default overflow-x-auto snap-mandatory snap-x',
-        }}
-      >
+      <Tabs aria-label="Options">
         <Tab className={'text-xl'} key="overview" title="Описание">
           <Card>
             <CardBody className={style.text}>{data?.overview}</CardBody>
