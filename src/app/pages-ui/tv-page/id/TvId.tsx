@@ -44,7 +44,8 @@ export default function TvId() {
             <div
               className={style.top_content}
               style={{
-                backgroundImage: `linear-gradient(to bottom, rgba(${colorPalletOne},.6) 90%, rgba(0,0,0,.9) 100%`,
+                backgroundImage: `linear-gradient(to top, rgba(${colorPalletOne},1) 10%, rgba(${colorPalletOne},1) 10%, rgba(${colorPalletOne},.8) 63%)`,
+                boxShadow: `0px -99px 45px 70px rgba(${colorPalletOne},.8)`,
               }}
             >
               <div className={style.poster}>

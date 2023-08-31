@@ -17,8 +17,10 @@ export default function SearchPopular() {
     error,
   } = useInfiniteQuery(['search-multi'], ({ pageParam = 1 }) => QueryHome.getTrending(pageParam), {
     getNextPageParam: (lastPage, allPages) => {
-      const nextPage = allPages.length + 1;
-      return nextPage;
+      if (lastPage.page < lastPage.total_pages) {
+        return lastPage.page + 1;
+      }
+      return undefined;
     },
   });
   useEffect(() => {

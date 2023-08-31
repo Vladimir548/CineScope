@@ -48,7 +48,7 @@ export default function MovieIdPc() {
           className={style.top_content}
           style={{
             boxShadow: `0px -99px 45px 70px rgba(${colorPalletOne},.8)`,
-            backgroundImage: `linear-gradient(to bottom, rgba(${colorPalletOne},.8) 90%, rgba(0,0,0,.8) 100%`,
+            backgroundImage: `linear-gradient(to top, rgba(${colorPalletOne},1) 10%, rgba(${colorPalletOne},1) 10%, rgba(${colorPalletOne},.8) 63%)`,
           }}
         >
           <div className={style.poster}>

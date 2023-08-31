@@ -35,7 +35,6 @@ export default function Search() {
     e.preventDefault();
     dispatch(clearSearch());
     setValue('');
-    console.log('click');
   };
 
   const {
@@ -52,8 +51,10 @@ export default function Search() {
     ({ pageParam = 1 }) => QuerySearch.getSearch(search, pageParam),
     {
       getNextPageParam: (lastPage, allPages) => {
-        const nextPage = allPages.length + 1;
-        return nextPage;
+        if (lastPage.page < lastPage.total_pages) {
+          return lastPage.page + 1;
+        }
+        return undefined;
       },
     },
   );
@@ -74,7 +75,7 @@ export default function Search() {
   }, [fetchNextPage, hasNextPage]);
 
   return (
-    <div className="  ">
+    <div className="  mt-2">
       <form className=" relative flex">
         <div className="relative w-[90vw] ">
           <input
