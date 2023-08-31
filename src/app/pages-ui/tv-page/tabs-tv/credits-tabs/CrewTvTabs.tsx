@@ -20,7 +20,7 @@ export default function CrewTvTabs() {
           key={crew.id}
           className=" border-transparent border-2 hover:border-slate-500 hover:border-2 "
         >
-          <Link href={`/crew/${crew.id}`}>
+          <Link href={`/person/${crew.id}`}>
             <CardBody className="overflow-visible py-2 flex-none px-1">
               <Image
                 as={NextImage}

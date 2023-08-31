@@ -2,19 +2,21 @@
 .swiper {
     max-width: 1600px;
     max-height: 600px;
-    margin-top: 10px;
+
     border-radius: 5px;
 }
-@media (max-width: 1990px){
+
+@media (max-width: 1990px) {
     .swiper {
         max-width: 1990px;
         max-height: 900px;
-        margin-top: 10px;
+
         border-radius: 5px;
     }
 }
+
 @media (max-width: 1550px) {
-    .swiper{
+    .swiper {
         max-width: 1600px;
         max-height: 700px;
     }
@@ -43,25 +45,27 @@
 }
 
 
-.swiper-button-next,.swiper-button-prev{
-    color: #fff ;
-    background-image: linear-gradient(rgba(255,255,255,.15),rgba(255,255,255,.15)),linear-gradient(rgba(59,58,62,.1),rgba(59,58,62,.1)) !important;
+.swiper-button-next, .swiper-button-prev {
+    color: #fff;
+    background-image: linear-gradient(rgba(255, 255, 255, .15), rgba(255, 255, 255, .15)), linear-gradient(rgba(59, 58, 62, .1), rgba(59, 58, 62, .1)) !important;
     width: 50px;
     height: 70px;
-    border-radius: 10px ;
-    backdrop-filter: blur(10px) ;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
     transition: .3s ease-in-out;
     display: flex;
 }
-.swiper-button-next:hover,.swiper-button-prev:hover{
-    transform: scale(1.1) ;
+
+.swiper-button-next:hover, .swiper-button-prev:hover {
+    transform: scale(1.1);
 }
 
 @media (max-width: 769px) {
-    .swiper-button-next,.swiper-button-prev{
-        display: none ;
+    .swiper-button-next, .swiper-button-prev {
+        display: none;
     }
 }
-.swiper-button-next.swiper-button-disabled,.swiper-button-prev.swiper-button-disabled{
-    pointer-events: auto ;
+
+.swiper-button-next.swiper-button-disabled, .swiper-button-prev.swiper-button-disabled {
+    pointer-events: auto;
 }

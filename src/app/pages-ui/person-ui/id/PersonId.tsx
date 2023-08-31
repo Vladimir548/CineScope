@@ -1,16 +1,17 @@
 'use client';
+import { useParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import { QueryPerson } from '@/query/QueryPerson';
-import { useParams } from 'next/navigation';
-import style from './style.module.css';
+import { Card, CardBody, Image, Tab, Tabs } from '@nextui-org/react';
+import style from '@/app/pages-ui/actors-ui/id/style.module.css';
 import NextImage from 'next/image';
-import { Tabs, Tab, Card, CardBody, Image } from '@nextui-org/react';
-import LayoutMulti from '@/layout/LayoutMulti';
+import { twMerge } from 'tailwind-merge';
 import ActorsCombined from '@/app/pages-ui/actors-ui/id/ActorsCombined';
 import ActorImages from '@/app/pages-ui/actors-ui/id/ActorImages';
-import { twMerge } from 'tailwind-merge';
+import PersonCombined from '@/app/pages-ui/person-ui/id/PersonCombined';
+import PersonImages from '@/app/pages-ui/person-ui/id/PersonImages';
 
-export default function ActorId() {
+export default function PersonId() {
   const params = useParams();
   const year = new Date().getFullYear();
   const { data } = useQuery(['get-actor-id', params!.id], () =>
@@ -95,14 +96,14 @@ export default function ActorId() {
         <Tab className={'text-xl'} key="filmograph" title="Фильмография">
           <Card>
             <CardBody>
-              <ActorsCombined />
+              <PersonCombined />
             </CardBody>
           </Card>
         </Tab>
         <Tab className={'text-xl'} key="gallery" title="Галерея">
           <Card>
             <CardBody>
-              <ActorImages />
+              <PersonImages />
             </CardBody>
           </Card>
         </Tab>

@@ -9,6 +9,7 @@ import { twMerge } from 'tailwind-merge';
 import CompanyTabs from '@/components/tabs/company-tabs/CompanyTabs';
 
 import CollectionTabsMovie from '@/components/tabs/collection-tabs-movie/CollectionTabsMovie';
+import Link from 'next/link';
 
 interface ITabs {
   data: IMovie;
@@ -27,7 +28,8 @@ export default function TabsMovie({ data, isSuccess }: ITabs) {
       <Tabs
         aria-label="Dynamic tabs"
         classNames={{
-          tabList: ' scrollbar-default overflow-x-auto snap-mandatory snap-x',
+          tabList: ' scrollbar-default overflow-x-auto pointer-events-auto',
+          tab: 'pointer-events-auto',
         }}
       >
         <Tab className={'text-xl'} key="overview" title="Описание">
@@ -68,7 +70,9 @@ export default function TabsMovie({ data, isSuccess }: ITabs) {
                   <div className={twMerge('flex flex-wrap', style.text)}>
                     {data?.credits?.crew
                       ?.filter((item) => item.job === 'Director')
-                      .map((director) => director.name + '')}
+                      .map((director) => (
+                        <Link href={`/person/${director.id}`}>{director.name + ' '}</Link>
+                      ))}
                   </div>
                 </li>
                 <li className={style.block_info}>
@@ -76,7 +80,9 @@ export default function TabsMovie({ data, isSuccess }: ITabs) {
                   <div className={twMerge('flex flex-wrap', style.text)}>
                     {data?.credits?.crew
                       ?.filter((item) => item.job === 'Writer')
-                      .map((director) => director.name + ' ')}
+                      .map((director) => (
+                        <Link href={`/person/${director.id}`}>{director.name + ' '}</Link>
+                      ))}
                   </div>
                 </li>
                 <li className={style.block_info}>

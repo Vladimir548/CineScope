@@ -8,6 +8,7 @@ import ActingTvTabs from '@/app/pages-ui/tv-page/tabs-tv/credits-tabs/ActingTvTa
 import CrewTvTabs from '@/app/pages-ui/tv-page/tabs-tv/credits-tabs/CrewTvTabs';
 import SimilarTvTabs from '@/app/pages-ui/tv-page/tabs-tv/similar-tabs/SimilarTvTabs';
 import ImagesTvTabs from '@/app/pages-ui/tv-page/tabs-tv/images-tabs/ImagesTvTabs';
+import Link from 'next/link';
 
 interface ITabs {
   data: ISeries;
@@ -20,7 +21,8 @@ export default function TabsTv({ data, isSuccess }: ITabs) {
       <Tabs
         aria-label="Dynamic tabs"
         classNames={{
-          tabList: ' scrollbar-default overflow-x-auto snap-mandatory snap-x',
+          tabList: ' scrollbar-default overflow-x-auto pointer-events-auto ',
+          tab: 'pointer-events-auto',
         }}
       >
         <Tab className={'text-xl'} key="overview" title="Описание">
@@ -74,7 +76,9 @@ export default function TabsTv({ data, isSuccess }: ITabs) {
                   <div className={style.text}>Создатель</div>
                   <div className={twMerge('flex flex-wrap', style.text)}>
                     {data.created_by.map((create) => (
-                      <span key={create.id}>{create.name + ''}</span>
+                      <Link href={`/person/${create.id}`} key={create.id}>
+                        {create.name + ''}
+                      </Link>
                     ))}
                   </div>
                 </li>

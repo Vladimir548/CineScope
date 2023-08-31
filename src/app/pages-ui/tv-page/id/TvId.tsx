@@ -15,7 +15,6 @@ export default function TvId() {
   const { data, isSuccess } = useQuery(['get-id-tv', params!.id], () =>
     QueryTv.getIdTv(Number(params!.id)),
   );
-  console.log(data);
   const crossOrigin = 'anonymous';
   const backdrop = `${process.env.NEXT_PUBLIC_IMAGE_URL}w300/${data?.backdrop_path}`;
   const { data: pallete, loading: load } = usePalette(backdrop, 3, 'rgbArray', {

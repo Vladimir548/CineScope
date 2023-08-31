@@ -25,7 +25,7 @@ export default function LayoutActors({ data, isPage }: ILayoutActors) {
             key={actor.id}
             className=" border-transparent border-2 hover:border-slate-500 hover:border-2 "
           >
-            <Link className={style.link} key={actor.id} href={`/person/${actor.id}`}>
+            <Link className={style.link} key={actor.id} href={`/actor/${actor.id}`}>
               <CardBody className="overflow-visible py-2 flex-none px-1">
                 {actor.profile_path ? (
                   <Image

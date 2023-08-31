@@ -23,7 +23,8 @@ export default function SeasonsTvTabs({ seasons }: ISeasonsTabs) {
       <div className="flex w-full flex-col">
         <Tabs
           classNames={{
-            tabList: ' scrollbar-default overflow-x-auto snap-mandatory snap-x',
+            tabList: ' scrollbar-default overflow-x-auto pointer-events-auto',
+            tab: 'pointer-events-auto',
           }}
           onSelectionChange={(key) => setIsSeason(Number(key))}
           aria-label="Dynamic tabs"

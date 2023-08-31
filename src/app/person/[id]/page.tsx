@@ -1,9 +1,9 @@
-import ActorId from '@/app/pages-ui/actors-ui/id/ActorId';
+import PersonId from '@/app/pages-ui/person-ui/id/PersonId';
 
 export default function Page() {
   return (
     <div>
-      <ActorId />
+      <PersonId />
     </div>
   );
 }

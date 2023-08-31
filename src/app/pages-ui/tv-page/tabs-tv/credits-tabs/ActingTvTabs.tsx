@@ -18,7 +18,7 @@ export default function ActingTvTabs() {
           key={acting.id}
           className=" border-transparent  border-2 hover:border-slate-500 hover:border-2 "
         >
-          <Link key={acting.id} href={`/acting/${acting.id}`}>
+          <Link key={acting.id} href={`/actor/${acting.id}`}>
             <CardBody className="overflow-visible py-2 flex-none px-1">
               <NextImage
                 loading={'lazy'}

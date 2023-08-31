@@ -30,7 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   <Sidebar />
                   <NavigationMenu />
                 </aside>
-                <div className="relative overflow-y-hidden p-1 pr-0 pb-0">
+                <div className="relative overflow-y-hidden pl-1  ">
                   <Header />
                   {children}
                   <Footer />

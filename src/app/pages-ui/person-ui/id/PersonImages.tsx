@@ -1,11 +1,11 @@
+'use client';
+import { useParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import { QueryPerson } from '@/query/QueryPerson';
-import { useParams } from 'next/navigation';
-import { Image, Skeleton } from '@nextui-org/react';
+import { Image } from '@nextui-org/react';
 import NextImage from 'next/image';
 
 export default function PersonImages() {
-  const emptyArr: any[] = new Array(10);
   const params = useParams();
   const { data, isSuccess, isLoading } = useQuery(['get-images-person', params!.id], () =>
     QueryPerson.getActorIdImages(Number(params.id)),
