@@ -38,8 +38,7 @@ export default function LayoutMovie({ data, isPage }: ILayoutMovie) {
               </CardHeader>
               <CardBody className="overflow-visible py-2 flex-none px-1">
                 {movie.poster_path ? (
-                  <Image
-                    as={NextImage}
+                  <NextImage
                     alt={movie.title}
                     className={cn('object-cover rounded-sm ', style.poster)}
                     src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
@@ -47,8 +46,7 @@ export default function LayoutMovie({ data, isPage }: ILayoutMovie) {
                     height={380}
                   />
                 ) : (
-                  <Image
-                    as={NextImage}
+                  <NextImage
                     className="object-cover rounded-xl"
                     src={'https://fakeimg.pl/240x400?text=CineScope&font=bebas'}
                     width={240}
