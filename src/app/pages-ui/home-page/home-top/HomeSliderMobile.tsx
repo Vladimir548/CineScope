@@ -47,8 +47,6 @@ export default function HomeSliderMobile() {
                 <Link href={`/${item.media_type}/${item.id}`}>
                   <div className={style.bg_blur}></div>
                   <Image
-                    isBlurred
-                    isZoomed
                     as={NextImage}
                     alt={item.title || item.name}
                     className={cn('object-cover rounded-sm')}

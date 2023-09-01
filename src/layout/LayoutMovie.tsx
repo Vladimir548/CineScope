@@ -39,13 +39,10 @@ export default function LayoutMovie({ data, isPage }: ILayoutMovie) {
               <CardBody className="overflow-visible py-2 flex-none px-1">
                 {movie.poster_path ? (
                   <Image
-                    isBlurred
-                    isZoomed
                     as={NextImage}
                     alt={movie.title}
                     className={cn('object-cover rounded-sm ', style.poster)}
                     src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
-                    fallbackSrc={'https://fakeimg.pl/240x224?text=CineScope&font=bebas'}
                     width={240}
                     height={380}
                   />

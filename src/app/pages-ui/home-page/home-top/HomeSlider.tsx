@@ -105,8 +105,6 @@ export default function HomeSlider() {
                   )}
                 >
                   <Image
-                    isBlurred
-                    isZoomed
                     as={NextImage}
                     alt={item.title ? item.title : item.name}
                     className={cn('object-cover rounded-sm', style.poster)}

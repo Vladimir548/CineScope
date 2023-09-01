@@ -79,8 +79,6 @@ export default function LayoutPopularTv({ data, title }: ILayoutPopularTv) {
                   {item.poster_path ? (
                     <Image
                       as={NextImage}
-                      isBlurred
-                      isZoomed
                       className="object-cover rounded-sm overflow-hidden"
                       src={`${process.env.NEXT_PUBLIC_IMAGE_URL}w500${item.poster_path}`}
                       width={360}
