@@ -1,5 +1,4 @@
 'use client';
-import { Card, CardFooter, CardHeader, CardBody, Image } from '@nextui-org/react';
 import Link from 'next/link';
 import NextImage from 'next/image';
 import { AiFillStar } from 'react-icons/ai';
@@ -22,12 +21,12 @@ export default function LayoutMovie({ data, isPage }: ILayoutMovie) {
     <div className=" overflow-hidden">
       <div className={style.content}>
         {data?.results.map((movie) => (
-          <Card
+          <div
             key={movie.id}
-            className=" border-transparent border-2 hover:border-slate-500 hover:border-2 "
+            className=" border-transparent border-2 bg-[#18181B] rounded-lg hover:border-slate-500 hover:border-2  "
           >
             <Link className={style.link} key={movie.id} href={`/movie/${movie.id}`}>
-              <CardHeader className="flex justify-between items-center p-0 px-4 ">
+              <div className="flex justify-between items-center p-0 px-4 ">
                 <h4 className={style.rating}>
                   <span className={style.star}>
                     <AiFillStar />
@@ -35,8 +34,8 @@ export default function LayoutMovie({ data, isPage }: ILayoutMovie) {
                   {movie.vote_average}
                 </h4>
                 <h4 className={style.year}>{movie.release_date.split('-')[0]}</h4>
-              </CardHeader>
-              <CardBody className="overflow-visible py-2 flex-none px-1">
+              </div>
+              <div className="overflow-visible py-2 flex-none px-1">
                 {movie.poster_path ? (
                   <NextImage
                     alt={movie.title}
@@ -54,15 +53,15 @@ export default function LayoutMovie({ data, isPage }: ILayoutMovie) {
                     alt={movie.title}
                   />
                 )}
-              </CardBody>
-              <CardFooter className={cn('pb-2 pt-1  flex-col items-start', style.cont_titles)}>
+              </div>
+              <div className={cn('pb-2 pt-1  flex-col items-start', style.cont_titles)}>
                 <h2 className={twMerge(' font-bold ', style.title)}>{movie.title}</h2>
                 <small className={twMerge('text-default-500', style.subtitle)}>
                   {movie.original_title}
                 </small>
-              </CardFooter>
+              </div>
             </Link>
-          </Card>
+          </div>
         ))}
       </div>
     </div>
