@@ -68,7 +68,7 @@ export default function HomeSlider() {
                           style.rating,
                         )}
                       >
-                        <span className="bg-cyan-500 p-1 rounded-lg">TMDB</span>
+                        <span className={cn('bg-cyan-500 p-1 rounded-lg', style.tmdb)}>TMDB</span>
                         <span className="pl-1">{item.vote_average.toFixed(1)}</span>
                       </div>
                       <span className={cn('bg-slate-900/60 p-1 rounded-lg mx-1 ', style.year)}>

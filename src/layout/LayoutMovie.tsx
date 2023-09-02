@@ -43,7 +43,7 @@ export default function LayoutMovie({ data, isPage }: ILayoutMovie) {
                   src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
                   width={290}
                   height={360}
-                  sizes="(min-width: 380px) 290px, calc(73.33vw + 76px)"
+                  sizes="20vw"
                 />
               </CardBody>
               <CardFooter className={cn('pb-2 pt-1  flex-col items-start', style.cont_titles)}>

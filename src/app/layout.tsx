@@ -28,7 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <aside className="">
                   <Sidebar />
                 </aside>
-                <div className="relative overflow-y-hidden pl-1  ">
+                <div className="relative overflow-y-hidden pl-1 mb-[70px] md:mb-0  ">
                   <Header />
                   {children}
                   {/*<Footer />*/}

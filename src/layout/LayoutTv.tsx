@@ -24,7 +24,7 @@ export default function LayoutTv({ data, isPage }: ILayoutTv) {
         {data?.results.map((tv) => (
           <Card
             key={tv.id}
-            className=" border-transparent border-2 hover:border-slate-500 hover:border-2 "
+            className=" border-transparent border-2  hover:border-slate-500 hover:border-2 "
           >
             <Link className={style.link} key={tv.id} href={`/tv/${tv.id}`}>
               <CardHeader className="flex justify-between items-center p-0 px-4 ">
@@ -39,15 +39,13 @@ export default function LayoutTv({ data, isPage }: ILayoutTv) {
               <CardBody
                 className={twMerge('overflow-visible py-2 flex-none px-1', style.block_img)}
               >
-                <Image
-                  isBlurred
-                  isZoomed
-                  as={NextImage}
-                  alt="Card background"
+                <NextImage
+                  alt={tv.name}
                   className={cn('object-cover rounded-sm ', style.poster)}
                   src={`https://image.tmdb.org/t/p/w342${tv.poster_path}`}
                   width={290}
                   height={420}
+                  sizes="20vw"
                 />
               </CardBody>
               <CardFooter className={cn('pb-2 pt-1  flex-col items-start', style.cont_titles)}>

@@ -52,29 +52,16 @@ export default function LayoutMulti({
                     </CardHeader>
                   )}
                   <CardBody className="overflow-visible py-2 flex-none p-1">
-                    {item.poster_path || item.profile_path ? (
-                      <Image
-                        isBlurred
-                        isZoomed
-                        as={NextImage}
-                        alt={item.title ? item.title : item.name}
-                        className="object-cover rounded-sm"
-                        src={`https://image.tmdb.org/t/p/w500${
-                          item.media_type === 'person' ? item.profile_path : item.poster_path
-                        }`}
-                        width={240}
-                        height={360}
-                      />
-                    ) : (
-                      <Image
-                        as={NextImage}
-                        className="object-cover rounded-xl"
-                        src={'https://fakeimg.pl/240x400?text=KinoScope&font=bebas'}
-                        width={240}
-                        height={360}
-                        alt={item.title}
-                      />
-                    )}
+                    <NextImage
+                      alt={item.title ? item.title || '' : item.name || ''}
+                      className="object-cover rounded-sm"
+                      src={`${process.env.NEXT_PUBLIC_IMAGE_URL}w342${
+                        item.media_type === 'person' ? item.profile_path : item.poster_path
+                      }`}
+                      width={290}
+                      height={360}
+                      sizes="20vw"
+                    />
                   </CardBody>
                   <CardFooter className="pb-2 pt-2 px-4 flex-col items-start">
                     <h2 className={twMerge(' font-bold ', style.title)}>

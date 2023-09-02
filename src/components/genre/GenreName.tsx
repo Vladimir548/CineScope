@@ -15,9 +15,9 @@ export default function GenreName({ genreId }: IGenreName) {
   });
 
   return (
-    <div className="flex flex-wrap">
+    <div className="flex flex-wrap mt-1">
       {genresName.map((item, i) => (
-        <span key={i} className="capitalize bg-slate-900/60 mx-1 rounded-lg p-1 ">
+        <span key={i} className="capitalize bg-slate-900/60 mr-1 mb-1  rounded-lg p-1 ">
           {item}
         </span>
       ))}

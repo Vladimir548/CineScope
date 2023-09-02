@@ -33,8 +33,7 @@ export default function MovieIdPc() {
   return (
     <div className=" ">
       <div className="w-[100vmax]">
-        <Image
-          as={ImageNext}
+        <ImageNext
           src={`${process.env.NEXT_PUBLIC_IMAGE_URL}original/${data?.backdrop_path}`}
           alt={data?.title!}
           width={2560}
