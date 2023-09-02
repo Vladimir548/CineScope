@@ -39,7 +39,8 @@ export default function MovieIdPc() {
           alt={data?.title!}
           width={2000}
           height={700}
-          priority={true}
+          priority
+          sizes="(min-width: 2920px) 2560px, (min-width: 1040px) calc(92.69vw - 128px), 100vw"
           className={`fixed top-0   `}
         />
       </div>
