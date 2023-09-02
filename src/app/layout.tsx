@@ -8,7 +8,6 @@ import { Sidebar } from '@/components/sidebar/Sidebar';
 import Header from '@/components/header/Header';
 import ButtonUp from '@/components/btn-up/ButtonUP';
 import Footer from '@/components/footer/Footer';
-import NavigationMenu from '@/components/navigation-menu/NavigationMenu';
 import SidebarBottom from '@/components/sidebar-bottom/SidebarBottom';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -28,12 +27,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <main className="dark text-foreground bg-background flex ">
                 <aside className="">
                   <Sidebar />
-                  <NavigationMenu />
                 </aside>
                 <div className="relative overflow-y-hidden pl-1  ">
                   <Header />
                   {children}
-                  <Footer />
+                  {/*<Footer />*/}
                 </div>
                 <ButtonUp />
                 <SidebarBottom />

@@ -15,8 +15,9 @@ export default function LayoutSkeleton() {
             as={NextImage}
             className="object-cover rounded-xl"
             src={'https://fakeimg.pl/240x400?text=KinoScope&font=bebas'}
-            width={240}
+            width={290}
             height={360}
+            sizes="(max-width: 330px) 120px,100vw"
             alt={'skeleton'}
           />
         </Skeleton>

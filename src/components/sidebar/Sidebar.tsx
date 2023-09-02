@@ -2,12 +2,7 @@
 import React, { useMemo, useRef } from 'react';
 import style from './style.module.css';
 import { usePathname } from 'next/navigation';
-import {
-  AiOutlineArrowLeft,
-  AiOutlineArrowRight,
-  AiOutlineHome,
-  AiOutlineSearch,
-} from 'react-icons/ai';
+import { AiOutlineHome, AiOutlineSearch } from 'react-icons/ai';
 import { BiMoviePlay } from 'react-icons/bi';
 import { Box } from './Box';
 import { SidebarItem } from './SidebarItem';
@@ -16,8 +11,7 @@ import { HiMiniComputerDesktop } from 'react-icons/hi2';
 import { useTypedSelector } from '@/redux/hooks/useTypedSelector';
 import { useDispatch } from 'react-redux';
 import { toggleSidebar } from '@/redux/slices/sidebar-slice';
-import { IRoutes } from '@/interface/IRoutes';
-import HeaderRoute from '@/components/header/HeaderRoute';
+
 import { BsPeople } from 'react-icons/bs';
 
 export const Sidebar = () => {
@@ -111,6 +105,12 @@ export const Sidebar = () => {
         icon: BsPeople,
         name: 'Актеры',
         link: '/actors',
+      },
+      {
+        id: 6,
+        icon: BsPeople,
+        name: 'Картинки',
+        link: '/image',
       },
     ],
     [pathname],

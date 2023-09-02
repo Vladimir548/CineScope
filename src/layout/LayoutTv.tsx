@@ -39,27 +39,16 @@ export default function LayoutTv({ data, isPage }: ILayoutTv) {
               <CardBody
                 className={twMerge('overflow-visible py-2 flex-none px-1', style.block_img)}
               >
-                {tv.poster_path ? (
-                  <Image
-                    isBlurred
-                    isZoomed
-                    as={NextImage}
-                    alt="Card background"
-                    className={cn('object-cover rounded-sm ', style.poster)}
-                    src={`https://image.tmdb.org/t/p/w342${tv.poster_path}`}
-                    width={290}
-                    height={420}
-                  />
-                ) : (
-                  <Image
-                    as={NextImage}
-                    className="object-cover rounded-xl"
-                    src={'https://fakeimg.pl/240x400?text=CineScope&font=bebas'}
-                    width={290}
-                    height={420}
-                    alt={tv.name}
-                  />
-                )}
+                <Image
+                  isBlurred
+                  isZoomed
+                  as={NextImage}
+                  alt="Card background"
+                  className={cn('object-cover rounded-sm ', style.poster)}
+                  src={`https://image.tmdb.org/t/p/w342${tv.poster_path}`}
+                  width={290}
+                  height={420}
+                />
               </CardBody>
               <CardFooter className={cn('pb-2 pt-1  flex-col items-start', style.cont_titles)}>
                 <h2 className={twMerge(' font-bold ', style.title)}>{tv.name}</h2>
