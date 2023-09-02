@@ -106,12 +106,6 @@ export const Sidebar = () => {
         name: 'Актеры',
         link: '/actors',
       },
-      {
-        id: 6,
-        icon: BsPeople,
-        name: 'Картинки',
-        link: '/image',
-      },
     ],
     [pathname],
   );

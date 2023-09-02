@@ -53,6 +53,7 @@ export default function HomeSliderMobile() {
                     src={`${process.env.NEXT_PUBLIC_IMAGE_URL}original/${item.backdrop_path}`}
                     width={1600}
                     height={700}
+                    sizes=" 100vw"
                   />
 
                   <div className={style.item_content_mobile}>

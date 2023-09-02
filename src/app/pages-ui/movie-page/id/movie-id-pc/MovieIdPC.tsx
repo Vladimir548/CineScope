@@ -11,6 +11,7 @@ import { BiSolidCircle } from 'react-icons/bi';
 import { Image } from '@nextui-org/react';
 import { twMerge } from 'tailwind-merge';
 import TabsMovie from '@/components/tabs/TabsMovie';
+import { useRef } from 'react';
 
 export default function MovieIdPc() {
   const params = useParams();
@@ -34,14 +35,13 @@ export default function MovieIdPc() {
       <div className="w-[100vmax]">
         <Image
           as={ImageNext}
-          isBlurred
           src={`${process.env.NEXT_PUBLIC_IMAGE_URL}original/${data?.backdrop_path}`}
           alt={data?.title!}
-          width={2000}
-          height={700}
+          width={2560}
+          height={2000}
           priority
-          sizes="(min-width: 2920px) 2560px, (min-width: 1040px) calc(92.69vw - 128px), 100vw"
-          className={`fixed top-0   `}
+          sizes=" 100vw"
+          className={`fixed top-0  object-cover `}
         />
       </div>
       <div className={style.wrapper}>

@@ -69,7 +69,7 @@ export const SidebarItem: React.FC<IRoutes> = ({
                     <li className="cursor-pointer" key={sub.id}>
                       <Link href={sub.link}>
                         <div className={`${style.sub_name} ${isActive ? 'bg-slate-700' : ''}`}>
-                          <span>{<sub.icon size={24} />}</span>
+                          <span>{<sub.icon size={28} />}</span>
                           <div className="flex flex-col ">
                             {sub.name} <p className={style.description}>{sub.description}</p>
                           </div>
