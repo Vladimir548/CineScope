@@ -41,10 +41,9 @@ export default function LayoutMovie({ data, isPage }: ILayoutMovie) {
                   alt={movie.title}
                   className={cn('object-cover rounded-sm ', style.poster)}
                   src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
-                  priority
                   width={290}
                   height={360}
-                  sizes="(max-width: 330px) 120px,100vw"
+                  sizes="(min-width: 380px) 290px, calc(73.33vw + 76px)"
                 />
               </CardBody>
               <CardFooter className={cn('pb-2 pt-1  flex-col items-start', style.cont_titles)}>
