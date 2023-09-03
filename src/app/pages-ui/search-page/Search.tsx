@@ -13,8 +13,10 @@ import { MdClear } from 'react-icons/md';
 import { QuerySearch } from '@/query/QuerySearch';
 import LayoutSkeleton from '@/layout/LayoutSkeleton';
 import SearchPopular from '@/app/pages-ui/search-page/SearchPopular';
+import { useRouter } from 'next/navigation';
 
 export default function Search() {
+  const router = useRouter();
   const { search } = useTypedSelector((state) => state.search);
   const dispatch = useDispatch();
   const [value, setValue] = useState<string>('');
@@ -23,13 +25,16 @@ export default function Search() {
     setValue(e.target.value);
   };
   const debounce = useDebounce(value);
+  // const encodeValue = value.replace(/ /g, '+');
   const onHandlerSearch = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     dispatch(searchPush(debounce));
   };
   const handlerKey = (e: any) => {
     e.preventDefault();
-    if (e.keyCode === 13 && search.trim() !== '') return dispatch(searchPush(debounce));
+    if (e.keyCode === 13 && search.trim() !== '') {
+      dispatch(searchPush(debounce));
+    }
   };
   const clearInput = (e: any) => {
     e.preventDefault();
@@ -60,6 +65,7 @@ export default function Search() {
   );
   useEffect(() => {
     let fetching = false;
+
     const handleScroll = async (e: any) => {
       const { scrollHeight, scrollTop, clientHeight } = e.target.scrollingElement;
       if (!fetching && scrollHeight - scrollTop <= clientHeight * 1.2) {

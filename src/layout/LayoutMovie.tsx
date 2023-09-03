@@ -34,7 +34,7 @@ export default function LayoutMovie({ data, isPage }: ILayoutMovie) {
                   </span>{' '}
                   {movie.vote_average}
                 </h4>
-                <h4 className={style.year}>{movie.release_date.split('-')[0]}</h4>
+                <h4 className={style.year}>{movie.release_date?.split('-')[0]}</h4>
               </CardHeader>
               <CardBody className="overflow-visible py-2 relative flex-none px-1">
                 <NextImage

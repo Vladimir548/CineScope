@@ -22,12 +22,15 @@ export default function HomePage() {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
   return (
     <div>
-      <div className="">{windowWidth > 545 ? <HomeSlider /> : <HomeSliderMobile />}</div>
-      <div className="mt-10 mb-10">
-        <HomePopular />
-      </div>
+      <>
+        <div className="">{windowWidth > 545 ? <HomeSlider /> : <HomeSliderMobile />}</div>
+        <div className="mt-10 mb-10">
+          <HomePopular />
+        </div>
+      </>
     </div>
   );
 }

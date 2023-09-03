@@ -6,8 +6,6 @@ import { Card, CardBody, Image, Tab, Tabs } from '@nextui-org/react';
 import style from '@/app/pages-ui/actors-ui/id/style.module.css';
 import NextImage from 'next/image';
 import { twMerge } from 'tailwind-merge';
-import ActorsCombined from '@/app/pages-ui/actors-ui/id/ActorsCombined';
-import ActorImages from '@/app/pages-ui/actors-ui/id/ActorImages';
 import PersonCombined from '@/app/pages-ui/person-ui/id/PersonCombined';
 import PersonImages from '@/app/pages-ui/person-ui/id/PersonImages';
 
@@ -18,11 +16,11 @@ export default function PersonId() {
     QueryPerson.getActorId(Number(params.id)),
   );
   return (
-    <div className="flex w-full flex-col">
+    <div className="flex  flex-col ">
       <Tabs aria-label="Options">
         <Tab className={'text-xl'} key="biography" title="Биография">
           <Card>
-            <CardBody className={'p-2'}>
+            <CardBody className={'p-2 '}>
               <div className={style.wrapper}>
                 <div className={style.content}>
                   <div className={style.information}>
@@ -82,12 +80,16 @@ export default function PersonId() {
                       </div>
                     </div>
                   </div>
-                  <div className={style.biography}>
-                    <h2 className={twMerge('text-2xl font-bold my-1', style.info_title)}>
-                      Биография
-                    </h2>
-                    <p>{data?.biography}</p>
-                  </div>
+                  {data?.biography ? (
+                    <div className={style.biography}>
+                      <h2 className={twMerge('text-2xl font-bold my-1', style.info_title)}>
+                        Биография
+                      </h2>
+                      <p>{data?.biography}</p>
+                    </div>
+                  ) : (
+                    ''
+                  )}
                 </div>
               </div>
             </CardBody>

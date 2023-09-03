@@ -159,8 +159,8 @@
     }
 
     .title {
-        font-size: 20px;
-        line-height: 24px;
+        font-size: 22px;
+        line-height: 26px;
     }
 
     .subtitel {
@@ -176,8 +176,8 @@
     }
 
     .title {
-        font-size: 18px;
-        line-height: 22px;
+        font-size: 22px;
+        line-height: 26px;
     }
 
 }
@@ -188,8 +188,9 @@
     }
 
     .title {
-        font-size: 18px;
-        line-height: 18px;
+        font-size: 22px;
+        line-height: 26px;
+        font-weight: 400;
     }
 
     .subtitel {

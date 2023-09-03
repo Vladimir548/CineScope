@@ -17,7 +17,11 @@ import { cn } from '@/lib/utils';
 import { QueryHome } from '@/query/QueryHome';
 
 export default function HomeSlider() {
-  const { data, isSuccess } = useQuery(['get-trending-all'], () => QueryHome.getTrending(), {});
+  const { data, isSuccess, isLoading } = useQuery(
+    ['get-trending-all'],
+    () => QueryHome.getTrending(),
+    {},
+  );
 
   return (
     <div>

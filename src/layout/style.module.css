@@ -14,7 +14,7 @@
 
 .content {
     display: grid;
-    justify-items: center;
+    justify-items: inherit;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     column-gap: 10px;
     row-gap: 10px;
@@ -109,6 +109,7 @@
     .content {
         grid-template-columns: repeat(5, 1fr);
     }
+
 
 }
 

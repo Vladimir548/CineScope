@@ -81,12 +81,16 @@ export default function ActorId() {
                       </div>
                     </div>
                   </div>
-                  <div className={style.biography}>
-                    <h2 className={twMerge('text-2xl font-bold my-1', style.info_title)}>
-                      Биография
-                    </h2>
-                    <p>{data?.biography}</p>
-                  </div>
+                  {data?.biography ? (
+                    <div className={style.biography}>
+                      <h2 className={twMerge('text-2xl font-bold my-1', style.info_title)}>
+                        Биография
+                      </h2>
+                      <p>{data?.biography}</p>
+                    </div>
+                  ) : (
+                    ''
+                  )}
                 </div>
               </div>
             </CardBody>

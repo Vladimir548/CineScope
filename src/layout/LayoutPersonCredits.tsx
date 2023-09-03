@@ -53,7 +53,7 @@ export default function LayoutPersonCredits({ data }: ILayoutActorsCredits) {
                   <Image
                     as={NextImage}
                     className="object-cover rounded-xl"
-                    src={'https://fakeimg.pl/240x400?text=KinoScope&font=bebas'}
+                    src={'https://fakeimg.pl/240x400?text=CineScope&font=bebas'}
                     width={240}
                     height={360}
                     alt={item.title}

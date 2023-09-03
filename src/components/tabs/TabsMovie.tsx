@@ -71,7 +71,7 @@ export default function TabsMovie({ data, isSuccess }: ITabs) {
                     {data?.credits?.crew
                       ?.filter((item) => item.job === 'Director')
                       .map((director) => (
-                        <Link href={`/person/${director.id}`}>{director.name + ' '}</Link>
+                        <Link href={`/person/${director.id}`}> {director.name} </Link>
                       ))}
                   </div>
                 </li>
@@ -81,7 +81,7 @@ export default function TabsMovie({ data, isSuccess }: ITabs) {
                     {data?.credits?.crew
                       ?.filter((item) => item.job === 'Writer')
                       .map((director) => (
-                        <Link href={`/person/${director.id}`}>{director.name + ' '}</Link>
+                        <Link href={`/person/${director.id}`}> {director.name} </Link>
                       ))}
                   </div>
                 </li>
