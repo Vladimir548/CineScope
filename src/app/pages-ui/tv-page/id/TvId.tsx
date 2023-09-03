@@ -53,7 +53,6 @@ export default function TvId() {
                   alt={data?.name!}
                   width={220}
                   height={322}
-                  quality={100}
                   className={twMerge('object-cover rounded-lg relative z-10', style.poster)}
                 />
               </div>
