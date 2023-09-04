@@ -8,7 +8,7 @@ export default function MoviePopular() {
 
   return (
     <div>
-      <LayoutPopularMovie data={data} title={'Популярные фильмы'} />
+      <LayoutPopularMovie data={data} title={'Новые фильмы'} />
     </div>
   );
 }

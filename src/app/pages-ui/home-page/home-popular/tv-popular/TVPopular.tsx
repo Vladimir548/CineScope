@@ -7,7 +7,7 @@ export default function TvPopular() {
   const { data } = useQuery(['get-tv-popular'], () => QueryTv.getTvPopular());
   return (
     <div>
-      <LayoutPopularTv data={data} title={'Популярные сериалы'} />
+      <LayoutPopularTv data={data} title={'Новые сериалы'} />
     </div>
   );
 }

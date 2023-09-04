@@ -9,7 +9,7 @@ const key = process.env.NEXT_PUBLIC_KEY_TMDB;
 
 export const QueryTv = {
   async getTv(page: number) {
-    const { data } = await axios.get('/api/discover/tv', {
+    const { data } = await axios.get('/api/tv/airing_today', {
       params: {
         language: 'ru-RU',
         page,
@@ -21,10 +21,12 @@ export const QueryTv = {
     return data as TvResponse;
   },
   async getTvPopular(page?: number) {
-    const { data } = await axios.get('/api/tv/popular', {
+    const { data } = await axios.get('/api/discover/tv', {
       params: {
         language: 'ru-RU',
         page,
+        sort_by: 'primary_release_date.desc',
+        'vote_count.gte': '200',
       },
       headers: {
         Authorization: `Bearer ${key}`,

@@ -21,10 +21,12 @@ export const QueryMovie = {
     return data as MoviesResponse;
   },
   async getMoviePopular(page?: number) {
-    const { data } = await axios.get<MoviesResponse>('/api/movie/popular', {
+    const { data } = await axios.get<MoviesResponse>('/api/discover/movie', {
       params: {
         language: 'ru-RU',
         page,
+        sort_by: 'primary_release_date.desc',
+        'vote_count.gte': '200',
       },
       headers: {
         Authorization: `Bearer ${key}`,
