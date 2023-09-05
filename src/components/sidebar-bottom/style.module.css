@@ -2,6 +2,35 @@
     display: none;
 }
 
+.description {
+    width: 230px;
+
+    font-size: 11px;
+    opacity: .7;
+
+
+}
+
+.sub_name {
+    display: flex;
+    align-items: center;
+    margin: 3px 0;
+    font-size: 18px;
+    line-height: 24px;
+    transition: .3s ease-in-out;
+    background-color: rgba(71, 85, 105, 0.69);
+    border-radius: 5px;
+    padding: 5px;
+
+
+}
+
+.sub_name span {
+    padding-right: 5px;
+    font-size: 20px;
+}
+
+
 @media (max-width: 769px) {
     .sidebar_bottom {
         position: fixed;

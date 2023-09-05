@@ -29,13 +29,59 @@ export default function SidebarBottom() {
         id: 2,
         icon: BiMoviePlay,
         name: 'Фильмы',
-        link: '/movie',
+
+        subLink: [
+          {
+            id: 21,
+            icon: CiCompass1,
+            name: 'Популярное',
+            link: '/movie/popular',
+            description: 'Свежие хиты с огромной популярностью',
+          },
+          {
+            id: 22,
+            icon: CiCompass1,
+            name: 'Новинки',
+            link: '/movie/news',
+            description: 'Свежие выпуски для вашего увлечения',
+          },
+          {
+            id: 23,
+            icon: CiCompass1,
+            name: 'Рейтинговые',
+            link: '/movie/rated',
+            description: 'Высокооцененные критиками и зрителями произведения',
+          },
+        ],
       },
       {
         id: 3,
         icon: HiMiniComputerDesktop,
         name: 'Сериалы',
-        link: '/tv',
+
+        subLink: [
+          {
+            id: 31,
+            icon: CiCompass1,
+            name: 'Популярное',
+            link: '/tv/popular',
+            description: 'Свежие хиты с огромной популярностью',
+          },
+          {
+            id: 32,
+            icon: CiCompass1,
+            name: 'Новинки',
+            link: '/tv/news',
+            description: 'Свежие выпуски для вашего увлечения',
+          },
+          {
+            id: 33,
+            icon: CiCompass1,
+            name: 'Рейтинговые',
+            link: '/tv/rated',
+            description: 'Высокооцененные критиками и зрителями произведения',
+          },
+        ],
       },
       {
         id: 5,
