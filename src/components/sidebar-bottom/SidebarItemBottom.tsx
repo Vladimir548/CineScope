@@ -44,16 +44,11 @@ export default function SidebarItemBottom({ routes }: IItemBottom) {
               <p className={style.name}>{route.name}</p>
             </Link>
           ) : (
-            <Dropdown
-              classNames={{
-                base: 'bg-none',
-              }}
-              className={'bg-slate-800  '}
-            >
+            <Dropdown showArrow backdrop={'opaque'} className={'bg-slate-800  '}>
               <DropdownTrigger className="w-full cursor-pointer">
                 <Button
                   disableRipple
-                  className="flex flex-col justify-center items-center w-full bg-transparent h-full"
+                  className="flex flex-col justify-center items-center w-full bg-transparent h-full text-sm gap-0 min-w-0 px-0"
                 >
                   <span className={style.icon}> {<route.icon size={24} />}</span>
                   <p className={style.name}> {route.name}</p>
