@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import style from './style.module.css';
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from '@nextui-org/react';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 interface IRoutesBottomSub {
   id: number;
@@ -28,7 +28,10 @@ interface IItemBottom {
 
 export default function SidebarItemBottom({ routes }: IItemBottom) {
   const pathname = usePathname();
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
+  useEffect(() => {
+    setIsOpen(false);
+  });
   return (
     <>
       {routes.map((route) => (
@@ -45,7 +48,12 @@ export default function SidebarItemBottom({ routes }: IItemBottom) {
               <p className={style.name}>{route.name}</p>
             </Link>
           ) : (
-            <Dropdown closeOnSelect showArrow className={'bg-slate-800  '}>
+            <Dropdown
+              onClose={() => setIsOpen((prev) => prev)}
+              closeOnSelect
+              showArrow
+              className={'bg-slate-800  '}
+            >
               <DropdownTrigger className="w-full cursor-pointer">
                 <Button className="flex flex-col justify-center items-center w-full bg-transparent h-full text-sm gap-0 min-w-0 px-0">
                   <span className={style.icon}> {<route.icon size={24} />}</span>
@@ -54,7 +62,12 @@ export default function SidebarItemBottom({ routes }: IItemBottom) {
               </DropdownTrigger>
               <DropdownMenu closeOnSelect={true} aria-label="Static Actions">
                 {route?.subLink!.map((sub) => (
-                  <DropdownItem textValue={sub.name} className={style.sub_name} key={sub.id}>
+                  <DropdownItem
+                    closeOnSelect={true}
+                    textValue={sub.name}
+                    className={style.sub_name}
+                    key={sub.id}
+                  >
                     <Link href={sub.link}>
                       <div className={'flex items-center'}>
                         <span className={style.icon}>{<sub.icon size={22} />}</span>
