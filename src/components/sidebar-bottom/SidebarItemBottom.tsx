@@ -32,6 +32,7 @@ export default function SidebarItemBottom({ routes }: IItemBottom) {
   useEffect(() => {
     setIsOpen(false);
   });
+  console.log(isOpen);
   return (
     <>
       {routes.map((route) => (
@@ -49,8 +50,8 @@ export default function SidebarItemBottom({ routes }: IItemBottom) {
             </Link>
           ) : (
             <Dropdown
-              onClose={() => setIsOpen((prev) => prev)}
-              closeOnSelect
+              onOpenChange={(isOpen) => !isOpen}
+              onClose={() => setIsOpen(false)}
               showArrow
               className={'bg-slate-800  '}
             >
@@ -60,14 +61,9 @@ export default function SidebarItemBottom({ routes }: IItemBottom) {
                   <p className={style.name}> {route.name}</p>
                 </Button>
               </DropdownTrigger>
-              <DropdownMenu closeOnSelect={true} aria-label="Static Actions">
+              <DropdownMenu aria-label="Static Actions">
                 {route?.subLink!.map((sub) => (
-                  <DropdownItem
-                    closeOnSelect={true}
-                    textValue={sub.name}
-                    className={style.sub_name}
-                    key={sub.id}
-                  >
+                  <DropdownItem textValue={sub.name} className={style.sub_name} key={sub.id}>
                     <Link href={sub.link}>
                       <div className={'flex items-center'}>
                         <span className={style.icon}>{<sub.icon size={22} />}</span>
