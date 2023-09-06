@@ -155,6 +155,28 @@ export default function TabsTv({ data, isSuccess }: ITabs) {
           </Card>
         </Tab>
       </Tabs>
+      {/*<Tabs className={'overflow-y-none'}>*/}
+      {/*  <TabList className={'overflow-x-auto '}>*/}
+      {/*    <Tab>One</Tab>*/}
+      {/*    <Tab>Two</Tab>*/}
+      {/*    <Tab>Three</Tab> <Tab>Three</Tab> <Tab>Three</Tab> <Tab>Three</Tab> <Tab>Three</Tab>*/}
+      {/*    <Tab>Three</Tab> <Tab>Three</Tab> <Tab>Three</Tab> <Tab>Three</Tab> <Tab>Three</Tab>*/}
+      {/*    <Tab>Three</Tab> <Tab>Three</Tab> <Tab>Three</Tab> <Tab>Three</Tab> <Tab>Three</Tab>*/}
+      {/*    <Tab>Three</Tab> <Tab>Three</Tab> <Tab>Three</Tab> <Tab>Three</Tab> <Tab>Three</Tab>*/}
+      {/*  </TabList>*/}
+
+      {/*  <TabPanels>*/}
+      {/*    <TabPanel>*/}
+      {/*      <p>one!</p>*/}
+      {/*    </TabPanel>*/}
+      {/*    <TabPanel>*/}
+      {/*      <p>two!</p>*/}
+      {/*    </TabPanel>*/}
+      {/*    <TabPanel>*/}
+      {/*      <p>three!</p>*/}
+      {/*    </TabPanel>*/}
+      {/*  </TabPanels>*/}
+      {/*</Tabs>*/}
     </div>
   );
 }
