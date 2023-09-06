@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import style from './style.module.css';
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from '@nextui-org/react';
-import React from 'react';
+import React, { useState } from 'react';
 
 interface IRoutesBottomSub {
   id: number;
@@ -28,6 +28,7 @@ interface IItemBottom {
 
 export default function SidebarItemBottom({ routes }: IItemBottom) {
   const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       {routes.map((route) => (
@@ -51,7 +52,7 @@ export default function SidebarItemBottom({ routes }: IItemBottom) {
                   <p className={style.name}> {route.name}</p>
                 </Button>
               </DropdownTrigger>
-              <DropdownMenu aria-label="Static Actions">
+              <DropdownMenu closeOnSelect={true} aria-label="Static Actions">
                 {route?.subLink!.map((sub) => (
                   <DropdownItem textValue={sub.name} className={style.sub_name} key={sub.id}>
                     <Link href={sub.link}>
