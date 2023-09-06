@@ -21,8 +21,7 @@ export default function TabsTv({ data, isSuccess }: ITabs) {
       <Tabs
         aria-label="Dynamic tabs"
         classNames={{
-          tabList: ' scrollbar-default overflow-x-auto pointer-events-auto ',
-          tab: 'pointer-events-auto',
+          tabList: ' scrollbar-default overflow-x-auto  ',
         }}
       >
         <Tab className={'text-xl'} key="overview" title="Описание">
