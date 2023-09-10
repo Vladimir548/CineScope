@@ -1,5 +1,7 @@
 .sidebar_bottom {
     display: none;
+    position: relative;
+    z-index: 899;
 }
 
 .description {

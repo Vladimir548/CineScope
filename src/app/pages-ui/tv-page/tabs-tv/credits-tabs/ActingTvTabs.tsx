@@ -21,7 +21,6 @@ export default function ActingTvTabs() {
           <Link key={acting.id} href={`/actor/${acting.id}`}>
             <CardBody className="overflow-visible py-2 flex-none px-1">
               <NextImage
-                loading={'lazy'}
                 alt={acting.name}
                 className={twMerge('object-cover rounded-lg', style.profile)}
                 src={`${process.env.NEXT_PUBLIC_IMAGE_URL}w185${acting.profile_path}`}

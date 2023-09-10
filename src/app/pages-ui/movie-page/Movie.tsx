@@ -5,7 +5,13 @@ import LayoutMovie from '@/layout/LayoutMovie';
 import LayoutSkeleton from '@/layout/LayoutSkeleton';
 import { useSearchParams } from 'next/navigation';
 import PaginationComponent from '@/components/pagination/PaginationComponent';
-import Link from 'next/link';
+
+import { useDispatch } from 'react-redux';
+import { openModal } from '@/redux/slices/modal-slices';
+import ModalNested from '@/components/modals/ModalNested';
+import Placeholder from '@/components/modals/Placeholder';
+
+import { RiEqualizerFill } from 'react-icons/ri';
 
 export default function Movie() {
   const searchParams = useSearchParams();
@@ -14,6 +20,7 @@ export default function Movie() {
     QueryMovie.getMovie(Number(pageParams)),
   );
 
+  const dispatch = useDispatch();
   return (
     <>
       <div>

@@ -1,20 +1,20 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface ISortSlice {
-  sortTv: string;
-  sortMovie: string;
+  sort: string;
 }
 
 const initialState: ISortSlice = {
-  sortTv: '',
-  sortMovie: '',
+  sort: 'popularity.desc',
 };
 export const SortSlice = createSlice({
   name: 'sort',
   initialState,
   reducers: {
-    getTvSort(state, action: PayloadAction<string>) {
-      state.sortTv = action.payload;
+    getSort(state, action: PayloadAction<string>) {
+      state.sort = action.payload;
+      console.log(state.sort);
     },
   },
 });
+export const { getSort } = SortSlice.actions;

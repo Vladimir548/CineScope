@@ -33,7 +33,8 @@ export default function LayoutPopularTv({ data, title }: ILayoutPopularTv) {
         >
           Посмотреть больше
         </Link>
-        <div className="swiper-button-prev"></div>
+        {/*<div className="swiper-button-prev"></div>*/}
+        {/*<div className="swiper-button-next"></div>*/}
       </div>
       <Swiper
         slidesPerView={5}

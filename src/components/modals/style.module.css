@@ -1,0 +1,82 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 990; /* Увеличьте z-index */
+    background: rgba(31, 31, 31, 0.82);
+}
+
+.modal_content {
+
+    width: 350px; /* Ширина родителя */
+    max-height: 100%;
+    overflow-y: auto;
+    background-color: rgba(30, 41, 59, 0.69);
+    border-radius: 10px;
+    padding: 10px 20px;
+    z-index: 991; /* Увеличьте z-index */
+}
+
+.modal_children {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.72);
+    z-index: 992; /* Увеличьте z-index и уберите z-index из .modal_content_children */
+}
+
+.modal_content_children {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 350px;
+    background-color: rgba(15, 23, 42, 0.58);
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+
+    padding: 5px 20px;
+}
+
+.modal_content_children::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal_content_children::-webkit-scrollbar-track {
+    background: black; /* цвет зоны отслеживания */
+}
+
+.modal_content_children::-webkit-scrollbar-thumb {
+    background-color: #ffffff; /* цвет бегунка */
+    height: 20px;
+    border-radius: 5px
+
+}
+
+@media (max-width: 425px) {
+    .modal_content_children {
+        width: 300px;
+    }
+
+    .modal_content {
+        width: 300px;
+    }
+}
+
+@media (max-width: 320px) {
+    .modal_content_children {
+        width: 260px;
+    }
+
+    .modal_content {
+        width: 260px;
+    }
+}

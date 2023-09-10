@@ -30,12 +30,10 @@ export default function LayoutActors({ data, isPage }: ILayoutActors) {
                 {actor.profile_path ? (
                   <Image
                     isBlurred
-                    isZoomed
                     as={NextImage}
                     alt={actor.name}
                     className={cn('object-cover rounded-sm ', style.poster)}
                     src={`https://image.tmdb.org/t/p/w342${actor.profile_path}`}
-                    fallbackSrc={'https://fakeimg.pl/240x224?text=CineScope&font=bebas'}
                     width={240}
                     height={380}
                   />

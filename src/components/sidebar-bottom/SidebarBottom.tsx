@@ -8,8 +8,10 @@ import { HiMiniComputerDesktop } from 'react-icons/hi2';
 import { BsPeople } from 'react-icons/bs';
 import { usePathname } from 'next/navigation';
 import SidebarItemBottom from '@/components/sidebar-bottom/SidebarItemBottom';
+import { useTypedSelector } from '@/redux/hooks/useTypedSelector';
 
 export default function SidebarBottom() {
+  const { isModal } = useTypedSelector((state) => state.modal);
   const pathname = usePathname();
   const routes = useMemo(
     () => [
@@ -93,8 +95,12 @@ export default function SidebarBottom() {
     [pathname],
   );
   return (
-    <div className={style.sidebar_bottom}>
-      <SidebarItemBottom routes={routes} />
-    </div>
+    <>
+      {!isModal && (
+        <div className={style.sidebar_bottom}>
+          <SidebarItemBottom routes={routes} />
+        </div>
+      )}
+    </>
   );
 }

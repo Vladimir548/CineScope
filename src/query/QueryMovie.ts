@@ -1,15 +1,18 @@
+import { Genre } from '@/interface/IGenres';
+
 require('dotenv').config();
 import { MovieRes, MoviesResponse } from '@/interface/IMovie';
 import axios from 'axios';
 import { IMovie } from '@/interface/IMovieId';
 import { IMulti } from '@/interface/IMulti';
 import { CollectionMovieResponse } from '@/interface/ICollectionMovie';
+import { Country } from '@/interface/ICountry';
 
 const key = process.env.NEXT_PUBLIC_KEY_TMDB;
 
 export const QueryMovie = {
   async getMovie(page: number) {
-    const { data } = await axios.get<MoviesResponse>('/api/discover/movie', {
+    const { data } = await axios.get<MoviesResponse>(`/api/discover/movie`, {
       params: {
         language: 'ru-RU',
         page,

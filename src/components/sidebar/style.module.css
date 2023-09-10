@@ -14,7 +14,7 @@
     width: 230px;
     transition: .3s ease-in-out;
     position: relative;
-    z-index: 999;
+    z-index: 899;
 }
 
 .block_close {

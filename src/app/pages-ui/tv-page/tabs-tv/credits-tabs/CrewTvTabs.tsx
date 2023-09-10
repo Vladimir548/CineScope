@@ -29,7 +29,6 @@ export default function CrewTvTabs() {
                 src={`https://image.tmdb.org/t/p/w185${crew.profile_path}`}
                 width={185}
                 height={280}
-                fallbackSrc="https://fakeimg.pl/185x224?text=CineScope&font=bebas"
               />
             </CardBody>
             <CardFooter className={twMerge('pb-2 pt-1  flex-col items-start', style.footer)}>

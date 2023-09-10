@@ -29,7 +29,6 @@ export default function ActingTabs({ cast }: IActing) {
                 src={`${process.env.NEXT_PUBLIC_IMAGE_URL}w185${acting.profile_path}`}
                 width={185}
                 height={285}
-                fallbackSrc="https://fakeimg.pl/185x285?text=CineScope&font=bebas"
               />
             </CardBody>
             <CardFooter className={twMerge('pb-2 pt-1  flex-col items-start', style.footer)}>

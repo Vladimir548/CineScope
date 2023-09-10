@@ -1,7 +1,7 @@
 'use client';
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { IMulti } from '@/interface/IMulti';
-import { useInfiniteQuery } from '@tanstack/react-query';
+import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 import LayoutMulti from '@/layout/LayoutMulti';
 import { useDebounce } from '@/hooks/debounce';
 import style from './style.module.css';
@@ -13,7 +13,13 @@ import { MdClear } from 'react-icons/md';
 import { QuerySearch } from '@/query/QuerySearch';
 import LayoutSkeleton from '@/layout/LayoutSkeleton';
 import SearchPopular from '@/app/pages-ui/search-page/SearchPopular';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { openModal } from '@/redux/slices/modal-slices';
+import { RiEqualizerFill } from 'react-icons/ri';
+import ModalNested from '@/components/modals/ModalNested';
+import Placeholder from '@/components/modals/Placeholder';
+import SortPage from '@/app/pages-ui/sort-ui/SortPage';
+import PaginationComponent from '@/components/pagination/PaginationComponent';
 
 export default function Search() {
   const router = useRouter();
@@ -24,61 +30,36 @@ export default function Search() {
     e.preventDefault();
     setValue(e.target.value);
   };
+
   const debounce = useDebounce(value);
-  // const encodeValue = value.replace(/ /g, '+');
+  const encodeValue = value.replace(/ /g, '+');
   const onHandlerSearch = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     dispatch(searchPush(debounce));
+    router.push(`/search?query=${encodeValue}`);
   };
   const handlerKey = (e: any) => {
     e.preventDefault();
     if (e.keyCode === 13 && search.trim() !== '') {
       dispatch(searchPush(debounce));
+      router.push(`/search?query=${encodeValue}`);
     }
   };
+  useEffect(() => {
+    if (search.length === 0) {
+      router.push(`/search`);
+    }
+  }, [search]);
   const clearInput = (e: any) => {
     e.preventDefault();
     dispatch(clearSearch());
     setValue('');
   };
-
-  const {
-    data,
-    isSuccess,
-    fetchNextPage,
-    hasNextPage,
-    isFetching,
-    isLoading,
-    isFetchingNextPage,
-    error,
-  } = useInfiniteQuery(
-    ['search-multi', search],
-    ({ pageParam = 1 }) => QuerySearch.getSearch(search, pageParam),
-    {
-      getNextPageParam: (lastPage, allPages) => {
-        if (lastPage.page < lastPage.total_pages) {
-          return lastPage.page + 1;
-        }
-        return undefined;
-      },
-    },
+  const searchParams = useSearchParams();
+  const pageParams = searchParams!.get('page') ?? '1';
+  const { data, isSuccess } = useQuery(['search-multi', search, pageParams], () =>
+    QuerySearch.getSearch(search, Number(pageParams)),
   );
-  useEffect(() => {
-    let fetching = false;
-
-    const handleScroll = async (e: any) => {
-      const { scrollHeight, scrollTop, clientHeight } = e.target.scrollingElement;
-      if (!fetching && scrollHeight - scrollTop <= clientHeight * 1.2) {
-        fetching = true;
-        if (hasNextPage) await fetchNextPage();
-        fetching = false;
-      }
-    };
-    document.addEventListener('scroll', handleScroll);
-    return () => {
-      document.removeEventListener('scroll', handleScroll);
-    };
-  }, [fetchNextPage, hasNextPage]);
 
   return (
     <div className="  mt-2">
@@ -110,17 +91,20 @@ export default function Search() {
           Поиск
         </button>
       </form>
+
       {isSuccess ? (
         <div className="">
           {search.length >= 2 ? (
-            <LayoutMulti
-              data={data}
-              isFetchingNextPage={isFetchingNextPage}
-              isFetching={isFetching}
-              isLoading={isLoading}
-            />
+            <>
+              <LayoutMulti data={data} />
+              <PaginationComponent
+                total_pages={data?.total_pages}
+                pageParams={Number(pageParams)}
+                route={'search'}
+              />
+            </>
           ) : (
-            <SearchPopular />
+            <SortPage />
           )}
         </div>
       ) : (
