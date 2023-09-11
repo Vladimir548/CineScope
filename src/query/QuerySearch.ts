@@ -8,12 +8,13 @@ import { Country } from '@/interface/ICountry';
 const key = process.env.NEXT_PUBLIC_KEY_TMDB;
 
 export const QuerySearch = {
-  async getSearch(value: string, page: number) {
+  async getSearch(value: string, page: number, sort: string) {
     const { data } = await axios.get('/api/search/multi', {
       params: {
         language: 'ru-RU',
         query: value,
         page: page,
+        sort_by: sort,
       },
       headers: {
         Authorization: `Bearer ${key}`,
@@ -45,6 +46,7 @@ export const QuerySearch = {
         'vote_average.gte': minRating,
         'vote_average.lte': maxRating,
         sort_by: sort,
+        'vote_count.gte': 100,
       },
       headers: {
         Authorization: `Bearer ${key}`,

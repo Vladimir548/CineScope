@@ -15,7 +15,8 @@ import { useSearchParams } from 'next/navigation';
 import PaginationComponent from '@/components/pagination/PaginationComponent';
 import { Select, SelectItem } from '@nextui-org/react';
 import { getSort } from '@/redux/slices/sort-slice';
-import { state } from 'sucrase/dist/types/parser/traverser/base';
+import { selectData } from '@/data/SelectData';
+import Sort from '@/components/sort/Sort';
 
 export default function SortPage() {
   const { genre } = useTypedSelector((state) => state.genre);
@@ -29,7 +30,6 @@ export default function SortPage() {
   useEffect(() => {
     setIsRefetch(false);
   }, []);
-  console.log(isRefetch);
   const queryClient = useQueryClient();
 
   const refreshQuery = () => {
@@ -77,45 +77,12 @@ export default function SortPage() {
   const clickModal = () => {
     dispatch(openModal());
   };
-  const selectItems = [
-    {
-      id: 1,
-      name: 'По популярности',
-      value: 'popularity.desc',
-    },
-    {
-      id: 2,
-      name: 'По дате выхода',
-      value: 'primary_release_date.desc',
-    },
-    {
-      id: 3,
-      name: 'По рейтингу',
-      value: 'vote_average.desc',
-    },
-  ];
 
   return (
     <div>
       <div className="mt-2 flex justify-between items-center">
         <div className="">
-          <Select
-            label={'Cортировать'}
-            classNames={{
-              base: 'w-[200px]',
-              listboxWrapper: ' bg-[#27272A]',
-            }}
-            color={'default'}
-            defaultSelectedKeys={'popularity.desc'}
-            className="max-w-xs"
-            onChange={(e) => dispatch(getSort(e.target.value))}
-          >
-            {selectItems.map((item) => (
-              <SelectItem key={item.value} value={item.value}>
-                {item.name}
-              </SelectItem>
-            ))}
-          </Select>
+          <Sort />
         </div>
         <div className="">
           <button

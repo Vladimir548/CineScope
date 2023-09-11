@@ -12,13 +12,13 @@
 }
 
 .modal_content {
-
     width: 350px; /* Ширина родителя */
     max-height: 100%;
     overflow-y: auto;
     background-color: rgba(30, 41, 59, 0.69);
     border-radius: 10px;
     padding: 10px 20px;
+    text-align: center;
     z-index: 991; /* Увеличьте z-index */
 }
 
@@ -46,15 +46,15 @@
     padding: 5px 20px;
 }
 
-.modal_content_children::-webkit-scrollbar {
+.modal_content_children::-webkit-scrollbar, .modal_content::-webkit-scrollbar {
     width: 6px;
 }
 
-.modal_content_children::-webkit-scrollbar-track {
+.modal_content_children::-webkit-scrollbar, .modal_content::-webkit-scrollbar-track {
     background: black; /* цвет зоны отслеживания */
 }
 
-.modal_content_children::-webkit-scrollbar-thumb {
+.modal_content_children::-webkit-scrollbar, .modal_content::-webkit-scrollbar-thumb {
     background-color: #ffffff; /* цвет бегунка */
     height: 20px;
     border-radius: 5px

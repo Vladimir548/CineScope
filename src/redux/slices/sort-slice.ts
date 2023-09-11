@@ -13,7 +13,6 @@ export const SortSlice = createSlice({
   reducers: {
     getSort(state, action: PayloadAction<string>) {
       state.sort = action.payload;
-      console.log(state.sort);
     },
   },
 });
