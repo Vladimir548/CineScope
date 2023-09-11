@@ -12,18 +12,15 @@ import { clearSearch, searchPush } from '@/redux/slices/search-slice';
 import { MdClear } from 'react-icons/md';
 import { QuerySearch } from '@/query/QuerySearch';
 import LayoutSkeleton from '@/layout/LayoutSkeleton';
-import SearchPopular from '@/app/pages-ui/search-page/SearchPopular';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { openModal } from '@/redux/slices/modal-slices';
-import { RiEqualizerFill } from 'react-icons/ri';
-import ModalNested from '@/components/modals/ModalNested';
-import Placeholder from '@/components/modals/Placeholder';
 import SortPage from '@/app/pages-ui/sort-ui/SortPage';
 import PaginationComponent from '@/components/pagination/PaginationComponent';
+import Sort from '@/components/sort/Sort';
 
 export default function Search() {
   const router = useRouter();
   const { search } = useTypedSelector((state) => state.search);
+  const { sort } = useTypedSelector((state) => state.sort);
   const dispatch = useDispatch();
   const [value, setValue] = useState<string>('');
   const changeInput = (e: ChangeEvent<HTMLInputElement>) => {
