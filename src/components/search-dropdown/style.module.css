@@ -1,0 +1,10 @@
+.block {
+    padding: 5px;
+    display: grid;
+    grid-template-columns: 92px 1fr;
+    transition: .3s ease-in-out;
+}
+
+.block:hover {
+    background: rgba(24, 24, 27, 0.9);
+}

@@ -4,9 +4,11 @@ import { selectData } from '@/data/SelectData';
 import { getSort } from '@/redux/slices/sort-slice';
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { useTypedSelector } from '@/redux/hooks/useTypedSelector';
 
 export default function Sort() {
   const dispatch = useDispatch();
+  const { sort } = useTypedSelector((state) => state.sort);
   return (
     <div className="">
       <Select
@@ -16,7 +18,7 @@ export default function Sort() {
           base: 'w-[200px]',
         }}
         color={'default'}
-        defaultSelectedKeys={['popularity.desc']}
+        defaultSelectedKeys={[`${sort}`]}
         className="max-w-xs"
         onChange={(e) => dispatch(getSort(e.target.value))}
       >

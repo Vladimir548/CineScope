@@ -6,6 +6,13 @@ import LayoutTv from '@/layout/LayoutTv';
 import { useSearchParams } from 'next/navigation';
 import PaginationComponent from '@/components/pagination/PaginationComponent';
 import Link from 'next/link';
+import Sort from '@/components/sort/Sort';
+import { RiEqualizerFill } from 'react-icons/ri';
+import ModalNested from '@/components/modals/ModalNested';
+import Placeholder from '@/components/modals/Placeholder';
+import React from 'react';
+import BtnOpenModal from '@/components/btn-open-modal/BtnOpenModal';
+import TopFilter from '@/components/top-filter/TopFilter';
 
 export default function Tv() {
   const searchParams = useSearchParams();
@@ -18,6 +25,7 @@ export default function Tv() {
       <div>
         {isSuccess ? (
           <>
+            <TopFilter />
             <LayoutTv data={data} isPage={Number(pageParams)} />
             <PaginationComponent
               total_pages={data?.total_pages}

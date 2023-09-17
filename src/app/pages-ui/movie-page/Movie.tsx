@@ -12,18 +12,26 @@ import ModalNested from '@/components/modals/ModalNested';
 import Placeholder from '@/components/modals/Placeholder';
 
 import { RiEqualizerFill } from 'react-icons/ri';
+import Sort from '@/components/sort/Sort';
+import React from 'react';
+import { useTypedSelector } from '@/redux/hooks/useTypedSelector';
+import TopFilter from '@/components/top-filter/TopFilter';
+import Link from 'next/link';
 
 export default function Movie() {
   const searchParams = useSearchParams();
   const pageParams = searchParams!.get('page') ?? '1';
-  const { data, error, isSuccess } = useQuery(['get-movie', pageParams], () =>
-    QueryMovie.getMovie(Number(pageParams)),
+  const { sort } = useTypedSelector((state) => state.sort);
+  const { data, error, isSuccess } = useQuery(['get-movie', pageParams, sort], () =>
+    QueryMovie.getMovie(Number(pageParams), sort),
   );
 
-  const dispatch = useDispatch();
   return (
     <>
       <div>
+        <div className="">
+          <TopFilter />
+        </div>
         {isSuccess ? (
           <>
             <LayoutMovie data={data} isPage={Number(pageParams)} />

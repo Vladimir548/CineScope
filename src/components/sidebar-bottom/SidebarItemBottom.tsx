@@ -11,7 +11,7 @@ interface IRoutesBottomSub {
   icon: IconType;
   name: string;
   link: string;
-  description: string;
+  description?: string;
 }
 
 interface IRoutesBottom {

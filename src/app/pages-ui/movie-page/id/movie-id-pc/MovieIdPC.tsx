@@ -22,6 +22,7 @@ export default function MovieIdPc() {
   const formattedMinutes = data?.runtime! % 60;
   const formattedRuntime = `${formattedHours}ч ${formattedMinutes}мин`;
   const crossOrigin = 'anonymous';
+
   const backdrop = `${process.env.NEXT_PUBLIC_IMAGE_URL}w300/${data?.backdrop_path}`;
   const { data: pallete, loading: load } = usePalette(backdrop, 3, 'rgbArray', {
     crossOrigin,

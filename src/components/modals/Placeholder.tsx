@@ -3,20 +3,25 @@ import ModalChildren from '@/components/modals/ModalChildren';
 import PlaceholderGenres from '@/components/modals/placeholder-item/PlaceholderGenres';
 import PlaceholderCountry from '@/components/modals/placeholder-item/PlaceholderCountry';
 import { useDispatch } from 'react-redux';
-import { clearGenres } from '@/redux/slices/genre-slice';
+import { clearGenres, clearGenresTv } from '@/redux/slices/genre-slice';
 import { clearCountry } from '@/redux/slices/country-slice';
 import PlaceholderYear from '@/components/modals/placeholder-item/PlaceholderYear';
 import PlaceholderRating from '@/components/modals/placeholder-item/PlaceholderRating';
 import PlaceholderType from '@/components/modals/placeholder-item/PlaceholderType';
+import { useDefinitionType } from '@/hooks/useDefinitionType';
 
 export default function Placeholder() {
   const dispatch = useDispatch();
+  const definitionType = useDefinitionType();
   return (
     <div>
-      <div className="">
-        <PlaceholderType />
-      </div>
-      <ModalChildren name={'Жанры'} key={1} clear={() => dispatch(clearGenres())}>
+      <ModalChildren
+        name={'Жанры'}
+        key={1}
+        clear={() =>
+          definitionType === 'movie' ? dispatch(clearGenres()) : dispatch(clearGenresTv())
+        }
+      >
         <PlaceholderGenres />
       </ModalChildren>{' '}
       <ModalChildren name={'Страны'} key={2} clear={() => dispatch(clearCountry())}>

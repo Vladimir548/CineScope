@@ -4,32 +4,43 @@ import { Genre } from '@/interface/IGenres';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface IInitialState {
-  genre: Genre[];
+  genre: string[];
+  genreTv: string[];
 }
 
 const initialState: IInitialState = {
   genre: [],
+  genreTv: [],
 };
 
 export const GenreSLice = createSlice({
   name: 'genres',
   initialState,
   reducers: {
-    addGenres(state, action: PayloadAction<Genre>) {
-      const genreList = state.genre.some((item) => item.id === action.payload.id);
+    addGenres(state, action: PayloadAction<string>) {
+      const genreList = state.genre.some((item) => item === action.payload);
       if (!genreList) {
         state.genre = [...state.genre, action.payload];
       } else {
-        state.genre = state.genre.filter((item) => item.id !== action.payload.id);
+        state.genre = state.genre.filter((item) => item !== action.payload);
       }
     },
-    removeGenres(state, action: PayloadAction<string>) {
-      state.genre = state.genre.filter((item) => item.name !== action.payload);
+    addGenresTv(state, action: PayloadAction<string>) {
+      const genreList = state.genreTv.some((item) => item === action.payload);
+      if (!genreList) {
+        state.genreTv = [...state.genreTv, action.payload];
+      } else {
+        state.genreTv = state.genreTv.filter((item) => item !== action.payload);
+      }
     },
+
     clearGenres(state) {
       state.genre = [];
+    },
+    clearGenresTv(state) {
+      state.genreTv = [];
     },
   },
 });
 
-export const { addGenres, removeGenres, clearGenres } = GenreSLice.actions;
+export const { addGenres, addGenresTv, clearGenres, clearGenresTv } = GenreSLice.actions;

@@ -8,13 +8,13 @@ import { Country } from '@/interface/ICountry';
 const key = process.env.NEXT_PUBLIC_KEY_TMDB;
 
 export const QuerySearch = {
-  async getSearch(value: string, page: number) {
+  async getSearch(value: string, page?: number) {
     const { data } = await axios.get('/api/search/multi', {
       params: {
         language: 'ru-RU',
         query: value,
         page: page,
-        // sort_by: sort,
+        sort_by: 'primary_release_date.desc',
       },
       headers: {
         Authorization: `Bearer ${key}`,
@@ -24,22 +24,20 @@ export const QuerySearch = {
   },
   async getSorting(
     page: number,
-    genres: Genre[],
-    countrys: Country[],
+    genres: string,
+    country: string,
     type: string,
-    minRating: number,
-    maxRating: number,
-    withYear: number,
-    byYear: number,
+    minRating: string,
+    maxRating: string,
+    withYear: string,
+    byYear: string,
     sort: string,
   ) {
-    const genre = genres.map((genre) => genre.id).join(',');
-    const country = countrys.map((country) => country.iso_3166_1).join(',');
     const { data } = await axios.get(`/api/discover/${type}`, {
       params: {
         language: 'ru-RU',
         page: page,
-        with_genres: genre,
+        with_genres: genres,
         with_origin_country: country,
         'primary_release_date.gte': withYear,
         'primary_release_date.lte': byYear,

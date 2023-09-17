@@ -52,7 +52,9 @@
     height: 100%;
     width: 230px;
     row-gap: 10px;
+
 }
+
 
 .block_close > .box {
     width: 60px;

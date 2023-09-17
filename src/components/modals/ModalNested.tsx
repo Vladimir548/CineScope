@@ -4,25 +4,36 @@ import style from './style.module.css';
 import { useTypedSelector } from '@/redux/hooks/useTypedSelector';
 import { useDispatch } from 'react-redux';
 import { openModal } from '@/redux/slices/modal-slices';
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import ModalChildren from '@/components/modals/ModalChildren';
 import Placeholder from '@/components/modals/Placeholder';
 import Link from 'next/link';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useDefinitionType } from '@/hooks/useDefinitionType';
 
 interface IModal {
   children?: React.ReactNode;
-  refetch: () => void;
-  refreshQuery: () => void;
 }
 
-export default function ModalNested({ children, refetch, refreshQuery }: IModal) {
+export default function ModalNested({ children }: IModal) {
   const { isModal } = useTypedSelector((state) => state.modal);
-
+  const { genre, genreTv } = useTypedSelector((state) => state.genre);
+  const { country } = useTypedSelector((state) => state.country);
+  const { withYear, byYear } = useTypedSelector((state) => state.year);
+  const { minRating, maxRating } = useTypedSelector((state) => state.rating);
+  const definitionType = useDefinitionType();
   const dispatch = useDispatch();
+  const router = useRouter();
+
   const handleApply = () => {
     dispatch(openModal());
-    refetch();
-    refreshQuery();
+    router.push(
+      `/${definitionType}/filters?${
+        genre ? `genres=${definitionType === 'movie' ? genre : genreTv}` : ''
+      }${
+        country ? `&country=${country}` : ''
+      }&from=${withYear}&to=${byYear}&minRating=${minRating}&maxRating=${maxRating} `,
+    );
   };
   return (
     <>
@@ -33,14 +44,14 @@ export default function ModalNested({ children, refetch, refreshQuery }: IModal)
             <div onClick={(e) => e.stopPropagation()} className={style.modal_content}>
               {children}
               <div className="flex justify-between w-full gap-1">
-                <div
+                <button
                   onClick={handleApply}
                   className={
                     'w-full bg-blue-800 py-3 ease-in-out duration-400 rounded-lg hover:bg-blue-700'
                   }
                 >
                   Применить
-                </div>
+                </button>
                 <div
                   onClick={() => dispatch(openModal())}
                   className={

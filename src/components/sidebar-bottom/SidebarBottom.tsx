@@ -34,6 +34,13 @@ export default function SidebarBottom() {
 
         subLink: [
           {
+            id: 20,
+            icon: CiCompass1,
+            name: 'Фильмы',
+            link: '/movie',
+            description: 'Все фильмы в одной подборке',
+          },
+          {
             id: 21,
             icon: CiCompass1,
             name: 'Популярное',
@@ -62,6 +69,13 @@ export default function SidebarBottom() {
         name: 'Сериалы',
 
         subLink: [
+          {
+            id: 30,
+            icon: CiCompass1,
+            name: 'Сериалы',
+            link: '/tv',
+            description: 'Все сериалы в одной подборке',
+          },
           {
             id: 31,
             icon: CiCompass1,

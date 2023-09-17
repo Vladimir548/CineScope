@@ -4,8 +4,8 @@ import { CountryResponse } from '@/interface/ICountry';
 
 const key = process.env.NEXT_PUBLIC_KEY_TMDB;
 export const QueryFilter = {
-  async getGenre() {
-    const { data } = await axios.get(`/api/genre/movie/list`, {
+  async getGenre(pathname: string) {
+    const { data } = await axios.get(`/api/genre/${pathname}/list`, {
       params: {
         language: 'ru-RU',
       },

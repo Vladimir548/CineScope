@@ -8,12 +8,14 @@ import { InfiniteData } from '@tanstack/query-core';
 import Link from 'next/link';
 import { AiFillStar } from 'react-icons/ai';
 import { IMulti } from '@/interface/IMulti';
+import { useDefinitionType } from '@/hooks/useDefinitionType';
 
 interface ILayoutMulti {
   data?: IMulti;
 }
 
 export default function LayoutMulti({ data }: ILayoutMulti) {
+  const definitionType = useDefinitionType();
   return (
     <>
       <div className={style.content}>
@@ -24,7 +26,7 @@ export default function LayoutMulti({ data }: ILayoutMulti) {
               key={item.id}
               className=" border-transparent border-2 hover:border-slate-500 hover:border-2 "
             >
-              <Link className={style.link} key={item.id} href={`/${item.media_type}/${item.id}`}>
+              <Link className={style.link} key={item.id} href={`/${definitionType}/${item.id}`}>
                 {item.media_type !== 'person' && (
                   <CardHeader className="flex justify-between items-center p-0 px-4 ">
                     <h4 className="font-bold text-base flex items-center lg:text-xl">
@@ -47,7 +49,6 @@ export default function LayoutMulti({ data }: ILayoutMulti) {
                     }`}
                     width={290}
                     height={360}
-                    sizes="20vw"
                   />
                 </CardBody>
                 <CardFooter className="pb-2 pt-2 px-4 flex-col items-start">

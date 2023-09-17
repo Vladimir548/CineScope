@@ -10,66 +10,65 @@ import { RiEqualizerFill } from 'react-icons/ri';
 import ModalNested from '@/components/modals/ModalNested';
 import Placeholder from '@/components/modals/Placeholder';
 import { useDispatch } from 'react-redux';
-import SearchPopular from '@/app/pages-ui/search-page/SearchPopular';
-import { useSearchParams } from 'next/navigation';
-import PaginationComponent from '@/components/pagination/PaginationComponent';
-import { Select, SelectItem } from '@nextui-org/react';
-import { getSort } from '@/redux/slices/sort-slice';
-import { selectData } from '@/data/SelectData';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { Pagination } from '@nextui-org/react';
 import Sort from '@/components/sort/Sort';
+import { addGenres, addGenresTv } from '@/redux/slices/genre-slice';
+import { addCountry } from '@/redux/slices/country-slice';
+import { getMaxRating, getMinRating } from '@/redux/slices/rating-slice';
+import { getByYear, getWithYear } from '@/redux/slices/year-slice';
+import { useDefinitionType } from '@/hooks/useDefinitionType';
 
 export default function SortPage() {
-  const { genre } = useTypedSelector((state) => state.genre);
-  const { country } = useTypedSelector((state) => state.country);
   const { type } = useTypedSelector((state) => state.type);
-  const { withYear, byYear } = useTypedSelector((state) => state.year);
-  const { minRating, maxRating } = useTypedSelector((state) => state.rating);
   const { sort } = useTypedSelector((state) => state.sort);
+  const definitionType = useDefinitionType();
+  const router = useRouter();
+  const pathname = usePathname();
   const dispatch = useDispatch();
-  const [isRefetch, setIsRefetch] = useState(true);
-  useEffect(() => {
-    setIsRefetch(false);
-  }, []);
-  const queryClient = useQueryClient();
-
-  const refreshQuery = () => {
-    queryClient.invalidateQueries([
-      'get-search-sort',
-      genre,
-      country,
-      type,
-      minRating,
-      maxRating,
-      withYear,
-      byYear,
-      sort,
-    ]);
-  };
   const searchParams = useSearchParams();
   const pageParams = searchParams!.get('page') ?? '1';
+
+  const genreParams = searchParams!.get('genres') ?? '';
+  const countryParams = searchParams!.get('country') ?? '';
+  const withYearParams = searchParams!.get('from') ?? '';
+  const byYearParams = searchParams!.get('to') ?? '';
+  const minRatingParams = searchParams!.get('minRating') ?? '';
+  const maxRatingParams = searchParams!.get('maxRating') ?? '';
+  const allParams = new URLSearchParams(searchParams.toString());
+
+  useEffect(() => {
+    dispatch(definitionType === 'movie' ? addGenres(genreParams) : addGenresTv(genreParams));
+    dispatch(addCountry(countryParams));
+    dispatch(getMaxRating(Number(maxRatingParams)));
+    dispatch(getMinRating(Number(minRatingParams)));
+    dispatch(getWithYear(Number(withYearParams)));
+    dispatch(getByYear(Number(byYearParams)));
+  }, []);
+  const [isPage, setIsPage] = useState<number>(1);
   const { data, isSuccess, error } = useQuery(
     [
       'get-search-sort',
       pageParams,
-      genre,
-      country,
-      type,
-      minRating,
-      maxRating,
-      withYear,
-      byYear,
+      genreParams,
+      countryParams,
+      definitionType,
+      withYearParams,
+      byYearParams,
+      minRatingParams,
+      maxRatingParams,
       sort,
     ],
     () =>
       QuerySearch.getSorting(
         Number(pageParams),
-        genre,
-        country,
-        type,
-        minRating,
-        maxRating,
-        withYear,
-        byYear,
+        genreParams,
+        countryParams,
+        definitionType,
+        minRatingParams,
+        maxRatingParams,
+        withYearParams,
+        byYearParams,
         sort,
       ),
   );
@@ -77,7 +76,15 @@ export default function SortPage() {
   const clickModal = () => {
     dispatch(openModal());
   };
-
+  const handleNextClick = (numb: number) => {
+    setIsPage((prev) => prev + 1);
+    window.scrollTo({
+      top: 0,
+      left: 0,
+    });
+    allParams.set('page', `${numb}`);
+    router.push(`${pathname}?${allParams.toString()}`);
+  };
   return (
     <div>
       <div className="mt-2 flex justify-between items-center">
@@ -91,30 +98,30 @@ export default function SortPage() {
           >
             <RiEqualizerFill size={26} />
 
-            <ModalNested refreshQuery={() => refreshQuery()} refetch={() => setIsRefetch(true)}>
+            <ModalNested>
               <Placeholder />
             </ModalNested>
           </button>
         </div>
       </div>
-      {isRefetch ? (
-        <div className="">
-          {isSuccess ? (
-            <div>
-              <LayoutMulti data={data} />
-              <PaginationComponent
-                total_pages={data?.total_pages}
-                pageParams={Number(pageParams)}
-                route={'search'}
+
+      <div className="">
+        {isSuccess ? (
+          <div>
+            <LayoutMulti data={data} />
+            <div className="overflow-hidden flex justify-center my-3">
+              <Pagination
+                size={'lg'}
+                total={data.total_pages}
+                page={Number(pageParams)}
+                onChange={(numb) => handleNextClick(numb)}
               />
             </div>
-          ) : (
-            <LayoutSkeleton />
-          )}
-        </div>
-      ) : (
-        <SearchPopular />
-      )}
+          </div>
+        ) : (
+          <LayoutSkeleton />
+        )}
+      </div>
     </div>
   );
 }

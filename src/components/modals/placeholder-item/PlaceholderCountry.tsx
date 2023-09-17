@@ -14,11 +14,10 @@ export default function PlaceholderCountry() {
       <ul className={'overflow-y-auto'}>
         {data?.map((country) => (
           <li
-            // @ts-ignore
-            onClick={() => dispatch(addCountry(country))}
+            onClick={() => dispatch(addCountry(String(country.iso_3166_1)))}
             className={`p-2 my-1 border-1 border-white ease-in-out duration-400 first-letter:uppercase rounded-lg hover:bg-white/20 
               ${
-                CountryItem.some((item) => item.iso_3166_1 === country.iso_3166_1)
+                CountryItem.some((item) => item === String(country.iso_3166_1))
                   ? 'bg-white/20 '
                   : ''
               }

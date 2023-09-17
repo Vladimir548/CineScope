@@ -18,7 +18,6 @@ export const SearchSlice = createSlice({
     },
     clearSearch(state) {
       state.search = state.search = '';
-      console.log(state.search);
     },
   },
 });

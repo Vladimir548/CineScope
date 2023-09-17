@@ -17,7 +17,7 @@ export default function ModalChildren({ children, name, key, clear }: IModalChil
   return (
     <>
       <div className="flex flex-col">
-        <button
+        <div
           key={key}
           className={
             'p-4 border-1 border-slate-500 my-1 rounded-lg ease-in-out duration-400 hover:bg-slate-500'
@@ -25,7 +25,7 @@ export default function ModalChildren({ children, name, key, clear }: IModalChil
           onClick={() => setIsOpen(true)}
         >
           {name}
-        </button>
+        </div>
       </div>
       {isOpen && (
         <>

@@ -6,7 +6,7 @@ import NextImage from 'next/image';
 export default function LayoutSkeleton() {
   const emptyArr = Array.from({ length: 20 }).map((_, i) => (
     <div>
-      <Card className=" space-y-5 p-4" radius="md">
+      <Card key={i} className=" space-y-5 p-4" radius="md">
         <Skeleton className="w-full rounded-lg">
           <div className="h-3 w-4/5 rounded-lg bg-default-200"></div>
         </Skeleton>

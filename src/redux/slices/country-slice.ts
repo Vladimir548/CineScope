@@ -4,7 +4,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Country } from '@/interface/ICountry';
 
 interface IInitialState {
-  country: Country[];
+  country: string[];
 }
 
 const initialState: IInitialState = {
@@ -15,18 +15,13 @@ export const CountrySLice = createSlice({
   name: 'country',
   initialState,
   reducers: {
-    addCountry(state, action: PayloadAction<Country>) {
-      const CountryList = state.country.some(
-        (item) => item.iso_3166_1 === action.payload.iso_3166_1,
-      );
+    addCountry(state, action: PayloadAction<string>) {
+      const CountryList = state.country.some((item) => item === action.payload);
       if (!CountryList) {
         state.country = [...state.country, action.payload];
       } else {
-        state.country = state.country.filter(
-          (item) => item.iso_3166_1 !== action.payload.iso_3166_1,
-        );
+        state.country = state.country.filter((item) => item !== action.payload);
       }
-      console.log(state.country);
     },
 
     clearCountry(state) {

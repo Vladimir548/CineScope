@@ -16,6 +16,9 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import SortPage from '@/app/pages-ui/sort-ui/SortPage';
 import PaginationComponent from '@/components/pagination/PaginationComponent';
 import Sort from '@/components/sort/Sort';
+import SearchPopular from '@/app/pages-ui/search-page/SearchPopular';
+import { Kbd } from '@nextui-org/kbd';
+import SearchDropdown from '@/components/search-dropdown/SearchDropdown';
 
 export default function Search() {
   const router = useRouter();
@@ -23,8 +26,10 @@ export default function Search() {
   const { sort } = useTypedSelector((state) => state.sort);
   const dispatch = useDispatch();
   const [value, setValue] = useState<string>('');
+  const [isDropdown, setIsDropdown] = useState(true);
   const changeInput = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
+
     setValue(e.target.value);
   };
 
@@ -34,12 +39,14 @@ export default function Search() {
     e.preventDefault();
     dispatch(searchPush(debounce));
     router.push(`/search?query=${encodeValue}`);
+    setIsDropdown(false);
   };
   const handlerKey = (e: any) => {
     e.preventDefault();
-    if (e.keyCode === 13 && search.trim() !== '') {
+    if (e.keyCode === 'ENTER' && search.trim() !== '') {
       dispatch(searchPush(debounce));
       router.push(`/search?query=${encodeValue}`);
+      setIsDropdown(false);
     }
   };
   useEffect(() => {
@@ -52,6 +59,7 @@ export default function Search() {
     dispatch(clearSearch());
     setValue('');
   };
+
   const searchParams = useSearchParams();
   const pageParams = searchParams!.get('page') ?? '1';
   const { data, isSuccess } = useQuery(['search-multi', search, pageParams], () =>
@@ -59,17 +67,23 @@ export default function Search() {
   );
 
   return (
-    <div className="  mt-2">
-      <form className=" relative flex">
-        <div className="relative w-[90vw] ">
+    <div onClick={() => setIsDropdown(false)} className=" mt-2">
+      <form onClick={(e) => e.stopPropagation()} className=" relative flex">
+        <div className="relative w-[100vw] ">
           <input
             onKeyUp={(e) => handlerKey(e)}
             className={style.input}
             type="text"
             value={value}
             onChange={changeInput}
+            onClick={() => setIsDropdown(true)}
             placeholder="Найти..."
           />
+          {isDropdown && debounce.length >= 3 && debounce.trim() !== '' && (
+            <div className="">
+              <SearchDropdown value={debounce} />
+            </div>
+          )}
           <span className="absolute top-2/4 left-4 -translate-y-2/4">
             <BsSearch size={22} />
           </span>
@@ -83,7 +97,7 @@ export default function Search() {
         </div>
         <button
           onClick={onHandlerSearch}
-          className="px-4 py-3 ml-1 bg-blue-700 rounded-lg ease-in-out duration-300 hover:bg-blue-800 "
+          className="px-4 py-3 ml-1 bg-blue-700 rounded-lg ease-in-out duration-300 hover:bg-blue-800 hidden md:block "
         >
           Поиск
         </button>
@@ -101,7 +115,7 @@ export default function Search() {
               />
             </>
           ) : (
-            <SortPage />
+            <SearchPopular />
           )}
         </div>
       ) : (
