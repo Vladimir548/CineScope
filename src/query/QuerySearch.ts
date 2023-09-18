@@ -1,9 +1,5 @@
-import { Genre } from '@/interface/IGenres';
-
-require('dotenv').config();
 import axios from 'axios';
 import { IMulti } from '@/interface/IMulti';
-import { Country } from '@/interface/ICountry';
 
 const key = process.env.NEXT_PUBLIC_KEY_TMDB;
 

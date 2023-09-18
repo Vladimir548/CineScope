@@ -5,18 +5,9 @@ import LayoutMovie from '@/layout/LayoutMovie';
 import LayoutSkeleton from '@/layout/LayoutSkeleton';
 import { useSearchParams } from 'next/navigation';
 import PaginationComponent from '@/components/pagination/PaginationComponent';
-
-import { useDispatch } from 'react-redux';
-import { openModal } from '@/redux/slices/modal-slices';
-import ModalNested from '@/components/modals/ModalNested';
-import Placeholder from '@/components/modals/Placeholder';
-
-import { RiEqualizerFill } from 'react-icons/ri';
-import Sort from '@/components/sort/Sort';
 import React from 'react';
 import { useTypedSelector } from '@/redux/hooks/useTypedSelector';
 import TopFilter from '@/components/top-filter/TopFilter';
-import Link from 'next/link';
 
 export default function Movie() {
   const searchParams = useSearchParams();

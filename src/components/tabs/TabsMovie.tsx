@@ -34,7 +34,10 @@ export default function TabsMovie({ data, isSuccess }: ITabs) {
       >
         <Tab className={'text-xl'} key="overview" title="Описание">
           <Card>
-            <CardBody className={style.text}>{data?.overview}</CardBody>
+            <CardBody className={style.text}>
+              {data?.overview}
+              Трейлеры
+            </CardBody>
           </Card>
         </Tab>
         <Tab className={'text-xl'} key="information" title="Информация">

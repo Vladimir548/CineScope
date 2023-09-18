@@ -1,6 +1,5 @@
 import { ActorsResponse } from '@/interface/interface-actor/IActors';
 
-require('dotenv').config();
 import axios from 'axios';
 import { ActorsCredits, IActorId } from '@/interface/interface-actor/IActorId';
 import { IPersonImages } from '@/interface/interface-actor/IPersonImages';
