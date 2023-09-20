@@ -8,14 +8,14 @@ import { usePalette } from 'color-thief-react';
 
 import { BiSolidCircle } from 'react-icons/bi';
 
-import { Image } from '@nextui-org/react';
+import { Image, Skeleton } from '@nextui-org/react';
 import { twMerge } from 'tailwind-merge';
 import TabsMovie from '@/components/tabs/TabsMovie';
 import { useRef } from 'react';
 
 export default function MovieIdPc() {
   const params = useParams();
-  const { data, isSuccess, error } = useQuery(['get-id-movie'], () =>
+  const { data, isSuccess, isLoading, error } = useQuery(['get-id-movie'], () =>
     QueryMovie.getMovieId(Number(params!.id)),
   );
   const formattedHours = Math.floor(data?.runtime! / 60);
@@ -30,7 +30,6 @@ export default function MovieIdPc() {
   const colorPalletOne = pallete?.map((item) => item)[0];
   const colorPalletTwo = pallete?.map((item) => item)[1];
 
-  if (!data) return <div>Данные не найдены</div>;
   return (
     <div className=" ">
       <div className="w-[100vmax]">
@@ -64,6 +63,7 @@ export default function MovieIdPc() {
           <div className={style.information}>
             <div className={style.titles}>
               <h1 className={style.title}>{data?.title}</h1>
+
               <h3 className={style.subtitel}>{data?.original_title}</h3>
             </div>
             <div className={style.block_top_info}>
@@ -96,7 +96,7 @@ export default function MovieIdPc() {
 
         <div className={style.content}>
           <div className="sticky top-0 left-0">
-            <TabsMovie data={data} isSuccess={isSuccess} />
+            <TabsMovie data={data!} isSuccess={isSuccess} />
           </div>
         </div>
       </div>

@@ -76,24 +76,13 @@ export default function LayoutPopularTv({ data, title }: ILayoutPopularTv) {
                   </h4>
                 </CardHeader>
                 <CardBody className="overflow-visible py-2 ">
-                  {item.poster_path ? (
-                    <NextImage
-                      className="object-cover rounded-sm overflow-hidden"
-                      src={`${process.env.NEXT_PUBLIC_IMAGE_URL}w342${item.poster_path}`}
-                      width={360}
-                      height={500}
-                      alt={item.name}
-                    />
-                  ) : (
-                    <Image
-                      as={NextImage}
-                      className="object-cover rounded-xl"
-                      src={'https://fakeimg.pl/240x400?text=KinoScope&font=bebas'}
-                      width={360}
-                      height={500}
-                      alt={item.name}
-                    />
-                  )}
+                  <NextImage
+                    className="object-cover rounded-sm overflow-hidden"
+                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL}w342${item.poster_path}`}
+                    width={360}
+                    height={500}
+                    alt={item.name}
+                  />
                 </CardBody>
                 <CardFooter className="pb-2 pt-2 px-4 flex flex-col items-start">
                   <h2 className={twMerge('font-bold text-6xl ', style.title)}>{item.name}</h2>

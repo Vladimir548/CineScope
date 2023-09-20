@@ -75,24 +75,13 @@ export default function LayoutPopularMovie({ data, title }: ILayoutPopularMovie)
                   </h4>
                 </CardHeader>
                 <CardBody className="overflow-visible py-2 ">
-                  {item.poster_path ? (
-                    <NextImage
-                      className="object-cover rounded-sm overflow-hidden"
-                      src={`${process.env.NEXT_PUBLIC_IMAGE_URL}w500${item.poster_path}`}
-                      width={360}
-                      height={500}
-                      alt={item.title}
-                    />
-                  ) : (
-                    <Image
-                      as={NextImage}
-                      className="object-cover rounded-xl"
-                      src={'https://fakeimg.pl/240x400?text=KinoScope&font=bebas'}
-                      width={360}
-                      height={500}
-                      alt={item.title}
-                    />
-                  )}
+                  <NextImage
+                    className="object-cover rounded-sm overflow-hidden"
+                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL}w500${item.poster_path}`}
+                    width={360}
+                    height={500}
+                    alt={item.title}
+                  />
                 </CardBody>
                 <CardFooter className="pb-2 pt-2 px-4 flex flex-col items-start">
                   <h2 className={twMerge('font-bold text-6xl ', style.title)}>{item.title}</h2>

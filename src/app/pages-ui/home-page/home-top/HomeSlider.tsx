@@ -52,7 +52,6 @@ export default function HomeSlider() {
                 <div className={style.bg_blur}></div>
 
                 <NextImage
-                  priority={true}
                   alt={item!.title ? item!.title || '' : item!.name || ''}
                   className={cn('object-cover rounded-sm')}
                   src={`${process.env.NEXT_PUBLIC_IMAGE_URL}original/${item.backdrop_path}`}

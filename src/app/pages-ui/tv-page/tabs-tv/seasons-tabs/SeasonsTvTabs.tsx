@@ -15,7 +15,7 @@ interface ISeasonsTabs {
 export default function SeasonsTvTabs({ seasons }: ISeasonsTabs) {
   const params = useParams();
   const [isSeason, setIsSeason] = useState<number>(1);
-  const { data, isSuccess } = useQuery(['get-seasons', params!.id, isSeason], () =>
+  const { data, isSuccess, isLoading } = useQuery(['get-seasons', params!.id, isSeason], () =>
     QueryTv.getIdTvSeasons(Number(params!.id), isSeason),
   );
   return (

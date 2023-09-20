@@ -6,6 +6,7 @@ import HomeSliderMobile from '@/app/pages-ui/home-page/home-top/HomeSliderMobile
 
 export default function HomePage() {
   const [windowWidth, setWindowWidth] = useState(0);
+
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);

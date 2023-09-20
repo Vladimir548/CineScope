@@ -47,13 +47,13 @@ export default function TabsMovie({ data, isSuccess }: ITabs) {
                 <li className={style.block_info}>
                   <div className={style.text}>Рейтинг</div>
                   <div className={twMerge('flex ', style.text)}>
-                    TMDB {data.vote_average.toFixed(1)}
+                    TMDB {data?.vote_average.toFixed(1)}
                   </div>
                 </li>
                 <li className={style.block_info}>
                   <div className={style.text}>Жанр</div>
                   <div className="flex flex-wrap">
-                    {data.genres?.map((genre) => (
+                    {data?.genres?.map((genre) => (
                       <span key={genre.id}>
                         <p className={twMerge('capitalize pr-2', style.text)}>{genre.name}</p>
                       </span>
@@ -66,7 +66,7 @@ export default function TabsMovie({ data, isSuccess }: ITabs) {
                 </li>
                 <li className={style.block_info}>
                   <div className={style.text}>Дата выхода</div>
-                  <div className={twMerge('flex ', style.text)}>{data.release_date}</div>
+                  <div className={twMerge('flex ', style.text)}>{data?.release_date}</div>
                 </li>
                 <li className={style.block_info}>
                   <div className={style.text}>Режиссер</div>
@@ -99,7 +99,7 @@ export default function TabsMovie({ data, isSuccess }: ITabs) {
                 <li className={style.block_info}>
                   <div className={style.text}>Страна</div>
                   <div className="flex flex-wrap">
-                    {data.production_countries.map((country) => (
+                    {data?.production_countries.map((country) => (
                       <span className={twMerge('pr-2', style.text)} key={country.iso_3166_1}>
                         {country.name}
                       </span>
@@ -109,7 +109,7 @@ export default function TabsMovie({ data, isSuccess }: ITabs) {
                 <li className={style.block_info}>
                   <div className={style.text}>Компания</div>
                   <div className="flex flex-wrap">
-                    {data.production_companies.map((company) => (
+                    {data?.production_companies.map((company) => (
                       <span className={twMerge('pr-2', style.text)} key={company.id}>
                         {company.name}
                       </span>
@@ -119,7 +119,7 @@ export default function TabsMovie({ data, isSuccess }: ITabs) {
 
                 <li className={style.block_info}>
                   <div className={style.text}>Статус</div>
-                  <div className={twMerge('flex', style.text)}>{data.status}</div>
+                  <div className={twMerge('flex', style.text)}>{data?.status}</div>
                 </li>
               </ul>
             </CardBody>
@@ -128,35 +128,35 @@ export default function TabsMovie({ data, isSuccess }: ITabs) {
         <Tab className={'text-xl'} key="acting" title="Актеры">
           <Card>
             <CardBody>
-              <ActingTabs cast={data.credits.cast} />
+              <ActingTabs cast={data?.credits.cast} />
             </CardBody>
           </Card>
         </Tab>
         <Tab className={'text-xl'} key="Crew" title="Фильмография">
           <Card>
             <CardBody>
-              <CrewTabs crews={data.credits.crew} />
+              <CrewTabs crews={data?.credits.crew} />
             </CardBody>
           </Card>
         </Tab>
         <Tab className={'text-xl'} key="Image" title="Изображения">
           <Card>
             <CardBody>
-              <ImageTabs images={data.images} isSuccess={isSuccess} />
+              <ImageTabs images={data?.images} isSuccess={isSuccess} />
             </CardBody>
           </Card>
         </Tab>
         <Tab className={'text-xl'} key="companies" title="Компания">
           <Card>
             <CardBody>
-              <CompanyTabs companies={data.production_companies} />
+              <CompanyTabs companies={data?.production_companies} />
             </CardBody>
           </Card>
         </Tab>
         <Tab className={'text-xl'} key="collection" title="Коллекция">
           <Card>
             <CardBody>
-              <CollectionTabsMovie collections={data.belongs_to_collection} />
+              <CollectionTabsMovie collections={data?.belongs_to_collection} />
             </CardBody>
           </Card>
         </Tab>
