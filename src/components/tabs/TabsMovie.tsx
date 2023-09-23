@@ -74,7 +74,7 @@ export default function TabsMovie({ data, isSuccess }: ITabs) {
                     {data?.credits?.crew
                       ?.filter((item) => item.job === 'Director')
                       .map((director) => (
-                        <Link href={`/person/${director.id}`}> {director.name} </Link>
+                        <Link href={`/person/${director.id}`}> {director.name} &nbsp; </Link>
                       ))}
                   </div>
                 </li>
@@ -83,8 +83,8 @@ export default function TabsMovie({ data, isSuccess }: ITabs) {
                   <div className={twMerge('flex flex-wrap', style.text)}>
                     {data?.credits?.crew
                       ?.filter((item) => item.job === 'Writer')
-                      .map((director) => (
-                        <Link href={`/person/${director.id}`}> {director.name} </Link>
+                      .map((writer) => (
+                        <Link href={`/person/${writer.id}`}> {writer.name} &nbsp; </Link>
                       ))}
                   </div>
                 </li>

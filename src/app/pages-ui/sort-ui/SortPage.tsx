@@ -78,10 +78,7 @@ export default function SortPage() {
   };
   const handleNextClick = (numb: number) => {
     setIsPage((prev) => prev + 1);
-    window.scrollTo({
-      top: 0,
-      left: 0,
-    });
+
     allParams.set('page', `${numb}`);
     router.push(`${pathname}?${allParams.toString()}`);
   };

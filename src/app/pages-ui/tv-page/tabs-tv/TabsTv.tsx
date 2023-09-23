@@ -76,7 +76,7 @@ export default function TabsTv({ data, isSuccess }: ITabs) {
                   <div className={twMerge('flex flex-wrap', style.text)}>
                     {data.created_by.map((create) => (
                       <Link href={`/person/${create.id}`} key={create.id}>
-                        {create.name + ''}
+                        {create.name} &nbsp;
                       </Link>
                     ))}
                   </div>

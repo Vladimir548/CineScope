@@ -22,12 +22,12 @@ interface ILayoutPopularMovie {
 export default function LayoutPopularMovie({ data, title }: ILayoutPopularMovie) {
   return (
     <div className="flex flex-col  ">
-      <div className="flex items-start flex-col">
+      <div className="flex items-start flex-col ml-1">
         <Link href={`/movie/popular`}>
           <h2 className={style.header}>{title}</h2>
         </Link>
         <Link
-          className="bg-zinc-700 p-3 rounded-lg ease-in duration-300 hover:bg-zinc-800"
+          className="bg-zinc-700 p-3 mb-1 rounded-lg ease-in duration-300 hover:bg-zinc-800"
           href={`/movie/popular`}
         >
           Посмотреть больше

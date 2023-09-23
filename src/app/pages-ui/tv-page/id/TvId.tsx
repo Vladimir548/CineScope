@@ -9,10 +9,11 @@ import { Image } from '@nextui-org/react';
 import { twMerge } from 'tailwind-merge';
 import { QueryTv } from '@/query/QueryTv';
 import TabsTv from '@/app/pages-ui/tv-page/tabs-tv/TabsTv';
+import LoadingCircular from '@/components/loading/LoadingCircular';
 
 export default function TvId() {
   const params = useParams();
-  const { data, isSuccess } = useQuery(['get-id-tv', params!.id], () =>
+  const { data, isSuccess, isLoading } = useQuery(['get-id-tv', params!.id], () =>
     QueryTv.getIdTv(Number(params!.id)),
   );
   const crossOrigin = 'anonymous';
@@ -23,7 +24,12 @@ export default function TvId() {
   const colorPalletOne = pallete?.map((item) => item)[0];
   const colorPalletTwo = pallete?.map((item) => item)[1];
 
-  if (!data) return <div>Данные не найдены</div>;
+  if (isLoading)
+    return (
+      <div>
+        <LoadingCircular />
+      </div>
+    );
   return (
     <>
       {isSuccess ? (

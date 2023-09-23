@@ -8,10 +8,9 @@ import { usePalette } from 'color-thief-react';
 
 import { BiSolidCircle } from 'react-icons/bi';
 
-import { Image, Skeleton } from '@nextui-org/react';
 import { twMerge } from 'tailwind-merge';
 import TabsMovie from '@/components/tabs/TabsMovie';
-import { useRef } from 'react';
+import LoadingCircular from '@/components/loading/LoadingCircular';
 
 export default function MovieIdPc() {
   const params = useParams();
@@ -29,7 +28,12 @@ export default function MovieIdPc() {
   });
   const colorPalletOne = pallete?.map((item) => item)[0];
   const colorPalletTwo = pallete?.map((item) => item)[1];
-
+  if (isLoading)
+    return (
+      <div>
+        <LoadingCircular />
+      </div>
+    );
   return (
     <div className=" ">
       <div className="w-[100vmax]">

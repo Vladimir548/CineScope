@@ -17,7 +17,7 @@ export default function SearchDropdown({ value }: ISearchDropdown) {
       <div>
         <div
           className={
-            'w-full h-[400px] rounded-lg overflow-y-auto  absolute top-full left-0 bg-[#18181B]/80 backdrop-blur z-50'
+            'w-full h-[80vh] rounded-lg overflow-y-auto  absolute top-full left-0 bg-[#18181B]/80 backdrop-blur z-50 md:h-[100vh]'
           }
         >
           {data?.results.map((item) => (

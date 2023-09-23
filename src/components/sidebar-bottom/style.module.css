@@ -23,8 +23,6 @@
     background-color: rgba(71, 85, 105, 0.69);
     border-radius: 5px;
     padding: 5px;
-
-
 }
 
 .sub_name span {
@@ -40,8 +38,8 @@
         left: 0;
         bottom: 0;
         height: 50px;
-        background: rgba(15, 15, 15, 0.55);
-        backdrop-filter: blur(5px);
+        background: rgb(15, 15, 15);
+        
         z-index: 999;
         width: 100%;
         padding: 0 5px;

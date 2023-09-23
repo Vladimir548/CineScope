@@ -26,7 +26,7 @@ export default function LayoutMulti({ data }: ILayoutMulti) {
               key={item.id}
               className=" border-transparent border-2 hover:border-slate-500 hover:border-2 "
             >
-              <Link className={style.link} key={item.id} href={`/${definitionType}/${item.id}`}>
+              <Link className={style.link} key={item.id} href={`/${item.media_type}/${item.id}`}>
                 {item.media_type !== 'person' && (
                   <CardHeader className="flex justify-between items-center p-0 px-4 ">
                     <h4 className="font-bold text-base flex items-center lg:text-xl">
@@ -63,6 +63,11 @@ export default function LayoutMulti({ data }: ILayoutMulti) {
             </Card>
           ))}
       </div>
+      {data?.results.length === 0 && (
+        <div className={'flex justify-center items-center  text-2xl'}>
+          <h3>Ничего не найдено</h3>
+        </div>
+      )}
     </>
   );
 }

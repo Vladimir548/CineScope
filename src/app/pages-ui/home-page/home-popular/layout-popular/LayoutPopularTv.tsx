@@ -23,12 +23,12 @@ interface ILayoutPopularTv {
 export default function LayoutPopularTv({ data, title }: ILayoutPopularTv) {
   return (
     <div className="flex flex-col  ">
-      <div className="flex items-start flex-col">
+      <div className="flex items-start flex-col ml-1">
         <Link href={`/tv/popular`}>
           <h2 className={style.header}>{title}</h2>
         </Link>
         <Link
-          className="bg-zinc-700 p-3 rounded-lg ease-in duration-300 hover:bg-zinc-800"
+          className="bg-zinc-700 mb-1 p-3 rounded-lg ease-in duration-300 hover:bg-zinc-800"
           href={`/tv/popular`}
         >
           Посмотреть больше

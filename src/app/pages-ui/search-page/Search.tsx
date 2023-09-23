@@ -68,7 +68,7 @@ export default function Search() {
 
   return (
     <div onClick={() => setIsDropdown(false)} className=" mt-2">
-      <form onClick={(e) => e.stopPropagation()} className=" relative flex">
+      <form onClick={(e) => e.stopPropagation()} className=" relative flex mx-2">
         <div className="relative w-[100vw] ">
           <input
             onKeyUp={(e) => handlerKey(e)}

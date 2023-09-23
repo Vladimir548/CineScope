@@ -20,7 +20,7 @@ export default function PersonId() {
       <Tabs aria-label="Options">
         <Tab className={'text-xl'} key="biography" title="Биография">
           <Card>
-            <CardBody className={'p-2 '}>
+            <CardBody className={'p-2  '}>
               <div className={style.wrapper}>
                 <div className={style.content}>
                   <div className={style.information}>
