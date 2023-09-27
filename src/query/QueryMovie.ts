@@ -58,6 +58,18 @@ export const QueryMovie = {
     });
     return data as MoviesResponse;
   },
+  async getMovieUpcoming(page: number) {
+    const { data } = await axios.get<MoviesResponse>('/api/movie/upcoming', {
+      params: {
+        language: 'ru-RU',
+        page,
+      },
+      headers: {
+        Authorization: `Bearer ${key}`,
+      },
+    });
+    return data as MoviesResponse;
+  },
   async getMovieId(id: number) {
     const { data } = await axios.get(`/api/movie/${id}`, {
       params: {

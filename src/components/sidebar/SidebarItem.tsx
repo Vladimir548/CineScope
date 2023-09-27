@@ -44,33 +44,20 @@ export const SidebarItem: React.FC<IRoutes> = ({
         {subLink ? (
           <ul>
             <li className={style.main_link}>
-              <div className={`${style.link} ${pathname === link ? style.active_link : ''}`}>
-                <span className={style.icon}>
-                  <Icon />
-                </span>{' '}
-                <p className={style.link_name}>
-                  {name} <span>{subLink ? <BsChevronRight /> : ''}</span>
-                </p>
-              </div>
-              <ul className={style.subLink}>
-                <div key={mainLink.id}>
-                  <Link className="relative cursor-pointer" href={mainLink?.link}>
-                    <Image
-                      className={'rounded-lg'}
-                      src={mainLink.src}
-                      alt={mainLink.name}
-                      width={220}
-                      height={280}
-                    />
-                    <p
-                      className=" absolute left-1/2 bottom-0  -translate-x-1/2
-                                        flex justify-center py-2
-                                        text-2xl bg-slate-800/50 w-full backdrop-blur "
-                    >
-                      {mainLink.name}
-                    </p>
-                  </Link>
+              <Link href={link}>
+                <div className={`${style.link} ${pathname === link ? style.active_link : ''}`}>
+                  <span className={style.icon}>
+                    <Icon />
+                  </span>{' '}
+                  <p className={style.link_name}>
+                    <h3>{name}</h3>
+                  </p>
+                  <div className={style.icon_sub}>
+                    <span>{subLink ? <BsChevronRight size={26} /> : ''}</span>
+                  </div>
                 </div>
+              </Link>
+              <ul className={style.subLink}>
                 <div>
                   {subLink.map((sub) => (
                     <li className="cursor-pointer" key={sub.id}>

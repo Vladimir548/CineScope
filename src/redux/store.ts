@@ -10,6 +10,7 @@ import { YearSlice } from '@/redux/slices/year-slice';
 import { RatingSlice } from '@/redux/slices/rating-slice';
 import { TypeSlice } from '@/redux/slices/type-slice';
 import { SortSlice } from '@/redux/slices/sort-slice';
+import { UserSlice } from '@/redux/slices/user-slice';
 
 const rootReducer = combineReducers({
   burger: BurgerSlice.reducer,
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   rating: RatingSlice.reducer,
   type: TypeSlice.reducer,
   sort: SortSlice.reducer,
+  user: UserSlice.reducer,
 });
 const store = configureStore({
   reducer: rootReducer,

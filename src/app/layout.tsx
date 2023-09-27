@@ -7,9 +7,7 @@ import QueryProvider from '@/providers/QueryProvider';
 import { Sidebar } from '@/components/sidebar/Sidebar';
 import Header from '@/components/header/Header';
 import ButtonUp from '@/components/btn-up/ButtonUP';
-import Footer from '@/components/footer/Footer';
 import SidebarBottom from '@/components/sidebar-bottom/SidebarBottom';
-import { Suspense } from 'react';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -28,7 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <aside className="">
                 <Sidebar />
               </aside>
-              <div className="relative overflow-x-auto  mb-[70px] md:mb-0  ">
+              <div className="relative overflow-x-auto  mb-[70px] md:mb-0 w-full ">
                 <Header />
                 <QueryProvider>{children}</QueryProvider>
               </div>
