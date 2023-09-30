@@ -7,11 +7,20 @@ import { SidebarItem } from './SidebarItem';
 import { useTypedSelector } from '@/redux/hooks/useTypedSelector';
 import { useDispatch } from 'react-redux';
 import { usePathname } from 'next/navigation';
-import { AiOutlineHome, AiOutlineSearch } from 'react-icons/ai';
-import { BiMoviePlay } from 'react-icons/bi';
+import { AiOutlineHome, AiOutlineSearch, AiTwotoneHome } from 'react-icons/ai';
+import {
+  BiMovie,
+  BiMoviePlay,
+  BiSearchAlt2,
+  BiSolidMovie,
+  BiSolidSearchAlt2,
+} from 'react-icons/bi';
 import { CiCompass1 } from 'react-icons/ci';
 import { HiMiniComputerDesktop } from 'react-icons/hi2';
-import { BsPeople } from 'react-icons/bs';
+import { BsPeople, BsPeopleFill } from 'react-icons/bs';
+import { GoHome, GoHomeFill } from 'react-icons/go';
+import { RiSearchFill, RiSearchLine } from 'react-icons/ri';
+import { PiMonitorFill, PiMonitorLight } from 'react-icons/pi';
 
 interface IBox {
   activeSidebar: boolean;
@@ -23,28 +32,24 @@ export const Box = () => {
     () => [
       {
         id: 1,
-        icon: AiOutlineHome,
+        icon: GoHome,
+        iconActive: GoHomeFill,
         name: 'Главная',
         link: '/',
       },
       {
         id: 4,
-        icon: AiOutlineSearch,
+        icon: BiSearchAlt2,
+        iconActive: BiSolidSearchAlt2,
         name: 'Поиск',
         link: '/search',
       },
       {
         id: 2,
-        icon: BiMoviePlay,
+        icon: BiMovie,
+        iconActive: BiSolidMovie,
         name: 'Фильмы',
         link: '/movie',
-
-        // mainLink: {
-        //   id: 20,
-        //   name: 'Фильмы',
-        //   link: '/movie',
-        //   src: 'https://image.tmdb.org/t/p/w500/n3PDUmM7Scg63LjfpmkOXtdOPoe.jpg',
-        // },
         subLink: [
           {
             id: 21,
@@ -72,13 +77,14 @@ export const Box = () => {
             icon: CiCompass1,
             name: 'Предстоящие',
             link: '/movie/upcoming',
-            description: 'Ожидаемые релизы',
+            description: 'Будущие кинопроекты, которые скоро появятся на экранах',
           },
         ],
       },
       {
         id: 3,
-        icon: HiMiniComputerDesktop,
+        icon: PiMonitorLight,
+        iconActive: PiMonitorFill,
         name: 'Сериалы',
         link: '/tv',
         subLink: [
@@ -108,6 +114,7 @@ export const Box = () => {
       {
         id: 5,
         icon: BsPeople,
+        iconActive: BsPeopleFill,
         name: 'Актеры',
         link: '/actors',
       },

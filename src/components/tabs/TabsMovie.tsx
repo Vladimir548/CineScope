@@ -10,6 +10,8 @@ import CompanyTabs from '@/components/tabs/company-tabs/CompanyTabs';
 
 import CollectionTabsMovie from '@/components/tabs/collection-tabs-movie/CollectionTabsMovie';
 import Link from 'next/link';
+import { useCertification } from '@/hooks/useCertification';
+import ReactPlayer from 'react-player';
 
 interface ITabs {
   data: IMovie;
@@ -22,7 +24,10 @@ export default function TabsMovie({ data, isSuccess }: ITabs) {
   const formattedRuntime = `${formattedHours}ч ${formattedMinutes}мин`;
   const formattedBudget = data?.budget?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
   const formattedRevenue = data?.revenue?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-
+  const certificate = useCertification(
+    data?.release_dates?.results?.filter((dates) => dates?.iso_3166_1 === 'US')[0]?.release_dates[0]
+      .certification,
+  );
   return (
     <div className="flex w-full flex-col">
       <Tabs
@@ -36,7 +41,14 @@ export default function TabsMovie({ data, isSuccess }: ITabs) {
           <Card>
             <CardBody className={style.text}>
               {data?.overview}
-              Трейлеры
+              {data?.videos.results[0]?.key && (
+                <ReactPlayer
+                  url={`https://www.youtube.com/watch?v=${data?.videos?.results[0]?.key}`}
+                  controls={true}
+                  width={'100%'}
+                  height={'auto'}
+                />
+              )}
             </CardBody>
           </Card>
         </Tab>
@@ -49,6 +61,10 @@ export default function TabsMovie({ data, isSuccess }: ITabs) {
                   <div className={twMerge('flex ', style.text)}>
                     TMDB {data?.vote_average.toFixed(1)}
                   </div>
+                </li>
+                <li className={style.block_info}>
+                  <div className={style.text}>Возраст</div>
+                  <div className={twMerge('flex ', style.text)}>{certificate}</div>
                 </li>
                 <li className={style.block_info}>
                   <div className={style.text}>Жанр</div>

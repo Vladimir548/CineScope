@@ -62,7 +62,10 @@ export default function LayoutPopularTv({ data, title }: ILayoutPopularTv) {
       >
         {data?.results?.map((item) => (
           <SwiperSlide key={item.id}>
-            <Card key={item.id} className=" border-transparent border-2   flex ">
+            <Card
+              key={item.id}
+              className=" border-transparent border-2 flex ease-in-out duration-400 hover:bg-[#3F3F46] "
+            >
               <Link className="flex flex-col" href={`/tv/${item.id}`}>
                 <CardHeader className="flex justify-between items-center p-0 px-4 ">
                   <h4 className={cn('font-bold text-large flex items-center', style.rating)}>

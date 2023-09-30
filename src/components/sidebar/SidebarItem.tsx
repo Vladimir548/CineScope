@@ -14,6 +14,7 @@ import { useTypedSelector } from '@/redux/hooks/useTypedSelector';
 
 interface IsSidebarItem {
   icon: IconType;
+  iconActive: IconType;
   name: string;
   link: string;
   subLink: ISubLink[];
@@ -25,17 +26,13 @@ export const SidebarItem: React.FC<IRoutes> = ({
   name,
   link,
   subLink,
-  mainLink,
+  iconActive: IconActive,
 }: IsSidebarItem) => {
   const pathname = usePathname();
-  const findSubLink = () => {
-    if (subLink) {
-      const path = subLink.find((item) => item.link === pathname);
-      return path?.link;
-    }
-  };
-  const subPathname = findSubLink();
+
   const isActive = pathname === link;
+  const isActiveStarts = pathname.startsWith(link);
+
   const { isActive: sidActive } = useTypedSelector((state) => state.sidebar);
 
   return (
@@ -45,10 +42,8 @@ export const SidebarItem: React.FC<IRoutes> = ({
           <ul>
             <li className={style.main_link}>
               <Link href={link}>
-                <div className={`${style.link} ${pathname === link ? style.active_link : ''}`}>
-                  <span className={style.icon}>
-                    <Icon />
-                  </span>{' '}
+                <div className={`${style.link} ${isActiveStarts ? style.active_link : ''}`}>
+                  <span className={style.icon}>{isActiveStarts ? <IconActive /> : <Icon />}</span>{' '}
                   <p className={style.link_name}>
                     <h3>{name}</h3>
                   </p>
@@ -58,7 +53,7 @@ export const SidebarItem: React.FC<IRoutes> = ({
                 </div>
               </Link>
               <ul className={style.subLink}>
-                <div>
+                <div className={'flex flex-wrap gap-x-2'}>
                   {subLink.map((sub) => (
                     <li className="cursor-pointer" key={sub.id}>
                       <Link href={sub.link}>
@@ -84,9 +79,7 @@ export const SidebarItem: React.FC<IRoutes> = ({
                     className={`${style.link} ${isActive ? style.active_link : ''}`}
                     href={link}
                   >
-                    <span className={style.icon}>
-                      <Icon />
-                    </span>{' '}
+                    <span className={style.icon}>{isActive ? <IconActive /> : <Icon />}</span>{' '}
                     <p className={style.link_name}>{name}</p>
                   </Link>
                 </li>
@@ -94,9 +87,7 @@ export const SidebarItem: React.FC<IRoutes> = ({
             ) : (
               <li className={'flex'}>
                 <Link className={`${style.link} ${isActive ? style.active_link : ''}`} href={link}>
-                  <span className={style.icon}>
-                    <Icon />
-                  </span>{' '}
+                  <span className={style.icon}>{isActive ? <IconActive /> : <Icon />}</span>{' '}
                   <p className={style.link_name}>{name}</p>
                 </Link>
               </li>

@@ -1,6 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Roboto } from 'next/font/google';
 import { UIProvider } from '@/providers/UIProvider';
 import ReduxProvider from '@/providers/ReduxProviders';
 import QueryProvider from '@/providers/QueryProvider';
@@ -9,7 +9,7 @@ import Header from '@/components/header/Header';
 import ButtonUp from '@/components/btn-up/ButtonUP';
 import SidebarBottom from '@/components/sidebar-bottom/SidebarBottom';
 
-const inter = Inter({ subsets: ['latin'] });
+const roboto = Roboto({ subsets: ['latin'], weight: ['400'] });
 
 export const metadata: Metadata = {
   title: 'CineScope',
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={roboto.className}>
         <ReduxProvider>
           <UIProvider>
             <main className="dark text-foreground bg-background flex ">

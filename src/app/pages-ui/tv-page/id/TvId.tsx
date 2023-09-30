@@ -34,7 +34,7 @@ export default function TvId() {
     <>
       {isSuccess ? (
         <div className=" ">
-          <div className="w-[100vmax]">
+          <div className={` fixed top-0  object-cover  `}>
             <ImageNext
               src={`${process.env.NEXT_PUBLIC_IMAGE_URL}original/${data?.backdrop_path}`}
               alt={data?.name!}
@@ -42,7 +42,6 @@ export default function TvId() {
               height={700}
               priority={true}
               sizes=" 100vw"
-              className={`fixed top-0   `}
             />
           </div>
           <div className={style.wrapper}>

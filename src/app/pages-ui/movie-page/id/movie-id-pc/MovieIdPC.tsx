@@ -11,6 +11,7 @@ import { BiSolidCircle } from 'react-icons/bi';
 import { twMerge } from 'tailwind-merge';
 import TabsMovie from '@/components/tabs/TabsMovie';
 import LoadingCircular from '@/components/loading/LoadingCircular';
+import ReactPlayer from 'react-player';
 
 export default function MovieIdPc() {
   const params = useParams();
@@ -36,7 +37,7 @@ export default function MovieIdPc() {
     );
   return (
     <div className=" ">
-      <div className="w-[100vmax]">
+      <div className={` fixed top-0  object-cover   `}>
         <ImageNext
           src={`${process.env.NEXT_PUBLIC_IMAGE_URL}original/${data?.backdrop_path}`}
           alt={data?.title!}
@@ -44,7 +45,6 @@ export default function MovieIdPc() {
           height={2000}
           priority
           sizes=" 100vw"
-          className={`fixed top-0  object-cover `}
         />
       </div>
       <div className={style.wrapper}>
@@ -61,6 +61,7 @@ export default function MovieIdPc() {
               alt={data?.title!}
               width={220}
               height={322}
+              sizes="220px"
               className={twMerge('object-cover rounded-lg relative z-10', style.poster)}
             />
           </div>

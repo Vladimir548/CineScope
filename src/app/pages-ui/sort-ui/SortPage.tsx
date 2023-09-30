@@ -1,9 +1,8 @@
 'use client';
 import { QuerySearch } from '@/query/QuerySearch';
 import { useTypedSelector } from '@/redux/hooks/useTypedSelector';
-import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import React, { useEffect, useState } from 'react';
-import LayoutMulti from '@/layout/LayoutMulti';
 import LayoutSkeleton from '@/layout/LayoutSkeleton';
 import { openModal } from '@/redux/slices/modal-slices';
 import { RiEqualizerFill } from 'react-icons/ri';
@@ -18,9 +17,9 @@ import { addCountry } from '@/redux/slices/country-slice';
 import { getMaxRating, getMinRating } from '@/redux/slices/rating-slice';
 import { getByYear, getWithYear } from '@/redux/slices/year-slice';
 import { useDefinitionType } from '@/hooks/useDefinitionType';
+import LayoutDefinition from '@/layout/LayoutDefinition';
 
 export default function SortPage() {
-  const { type } = useTypedSelector((state) => state.type);
   const { sort } = useTypedSelector((state) => state.sort);
   const definitionType = useDefinitionType();
   const router = useRouter();
@@ -105,7 +104,7 @@ export default function SortPage() {
       <div className="">
         {isSuccess ? (
           <div>
-            <LayoutMulti data={data} />
+            <LayoutDefinition data={data} />
             <div className="overflow-hidden flex justify-center my-3">
               <Pagination
                 size={'lg'}

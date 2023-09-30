@@ -7,6 +7,7 @@ export interface ISeries {
     cast: Cast[];
     crew: Crew[];
   };
+  content_ratings: ContentRatings;
   episode_run_time: number[];
   first_air_date: string;
   genres: Genre[];
@@ -32,6 +33,10 @@ export interface ISeries {
   production_countries: ProductionCountry[];
   seasons: ITvSeason[];
   spoken_languages: SpokenLanguage[];
+  videos: {
+    id: number;
+    results: IVideos[];
+  };
   status: string;
   tagline: string;
   type: string;
@@ -134,4 +139,28 @@ export interface IImages {
   id: number;
   logos: Logo[];
   posters: Poster[];
+}
+
+export interface ContentRatings {
+  results: RatingTv[];
+  id: number;
+}
+
+export interface RatingTv {
+  descriptors: any[];
+  iso_3166_1: string;
+  rating: string;
+}
+
+export interface IVideos {
+  iso_639_1: string;
+  iso_3166_1: string;
+  name: string;
+  key: string;
+  site: string;
+  size: number;
+  type: string;
+  official: boolean;
+  published_at: string;
+  id: string;
 }

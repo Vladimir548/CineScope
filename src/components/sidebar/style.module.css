@@ -160,11 +160,9 @@
     height: auto;
     align-items: center;
     width: 100%;
-
-
     cursor: pointer;
     color: #ffffff;
-    background: #475569;
+    background: #3F3F46;
     border-radius: 5px;
     font-weight: bold;
 }
@@ -226,8 +224,9 @@
     position: absolute;
     top: -50%;
     left: 100%;
-    width: 100%;
-    background-color: rgba(51, 65, 85, 0.51);
+    width: 470px;
+    height: 200px;
+    background-color: rgba(24, 24, 27, 0.63);
     backdrop-filter: blur(5px);
     border-radius: 5px;
     padding: 10px 5px;
@@ -238,10 +237,10 @@
 }
 
 .main_link:hover .subLink {
-    display: grid;
-    width: 260px;
+    display: flex;
 
-    grid-template-columns: 250px;
+    overflow: hidden;
+    flex-wrap: wrap;
     opacity: 1;
     transform: scale(1);
     transition: opacity 0.3s ease-in-out, transform 0.3s 0.3s ease-in-out;
@@ -256,7 +255,8 @@
     font-size: 20px;
     line-height: 24px;
     transition: .3s ease-in-out;
-    background-color: rgba(71, 85, 105, 0.69);
+    width: 225px;
+    background-color: #3F3F46;
     border-radius: 5px;
     padding: 5px;
 }
@@ -267,7 +267,7 @@
 }
 
 .sub_name:hover {
-    background-color: rgb(51 65 85);
+    background-color: #27272A;
 }
 
 .description {
@@ -280,11 +280,11 @@
 }
 
 .link:hover {
-    background: #334155;
+    background: #3F3F46;
 }
 
 .link_active {
-    background: #475569;
+    background: #3F3F46;
 }
 
 .link_name {
@@ -293,14 +293,19 @@
     display: flex;
     align-items: center;
     font-weight: bold;
+    opacity: .8;
+}
 
+.link:hover .link_name {
+    opacity: 1;
+}
 
+.active_link .link_name {
+    opacity: 1;
 }
 
 .icon_sub {
-    display: flex;
-    justify-content: flex-end;
-    flex: 0 1 100%;
+    margin-left: auto;
     transition: .3s ease-in-out;
 }
 

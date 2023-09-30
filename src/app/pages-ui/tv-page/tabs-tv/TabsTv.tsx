@@ -9,6 +9,9 @@ import CrewTvTabs from '@/app/pages-ui/tv-page/tabs-tv/credits-tabs/CrewTvTabs';
 import SimilarTvTabs from '@/app/pages-ui/tv-page/tabs-tv/similar-tabs/SimilarTvTabs';
 import ImagesTvTabs from '@/app/pages-ui/tv-page/tabs-tv/images-tabs/ImagesTvTabs';
 import Link from 'next/link';
+import { useTypeStatus } from '@/hooks/useTypeStatus';
+import { useCertification } from '@/hooks/useCertification';
+import ReactPlayer from 'react-player';
 
 interface ITabs {
   data: ISeries;
@@ -16,6 +19,11 @@ interface ITabs {
 }
 
 export default function TabsTv({ data, isSuccess }: ITabs) {
+  const statusRU = useTypeStatus(data?.status);
+  const cetificate = useCertification(
+    data?.content_ratings?.results?.filter((res) => res?.iso_3166_1 === 'US')[0]?.rating,
+  );
+
   return (
     <div className="flex w-full flex-col ">
       <Tabs
@@ -26,7 +34,18 @@ export default function TabsTv({ data, isSuccess }: ITabs) {
       >
         <Tab className={'text-xl'} key="overview" title="Описание">
           <Card>
-            <CardBody className={style.text}>{data?.overview}</CardBody>
+            <CardBody className={style.text}>
+              {data?.overview}
+              {data?.videos.results[0]?.key && (
+                <div>
+                  <ReactPlayer
+                    url={`https://www.youtube.com/watch?v=${data?.videos?.results[0]?.key}`}
+                    controls={true}
+                    width={'auto'}
+                  />
+                </div>
+              )}
+            </CardBody>
           </Card>
         </Tab>
         <Tab className={'text-xl'} key="information" title="Информация">
@@ -38,6 +57,10 @@ export default function TabsTv({ data, isSuccess }: ITabs) {
                   <div className={twMerge('flex ', style.text)}>
                     TMDB {data.vote_average.toFixed(1)}
                   </div>
+                </li>
+                <li className={style.block_info}>
+                  <div className={style.text}>Возраст</div>
+                  <div className={twMerge('flex ', style.text)}>{cetificate}</div>
                 </li>
                 <li className={style.block_info}>
                   <div className={style.text}>Жанр</div>
@@ -113,7 +136,7 @@ export default function TabsTv({ data, isSuccess }: ITabs) {
 
                 <li className={style.block_info}>
                   <div className={style.text}>Статус</div>
-                  <div className={twMerge('flex', style.text)}>{data.status}</div>
+                  <div className={twMerge('flex', style.text)}>{statusRU}</div>
                 </li>
               </ul>
             </CardBody>

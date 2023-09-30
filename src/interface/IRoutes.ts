@@ -3,6 +3,7 @@ import { IconType } from 'react-icons';
 export interface IRoutes {
   id: number;
   icon: IconType;
+  iconActive: IconType;
   name: string;
   link: string;
   mainLink: IMainLink;

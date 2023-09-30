@@ -61,7 +61,7 @@ export const QueryTv = {
     const { data } = await axios.get(`/api/tv/${id}`, {
       params: {
         language: 'ru-Ru',
-        append_to_response: 'release_dates,images,credits,belongs_to_collection',
+        append_to_response: 'content_ratings,images,videos',
         include_image_language: 'en,ru,ja',
       },
       headers: {

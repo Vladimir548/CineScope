@@ -10,9 +10,6 @@ export const Sidebar = () => {
         <div className=" flex-auto">
           <Box />
         </div>
-        {/*<div className={'bg-[#0f0f0f]'}>*/}
-        {/*  <UserCookies />*/}
-        {/*</div>*/}
       </div>
     </div>
   );
