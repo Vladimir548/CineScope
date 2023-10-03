@@ -20,7 +20,7 @@ export default function Movie() {
   return (
     <>
       <div>
-        <div className="">
+        <div className="hidden md:block">
           <TopFilter />
         </div>
         {isSuccess ? (

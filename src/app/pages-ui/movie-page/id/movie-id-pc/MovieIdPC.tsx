@@ -4,37 +4,34 @@ import { QueryMovie } from '@/query/QueryMovie';
 import { useParams } from 'next/navigation';
 import ImageNext from 'next/image';
 import style from './style.module.css';
-import { usePalette } from 'color-thief-react';
 
 import { BiSolidCircle } from 'react-icons/bi';
-
 import { twMerge } from 'tailwind-merge';
 import TabsMovie from '@/components/tabs/TabsMovie';
 import LoadingCircular from '@/components/loading/LoadingCircular';
-import ReactPlayer from 'react-player';
+
+import { usePalette } from '@/app/get-palette/usePalette';
 
 export default function MovieIdPc() {
   const params = useParams();
   const { data, isSuccess, isLoading, error } = useQuery(['get-id-movie'], () =>
     QueryMovie.getMovieId(Number(params!.id)),
   );
+
   const formattedHours = Math.floor(data?.runtime! / 60);
   const formattedMinutes = data?.runtime! % 60;
   const formattedRuntime = `${formattedHours}ч ${formattedMinutes}мин`;
-  const crossOrigin = 'anonymous';
 
   const backdrop = `${process.env.NEXT_PUBLIC_IMAGE_URL}w300/${data?.backdrop_path}`;
-  const { data: pallete, loading: load } = usePalette(backdrop, 3, 'rgbArray', {
-    crossOrigin,
-  });
-  const colorPalletOne = pallete?.map((item) => item)[0];
-  const colorPalletTwo = pallete?.map((item) => item)[1];
+  const isPalette = usePalette(backdrop, 1, 1);
+
   if (isLoading)
     return (
       <div>
         <LoadingCircular />
       </div>
     );
+
   return (
     <div className=" ">
       <div className={` fixed top-0  object-cover   `}>
@@ -51,8 +48,8 @@ export default function MovieIdPc() {
         <div
           className={style.top_content}
           style={{
-            boxShadow: `0px -99px 45px 70px rgba(${colorPalletOne},.8)`,
-            backgroundImage: `linear-gradient(to top, rgba(${colorPalletOne},1) 10%, rgba(${colorPalletOne},1) 10%, rgba(${colorPalletOne},.8) 63%)`,
+            boxShadow: `0px -99px 45px 70px rgba(${isPalette},.8)`,
+            backgroundImage: `linear-gradient(to top, rgba(${isPalette},1) 10%, rgba(${isPalette},1) 10%, rgba(${isPalette},.8) 63%)`,
           }}
         >
           <div className={style.poster}>

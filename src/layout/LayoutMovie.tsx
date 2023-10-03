@@ -44,6 +44,7 @@ export default function LayoutMovie({ data, isPage }: ILayoutMovie) {
                   width={290}
                   height={360}
                   sizes="20vw"
+                  loading={'eager'}
                 />
               </CardBody>
               <CardFooter className={cn('pb-2 pt-1  flex-col items-start', style.cont_titles)}>

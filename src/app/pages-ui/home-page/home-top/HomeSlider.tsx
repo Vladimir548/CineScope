@@ -27,10 +27,10 @@ export default function HomeSlider() {
         className={'mySwiper'}
         navigation={false}
         spaceBetween={30}
-        autoplay={{
-          delay: 4500,
-          disableOnInteraction: false,
-        }}
+        // autoplay={{
+        //   delay: 4500,
+        //   disableOnInteraction: false,
+        // }}
         effect={'coverflow'}
         coverflowEffect={{
           rotate: 50,

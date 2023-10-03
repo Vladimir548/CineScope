@@ -3,33 +3,28 @@ import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'next/navigation';
 import ImageNext from 'next/image';
 import style from './style.module.css';
-import { usePalette } from 'color-thief-react';
 import { BiSolidCircle } from 'react-icons/bi';
-import { Image } from '@nextui-org/react';
 import { twMerge } from 'tailwind-merge';
 import { QueryTv } from '@/query/QueryTv';
 import TabsTv from '@/app/pages-ui/tv-page/tabs-tv/TabsTv';
 import LoadingCircular from '@/components/loading/LoadingCircular';
+import { useEffect, useRef, useState } from 'react';
+import { usePalette } from '@/app/get-palette/usePalette';
 
 export default function TvId() {
   const params = useParams();
   const { data, isSuccess, isLoading } = useQuery(['get-id-tv', params!.id], () =>
     QueryTv.getIdTv(Number(params!.id)),
   );
-  const crossOrigin = 'anonymous';
   const backdrop = `${process.env.NEXT_PUBLIC_IMAGE_URL}w300/${data?.backdrop_path}`;
-  const { data: pallete, loading: load } = usePalette(backdrop, 3, 'rgbArray', {
-    crossOrigin,
-  });
-  const colorPalletOne = pallete?.map((item) => item)[0];
-  const colorPalletTwo = pallete?.map((item) => item)[1];
-
+  const isPalette = usePalette(backdrop, 1, 1);
   if (isLoading)
     return (
       <div>
         <LoadingCircular />
       </div>
     );
+
   return (
     <>
       {isSuccess ? (
@@ -48,8 +43,8 @@ export default function TvId() {
             <div
               className={style.top_content}
               style={{
-                backgroundImage: `linear-gradient(to top, rgba(${colorPalletOne},1) 10%, rgba(${colorPalletOne},1) 10%, rgba(${colorPalletOne},.8) 63%)`,
-                boxShadow: `0px -99px 45px 70px rgba(${colorPalletOne},.8)`,
+                backgroundImage: `linear-gradient(to top, rgba(${isPalette},1) 10%, rgba(${isPalette},1) 10%, rgba(${isPalette},.8) 63%)`,
+                boxShadow: `0px -99px 45px 70px rgba(${isPalette},.8)`,
               }}
             >
               <div className={style.poster}>

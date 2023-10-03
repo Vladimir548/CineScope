@@ -26,7 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <aside className="">
                 <Sidebar />
               </aside>
-              <div className="relative overflow-x-auto  mb-[70px] md:mb-0 w-full ">
+              <div className="relative mb-[70px] md:mb-0 w-full ">
                 <Header />
                 <QueryProvider>{children}</QueryProvider>
               </div>
