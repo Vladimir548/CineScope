@@ -15,6 +15,6 @@ export async function getPalette(imgUrl: string, quantityColor: number, startCol
   const sortedValuesColors = sortColors
     .map((colors) => colors.color)
     .slice(startColor - 1, quantityColor);
-  console.log(sortedValuesColors);
+
   return sortedValuesColors;
 }

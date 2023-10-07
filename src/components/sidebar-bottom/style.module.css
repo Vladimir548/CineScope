@@ -20,12 +20,25 @@
     font-size: 18px;
     line-height: 24px;
     transition: .3s ease-in-out;
-    background-color: rgba(71, 85, 105, 0.69);
+    background-color: #27272A;
     border-radius: 5px;
     padding: 5px;
 }
 
-.sub_name span {
+.sub_name_active {
+    display: flex;
+    align-items: center;
+    margin: 3px 0;
+    font-size: 18px;
+    line-height: 24px;
+    transition: .3s ease-in-out;
+    background-color: #3F3F46;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.sub_name span,
+.sub_name_active span {
     padding-right: 5px;
     font-size: 20px;
 }
@@ -39,7 +52,7 @@
         bottom: 0;
         height: 50px;
         background: rgb(15, 15, 15);
-        
+
         z-index: 999;
         width: 100%;
         padding: 0 5px;
@@ -54,7 +67,7 @@
 }
 
 .active_link {
-    background: rgb(255, 0, 0);
+    background: #3F3F46;
     border-radius: 5px;
 }
 

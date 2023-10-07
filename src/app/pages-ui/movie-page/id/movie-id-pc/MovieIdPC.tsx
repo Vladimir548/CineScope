@@ -9,7 +9,6 @@ import { BiSolidCircle } from 'react-icons/bi';
 import { twMerge } from 'tailwind-merge';
 import TabsMovie from '@/components/tabs/TabsMovie';
 import LoadingCircular from '@/components/loading/LoadingCircular';
-
 import { usePalette } from '@/app/get-palette/usePalette';
 
 export default function MovieIdPc() {
@@ -34,7 +33,7 @@ export default function MovieIdPc() {
 
   return (
     <div className=" ">
-      <div className={` fixed top-0  object-cover   `}>
+      <div className={` fixed top-0  object-cover bg-[rgb(${isPalette})]  bg-blend-overlay  `}>
         <ImageNext
           src={`${process.env.NEXT_PUBLIC_IMAGE_URL}original/${data?.backdrop_path}`}
           alt={data?.title!}
@@ -49,7 +48,7 @@ export default function MovieIdPc() {
           className={style.top_content}
           style={{
             boxShadow: `0px -99px 45px 70px rgba(${isPalette},.8)`,
-            backgroundImage: `linear-gradient(to top, rgba(${isPalette},1) 10%, rgba(${isPalette},1) 10%, rgba(${isPalette},.8) 63%)`,
+            backgroundImage: `linear-gradient(to top, rgba(${isPalette},1) 10%, rgba(${isPalette},1) 10%, rgba(${isPalette},.9) 63%)`,
           }}
         >
           <div className={style.poster}>

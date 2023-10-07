@@ -31,14 +31,14 @@ export default function SidebarBottom() {
         id: 2,
         icon: BiMoviePlay,
         name: 'Фильмы',
-
+        linkOpen: '/movie',
         subLink: [
           {
             id: 20,
             icon: CiCompass1,
-            name: 'Фильмы',
-            link: '/movie',
-            description: 'Все фильмы в одной подборке',
+            name: 'Фильтры',
+            link: '/movie/filters',
+            description: 'Создайте свою идеальную подборку фильмов',
           },
           {
             id: 21,
@@ -67,14 +67,14 @@ export default function SidebarBottom() {
         id: 3,
         icon: HiMiniComputerDesktop,
         name: 'Сериалы',
-
+        linkOpen: '/tv',
         subLink: [
           {
             id: 30,
             icon: CiCompass1,
-            name: 'Сериалы',
-            link: '/tv',
-            description: 'Все сериалы в одной подборке',
+            name: 'Фильтры',
+            link: '/tv/filters',
+            description: 'ВСоздайте свою идеальную подборку фильмов!',
           },
           {
             id: 31,

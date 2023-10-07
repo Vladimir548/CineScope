@@ -18,6 +18,7 @@ import { getMaxRating, getMinRating } from '@/redux/slices/rating-slice';
 import { getByYear, getWithYear } from '@/redux/slices/year-slice';
 import { useDefinitionType } from '@/hooks/useDefinitionType';
 import LayoutDefinition from '@/layout/LayoutDefinition';
+import TopFilter from '@/components/top-filter/TopFilter';
 
 export default function SortPage() {
   const { sort } = useTypedSelector((state) => state.sort);
@@ -83,24 +84,24 @@ export default function SortPage() {
   };
   return (
     <div>
-      <div className="mt-2 flex justify-between items-center">
-        <div className="">
-          <Sort />
-        </div>
-        <div className="">
-          <button
-            className={'p-2 bg-[#18181B] rounded-lg ease-in-out duration-400 hover:bg-[#242429]'}
-            onClick={clickModal}
-          >
-            <RiEqualizerFill size={26} />
+      {/*<div className="mt-2 flex justify-between items-center">*/}
+      {/*  <div className="">*/}
+      {/*    <Sort />*/}
+      {/*  </div>*/}
+      {/*  <div className="">*/}
+      {/*    <button*/}
+      {/*      className={'p-2 bg-[#18181B] rounded-lg ease-in-out duration-400 hover:bg-[#242429]'}*/}
+      {/*      onClick={clickModal}*/}
+      {/*    >*/}
+      {/*      <RiEqualizerFill size={26} />*/}
 
-            <ModalNested>
-              <Placeholder />
-            </ModalNested>
-          </button>
-        </div>
-      </div>
-
+      {/*      <ModalNested>*/}
+      {/*        <Placeholder />*/}
+      {/*      </ModalNested>*/}
+      {/*    </button>*/}
+      {/*  </div>*/}
+      {/*</div>*/}
+      <TopFilter />
       <div className="">
         {isSuccess ? (
           <div>
