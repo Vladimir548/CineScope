@@ -6,13 +6,14 @@ import 'swiper/css/navigation';
 import NextImage from 'next/image';
 import './styles.css';
 import style from './style.module.css';
-import { Navigation } from 'swiper/modules';
 import Link from 'next/link';
 import { Card, CardBody, CardFooter, CardHeader, Image } from '@nextui-org/react';
 import { AiFillStar } from 'react-icons/ai';
 import { twMerge } from 'tailwind-merge';
 import { cn } from '@/lib/utils';
 import { MoviesResponse } from '@/interface/IMovie';
+import { useRef } from 'react';
+import SwiperButtonNavigation from '@/app/pages-ui/home-page/home-popular/layout-popular/SwiperButtonNavigation';
 
 interface ILayoutPopularMovie {
   data?: MoviesResponse;
@@ -20,20 +21,27 @@ interface ILayoutPopularMovie {
 }
 
 export default function LayoutPopularMovie({ data, title }: ILayoutPopularMovie) {
+  const swiperRef = useRef<any>(null);
   return (
     <div className="flex flex-col  ">
-      <div className="flex items-start flex-col ml-1">
-        <Link href={`/movie/popular`}>
-          <h2 className={style.header}>{title}</h2>
-        </Link>
-        <Link
-          className="bg-zinc-700 p-3 mb-1 rounded-lg ease-in duration-300 hover:bg-zinc-800"
-          href={`/movie/popular`}
-        >
-          Посмотреть больше
-        </Link>
+      <div className="flex justify-between items-end mx-1 mb-1">
+        <div className="flex items-start flex-col ">
+          <Link href={`/movie/popular`}>
+            <h2 className={style.header}>{title}</h2>
+          </Link>
+          <Link
+            className="bg-zinc-700 p-3  rounded-[50px] ease-in duration-300 hover:bg-zinc-800"
+            href={`/movie/popular`}
+          >
+            Посмотреть больше
+          </Link>
+        </div>
+        <SwiperButtonNavigation swiperRef={swiperRef} />
       </div>
       <Swiper
+        onSwiper={(swiper) => {
+          swiperRef.current = swiper;
+        }}
         slidesPerView={5}
         slidesPerGroupSkip={2}
         breakpoints={{
@@ -55,9 +63,7 @@ export default function LayoutPopularMovie({ data, title }: ILayoutPopularMovie)
           },
         }}
         spaceBetween={10}
-        navigation={true}
-        modules={[Navigation]}
-        className="mySwiper"
+        className="mySwiper-popular"
       >
         {data?.results?.map((item) => (
           <SwiperSlide key={item.id}>

@@ -1,18 +1,20 @@
 'use client';
 
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import NextImage from 'next/image';
 import './styles.css';
 import style from './style.module.css';
-import { Navigation } from 'swiper/modules';
+
 import Link from 'next/link';
 import { Card, CardBody, CardFooter, CardHeader, Image } from '@nextui-org/react';
 import { AiFillStar } from 'react-icons/ai';
 import { twMerge } from 'tailwind-merge';
 import { cn } from '@/lib/utils';
 import { TvResponse } from '@/interface/ITv';
+import { useRef } from 'react';
+import SwiperButtonNavigation from '@/app/pages-ui/home-page/home-popular/layout-popular/SwiperButtonNavigation';
 
 interface ILayoutPopularTv {
   data?: TvResponse;
@@ -21,20 +23,27 @@ interface ILayoutPopularTv {
 }
 
 export default function LayoutPopularTv({ data, title }: ILayoutPopularTv) {
+  const swiperRef = useRef<any>(null);
   return (
-    <div className="flex flex-col  ">
-      <div className="flex items-start flex-col ml-1">
-        <Link href={`/tv/popular`}>
-          <h2 className={style.header}>{title}</h2>
-        </Link>
-        <Link
-          className="bg-zinc-700 mb-1 p-3 rounded-lg ease-in duration-300 hover:bg-zinc-800"
-          href={`/tv/popular`}
-        >
-          Посмотреть больше
-        </Link>
+    <div className="flex flex-col mx-2  ">
+      <div className="flex justify-between items-end  mb-1">
+        <div className="flex items-start flex-col ">
+          <Link href={`/tv/popular`}>
+            <h2 className={style.header}>{title}</h2>
+          </Link>
+          <Link
+            className="bg-zinc-700  p-3 rounded-[50px] ease-in duration-300 hover:bg-zinc-800"
+            href={`/tv/popular`}
+          >
+            Посмотреть больше
+          </Link>
+        </div>
+        <SwiperButtonNavigation swiperRef={swiperRef} />
       </div>
       <Swiper
+        onSwiper={(swiper) => {
+          swiperRef.current = swiper;
+        }}
         slidesPerView={5}
         slidesPerGroupSkip={2}
         breakpoints={{
@@ -56,9 +65,7 @@ export default function LayoutPopularTv({ data, title }: ILayoutPopularTv) {
           },
         }}
         spaceBetween={10}
-        navigation={true}
-        modules={[Navigation]}
-        className="mySwiper"
+        className="mySwiper-popular"
       >
         {data?.results?.map((item) => (
           <SwiperSlide key={item.id}>
