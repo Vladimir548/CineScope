@@ -22,7 +22,7 @@ export default function HomeSliderMobile() {
   return (
     <div>
       <Swiper
-        className={'mySwiper'}
+        className={'mySwiper-mobile'}
         navigation={false}
         spaceBetween={30}
         autoplay={{
@@ -51,9 +51,9 @@ export default function HomeSliderMobile() {
                     as={NextImage}
                     alt={item.title || item.name}
                     className={cn('object-cover rounded-sm ')}
-                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL}original/${item.backdrop_path}`}
-                    width={1600}
-                    height={700}
+                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL}w780/${item.backdrop_path}`}
+                    width={780}
+                    height={400}
                     sizes=" 100vw"
                   />
 

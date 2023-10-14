@@ -23,8 +23,8 @@ interface ILayoutPopularMovie {
 export default function LayoutPopularMovie({ data, title }: ILayoutPopularMovie) {
   const swiperRef = useRef<any>(null);
   return (
-    <div className="flex flex-col  ">
-      <div className="flex justify-between items-end mx-1 mb-1">
+    <div className="flex flex-col mx-2 ">
+      <div className="flex justify-between items-end  mb-1">
         <div className="flex items-start flex-col ">
           <Link href={`/movie/popular`}>
             <h2 className={style.header}>{title}</h2>

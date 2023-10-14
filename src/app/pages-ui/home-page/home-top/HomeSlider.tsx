@@ -25,8 +25,9 @@ export default function HomeSlider() {
     QueryHome.getTrending(),
   );
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
+  const [isActiveIndex, setIsActiveIndex] = useState<any>(0);
 
-  const swiperSlide = useSwiperSlide();
+  const [isTime, setIsTime] = useState<number>(100);
 
   return (
     <>
@@ -42,6 +43,12 @@ export default function HomeSlider() {
           thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
           modules={[Navigation, Autoplay, Thumbs]}
           slidesPerView={1}
+          onActiveIndexChange={(swiper) => {
+            setIsActiveIndex(swiper.realIndex);
+          }}
+          onAutoplayTimeLeft={(_, timeLeft, percentage) => {
+            setIsTime(Number((percentage * 100).toFixed(0)));
+          }}
         >
           {data?.results?.map(
             (item) =>
@@ -54,7 +61,8 @@ export default function HomeSlider() {
                     className={cn('object-cover rounded-sm')}
                     src={`${process.env.NEXT_PUBLIC_IMAGE_URL}original/${item.backdrop_path}`}
                     width={2000}
-                    height={800}
+                    height={700}
+                    loading={'eager'}
                     sizes=" 100vw"
                   />
 
@@ -71,6 +79,7 @@ export default function HomeSlider() {
                           <span className={cn('bg-cyan-500 p-1 rounded-lg', style.tmdb)}>TMDB</span>
                           <span className="pl-1">{item.vote_average.toFixed(1)}</span>
                         </div>
+
                         <span className={cn('bg-slate-900/60 p-1 rounded-lg mx-1 ', style.year)}>
                           {
                             (item.release_date ? item.release_date : item.first_air_date)?.split(
@@ -89,7 +98,7 @@ export default function HomeSlider() {
                       <button className={style.more}>
                         <Link
                           className={cn(
-                            'p-4 bg-sky-600 ease-in duration-300 rounded-lg hover:bg-sky-800',
+                            'p-4 bg-[#0070f0] ease-in duration-300 rounded-lg hover:bg-[#0054b5]',
                             style.link,
                           )}
                           href={`/${item.media_type}/${item.id}`}
@@ -108,10 +117,10 @@ export default function HomeSlider() {
                     <Image
                       as={NextImage}
                       alt={item.title ? item.title : item.name}
-                      className={cn('object-cover rounded-sm', style.poster)}
+                      className={cn('object-cover rounded-large', style.poster)}
                       src={`${process.env.NEXT_PUBLIC_IMAGE_URL}w342/${item.poster_path}`}
                       width={340}
-                      height={250}
+                      height={300}
                     />
                   </div>
                 </SwiperSlide>
@@ -121,28 +130,61 @@ export default function HomeSlider() {
 
         <Swiper
           loop={true}
-          spaceBetween={10}
+          spaceBetween={20}
           slidesPerView={5}
+          slidesPerGroup={2}
           freeMode={true}
           watchSlidesProgress={true}
           modules={[Navigation, Thumbs]}
           onSwiper={setThumbsSwiper}
           navigation={true}
           slidesPerGroupSkip={2}
+          breakpoints={{
+            1650: {
+              slidesPerView: 6,
+            },
+
+            1350: {
+              slidesPerView: 5,
+            },
+            1250: {
+              slidesPerView: 4,
+              slidesPerGroup: 2,
+            },
+          }}
           className={'mySwiper'}
         >
-          {data?.results?.map((item) => (
-            <SwiperSlide className={'relative'}>
-              <>
+          {data?.results?.map((item, index) => (
+            <SwiperSlide className={'relative cursor-pointer'}>
+              <div className={'relative'}>
                 <NextImage
                   alt={item!.title ? item!.title || '' : item!.name || ''}
-                  className={cn('object-cover rounded-lg h-[150px]')}
+                  className={`object-cover rounded-lg h-[150px] opacity-80   `}
                   src={`${process.env.NEXT_PUBLIC_IMAGE_URL}w300/${item.backdrop_path}`}
                   width={400}
                   height={150}
                   sizes=" 100vw"
                 />
-              </>
+
+                <div
+                  className={`${
+                    isActiveIndex === index
+                      ? 'absolute block left-0 top-0 rounded-lg w-full h-full px-2 py-1 bg-black/60 text-md border-4 border-blue-700'
+                      : 'hidden '
+                  }  `}
+                >
+                  {item.title ? item.title : item.name}
+                  <div className="absolute bottom-0 right-0 z-[90] px-1 py-2  w-full">
+                    <Progress
+                      isStriped
+                      aria-label="Loading..."
+                      color="primary"
+                      value={isTime}
+                      className="max-w-md"
+                    />
+                  </div>
+                </div>
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>
