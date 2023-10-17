@@ -40,6 +40,7 @@
     height: 100%;
     background: rgba(21, 20, 20, 0.8);
     z-index: 11;
+    
 }
 
 @media (max-width: 1990px) {

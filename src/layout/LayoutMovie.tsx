@@ -37,7 +37,8 @@ export default function LayoutMovie({ data, isPage }: ILayoutMovie) {
                 <h4 className={style.year}>{movie.release_date?.split('-')[0]}</h4>
               </CardHeader>
               <CardBody className="overflow-visible py-2 relative flex-none px-1">
-                <NextImage
+                <Image
+                  as={NextImage}
                   alt={movie.title}
                   className={cn('object-cover rounded-sm ', style.poster)}
                   src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}

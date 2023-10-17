@@ -5,7 +5,9 @@ import TopFilter from '@/components/top-filter/TopFilter';
 export default function Page() {
   return (
     <div>
-      <TopFilter />
+      <div className={'block md:hidden'}>
+        <TopFilter />
+      </div>
       <Movie />
     </div>
   );
