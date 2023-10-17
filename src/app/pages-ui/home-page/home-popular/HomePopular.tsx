@@ -1,14 +1,15 @@
 import MoviePopular from '@/app/pages-ui/home-page/home-popular/movie-popular/MoviePopular';
 import TvPopular from '@/app/pages-ui/home-page/home-popular/tv-popular/TVPopular';
 import dynamic from 'next/dynamic';
+import LoadingCircular from '@/components/loading/LoadingCircular';
 
 const DynamicMoviePopular = dynamic(
   () => import('@/app/pages-ui/home-page/home-popular/movie-popular/MoviePopular'),
-  { loading: () => <p>Loading...</p> },
+  { loading: () => <LoadingCircular /> },
 );
 const DynamicTvPopular = dynamic(
   () => import('@/app/pages-ui/home-page/home-popular/tv-popular/TVPopular'),
-  {},
+  { loading: () => <LoadingCircular /> },
 );
 export default function HomePopular() {
   return (

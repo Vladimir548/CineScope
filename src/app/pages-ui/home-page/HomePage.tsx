@@ -1,14 +1,17 @@
 'use client';
 import { useEffect, useState } from 'react';
 import HomePopular from './home-popular/HomePopular';
-import HomeSlider from '@/app/pages-ui/home-page/home-top/HomeSlider';
-// import HomeSliderMobile from '@/app/pages-ui/home-page/home-top/HomeSliderMobile';
 import dynamic from 'next/dynamic';
+import LoadingCircular from '@/components/loading/LoadingCircular';
 
-const DynamicSlider = dynamic(() => import('@/app/pages-ui/home-page/home-top/HomeSlider'), {});
+const DynamicSlider = dynamic(() => import('@/app/pages-ui/home-page/home-top/HomeSlider'), {
+  loading: () => <LoadingCircular />,
+});
 const DynamicSliderMobile = dynamic(
   () => import('@/app/pages-ui/home-page/home-top/HomeSliderMobile'),
-  {},
+  {
+    loading: () => <LoadingCircular />,
+  },
 );
 export default function HomePage() {
   const [windowWidth, setWindowWidth] = useState(0);
@@ -33,7 +36,7 @@ export default function HomePage() {
   return (
     <div>
       <>
-        <div className="">{windowWidth > 545 ? <HomeSlider /> : <DynamicSliderMobile />}</div>
+        <div className="">{windowWidth > 545 ? <DynamicSlider /> : <DynamicSliderMobile />}</div>
         <div className="mt-10 mb-10">
           <HomePopular />
         </div>

@@ -1,12 +1,12 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import { Swiper, SwiperSlide, useSwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-coverflow';
-import { Image, Progress, Skeleton } from '@nextui-org/react';
+import { Image, Progress } from '@nextui-org/react';
 import './slider.css';
 import 'swiper/css/thumbs';
 
@@ -17,8 +17,7 @@ import GenreName from '@/components/genre/GenreName';
 import style from './style.module.css';
 import { cn } from '@/lib/utils';
 import { QueryHome } from '@/query/QueryHome';
-import { useEffect, useRef, useState } from 'react';
-import MovieNews from '@/app/pages-ui/movie-page/news/MovieNews';
+import { useState } from 'react';
 
 export default function HomeSlider() {
   const { data, isSuccess, isLoading } = useQuery(['get-trending-all'], () =>
