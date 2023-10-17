@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 
 const DynamicMoviePopular = dynamic(
   () => import('@/app/pages-ui/home-page/home-popular/movie-popular/MoviePopular'),
-  {},
+  { loading: () => <p>Loading...</p> },
 );
 const DynamicTvPopular = dynamic(
   () => import('@/app/pages-ui/home-page/home-popular/tv-popular/TVPopular'),
