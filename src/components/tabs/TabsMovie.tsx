@@ -37,24 +37,14 @@ export default function TabsMovie({ data, isSuccess }: ITabs) {
           tab: 'pointer-events-auto',
         }}
       >
-        <Tab className={'text-xl'} key="overview" title="Описание">
-          <Card>
-            <CardBody className={style.text}>
-              {data?.overview}
-              {data?.videos.results[0]?.key && (
-                <ReactPlayer
-                  url={`https://www.youtube.com/watch?v=${data?.videos?.results[0]?.key}`}
-                  controls={true}
-                  width={'100%'}
-                  height={'auto'}
-                />
-              )}
-            </CardBody>
-          </Card>
-        </Tab>
         <Tab className={'text-xl'} key="information" title="Информация">
           <Card>
             <CardBody>
+              <div className={'pb-2'}>
+                <h3 className={'text-xl'}>Описание</h3>
+                <p className={style.text}> {data.overview}</p>
+              </div>
+              <h3>Полная информация</h3>
               <ul className={style.list}>
                 <li className={style.block_info}>
                   <div className={style.text}>Рейтинг</div>

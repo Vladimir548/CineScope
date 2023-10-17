@@ -43,7 +43,7 @@
 
 .swiper-button-next, .swiper-button-prev {
     color: #fff;
-    background-image: linear-gradient(rgba(255, 255, 255, .15), rgba(255, 255, 255, .15)), linear-gradient(rgba(59, 58, 62, .1), rgba(59, 58, 62, .1)) !important;
+    background-image: linear-gradient(rgba(66, 66, 66, 0.15), rgba(65, 65, 65, 0.15)), linear-gradient(rgba(59, 58, 62, .1), rgba(59, 58, 62, .1)) !important;
     width: 20px;
     height: 40px;
     border-radius: 10px;
@@ -51,6 +51,10 @@
     transition: .3s ease-in-out;
     display: flex;
     font-size: 20px !important;
+}
+
+.swiper-button-prev:after, .swiper-button-next:after {
+    font-size: 14px;
 }
 
 .swiper-button-next:hover, .swiper-button-prev:hover {

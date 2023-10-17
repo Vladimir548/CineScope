@@ -33,7 +33,7 @@ export default function MovieIdPc() {
 
   return (
     <div className=" ">
-      <div className={` fixed top-0  object-cover bg-[rgb(${isPalette})]  bg-blend-overlay  `}>
+      <div className={` fixed top-0  object-cover bg-[rgb(${isPalette})]   `}>
         <ImageNext
           src={`${process.env.NEXT_PUBLIC_IMAGE_URL}original/${data?.backdrop_path}`}
           alt={data?.title!}
