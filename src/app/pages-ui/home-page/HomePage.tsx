@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import HomePopular from './home-popular/HomePopular';
-// import HomeSlider from '@/app/pages-ui/home-page/home-top/HomeSlider';
+import HomeSlider from '@/app/pages-ui/home-page/home-top/HomeSlider';
 // import HomeSliderMobile from '@/app/pages-ui/home-page/home-top/HomeSliderMobile';
 import dynamic from 'next/dynamic';
 
@@ -33,7 +33,7 @@ export default function HomePage() {
   return (
     <div>
       <>
-        <div className="">{windowWidth > 545 ? <DynamicSlider /> : <DynamicSliderMobile />}</div>
+        <div className="">{windowWidth > 545 ? <HomeSlider /> : <DynamicSliderMobile />}</div>
         <div className="mt-10 mb-10">
           <HomePopular />
         </div>
