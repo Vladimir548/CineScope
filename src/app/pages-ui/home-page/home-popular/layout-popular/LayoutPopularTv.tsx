@@ -86,9 +86,7 @@ export default function LayoutPopularTv({ data, title }: ILayoutPopularTv) {
                   </h4>
                 </CardHeader>
                 <CardBody className="overflow-visible py-2 ">
-                  <Image
-                    as={NextImage}
-                    isLoading
+                  <NextImage
                     className="object-cover rounded-sm overflow-hidden"
                     src={`${process.env.NEXT_PUBLIC_IMAGE_URL}w342${item.poster_path}`}
                     width={360}

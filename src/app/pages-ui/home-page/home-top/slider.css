@@ -1,5 +1,5 @@
 .swiper-wrapper {
-    width: 0;
+    width: 0 !important;
 }
 
 .swiper {
@@ -54,7 +54,8 @@
 }
 
 .swiper-button-prev:after, .swiper-button-next:after {
-    font-size: 14px;
+    font-size: 14px !important;
+    color: #fff !important;
 }
 
 .swiper-button-next:hover, .swiper-button-prev:hover {
