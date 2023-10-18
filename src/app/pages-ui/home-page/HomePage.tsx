@@ -37,7 +37,7 @@ export default function HomePage() {
     <div>
       <>
         <div className="">{windowWidth > 545 ? <DynamicSlider /> : <DynamicSliderMobile />}</div>
-        <div className="mt-10 mb-10">
+        <div className="mt-6 mb-10">
           <HomePopular />
         </div>
       </>

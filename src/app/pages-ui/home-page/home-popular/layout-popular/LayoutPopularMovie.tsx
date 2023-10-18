@@ -86,7 +86,7 @@ export default function LayoutPopularMovie({ data, title }: ILayoutPopularMovie)
                 <CardBody className="overflow-visible py-2 ">
                   <NextImage
                     className="object-cover rounded-sm overflow-hidden"
-                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL}w500${item.poster_path}`}
+                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL}w342${item.poster_path}`}
                     width={360}
                     height={500}
                     alt={item.title}

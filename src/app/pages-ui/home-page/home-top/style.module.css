@@ -1,7 +1,26 @@
 .slide {
     position: relative;
     background: #000;
+}
 
+.slide_mobile {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    backdrop-filter: blur(50px);
+
+    border-radius: 15px;
+}
+
+.slide_mobile::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    display: block;
+    height: 100%;
+    filter: blur(50px);
 }
 
 .item_content {
@@ -40,8 +59,20 @@
     height: 100%;
     background: rgba(21, 20, 20, 0.8);
     z-index: 11;
-    
+
 }
+
+/*.bg_blur_mobile {*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    background: rgba(89, 89, 89, 0.1);*/
+
+/*    z-index: 11;*/
+/*}*/
+
 
 @media (max-width: 1990px) {
     .poster {
@@ -164,9 +195,12 @@
 
     .title {
         font-size: 20px;
-        line-height: 28px;
-        font-weight: 600;
+        line-height: 24px;
+        font-weight: 400;
+    }
 
+    .genres {
+        font-size: 12px;
     }
 
 
@@ -175,27 +209,20 @@
 .item_content_mobile {
     position: absolute;
     left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 100%;
-    display: flex;
-
-    flex-direction: column;
-
-
-    padding: 30px 0 5px 5px;
-
+    top: 0;
+    width: 60%;
+    padding: 5px;
     z-index: 20;
 }
 
 @media (max-width: 425px) {
     .title {
-        font-size: 18px;
-        line-height: 22px;
+        font-size: 16px;
+        line-height: 20px;
     }
 
     .genres {
-        font-size: 14px;
+        font-size: 10px;
     }
 
     .year {
@@ -209,28 +236,38 @@
 
 @media (max-width: 375px) {
     .title {
-        font-size: 16px;
-        line-height: 20px;
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    .block_live_nov {
+        margin-bottom: 5px;
+        padding: 2px;
     }
 
     .rating {
-        font-size: 14px;
+        font-size: 10px;
     }
 
     .tmdb {
-        padding: 2px;
+        padding: 1px;
+        font-size: 10px;
+    }
+
+    .live_nov {
+        font-size: 10px;
     }
 }
 
-@media (max-width: 321px) {
+@media (max-width: 325px) {
     .title {
-        font-size: 14px;
-        line-height: 18px;
+        font-size: 10px;
+        line-height: 16px;
 
     }
 
     .genres {
-        font-size: 12px;
+        font-size: 8px;
     }
 
     .year {
