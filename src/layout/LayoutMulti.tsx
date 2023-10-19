@@ -1,21 +1,19 @@
 'use client';
 
 import style from './style.module.css';
-import { Card, CardBody, CardFooter, CardHeader, CircularProgress, Image } from '@nextui-org/react';
+import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/react';
 import { twMerge } from 'tailwind-merge';
 import NextImage from 'next/image';
-import { InfiniteData } from '@tanstack/query-core';
+
 import Link from 'next/link';
 import { AiFillStar } from 'react-icons/ai';
 import { IMulti } from '@/interface/IMulti';
-import { useDefinitionType } from '@/hooks/useDefinitionType';
 
 interface ILayoutMulti {
   data?: IMulti;
 }
 
 export default function LayoutMulti({ data }: ILayoutMulti) {
-  const definitionType = useDefinitionType();
   return (
     <>
       <div className={style.content}>

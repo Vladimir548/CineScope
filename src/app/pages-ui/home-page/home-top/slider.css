@@ -22,6 +22,7 @@
     bottom: 5px;
     width: 100%;
     height: 150px !important;
+    display: block !important;
 
 }
 
@@ -72,19 +73,15 @@
 
 @media (max-width: 1224px) {
     .mySwiper {
-        display: none;
+        display: none !important;
     }
 
-
-}
-
-@media (max-width: 1224px) {
     .mySwiper2 {
-        height: 100%;
+        height: 100% !important;
     }
 
-
 }
+
 
 .swiper-button-next.swiper-button-disabled, .swiper-button-prev.swiper-button-disabled {
     pointer-events: auto;

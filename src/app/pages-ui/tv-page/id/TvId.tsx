@@ -8,7 +8,6 @@ import { twMerge } from 'tailwind-merge';
 import { QueryTv } from '@/query/QueryTv';
 import TabsTv from '@/app/pages-ui/tv-page/tabs-tv/TabsTv';
 import LoadingCircular from '@/components/loading/LoadingCircular';
-import { useEffect, useRef, useState } from 'react';
 import { usePalette } from '@/app/get-palette/usePalette';
 
 export default function TvId() {

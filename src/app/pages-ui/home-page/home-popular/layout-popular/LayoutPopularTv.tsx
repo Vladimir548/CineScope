@@ -26,19 +26,16 @@ export default function LayoutPopularTv({ data, title }: ILayoutPopularTv) {
   const swiperRef = useRef<any>(null);
   return (
     <div className="flex flex-col mx-2  ">
-      <div className="flex justify-between items-end  mb-1">
-        <div className="flex items-start flex-col ">
+      <div className="flex justify-between items-center  mb-1">
+        <div className="flex items-center justify-between w-full ">
           <Link href={`/tv/popular`}>
             <h2 className={style.header}>{title}</h2>
           </Link>
-          <Link
-            className="bg-zinc-700  p-3 rounded-[50px] ease-in duration-300 hover:bg-zinc-800"
-            href={`/tv/popular`}
-          >
-            Посмотреть больше
+          <Link href={`/tv/popular`}>
+            <div className="text-[12px] text-blue-500 block md:hidden">Смотреть больше</div>
           </Link>
+          <SwiperButtonNavigation swiperRef={swiperRef} />
         </div>
-        <SwiperButtonNavigation swiperRef={swiperRef} />
       </div>
       <Swiper
         onSwiper={(swiper) => {
@@ -48,16 +45,20 @@ export default function LayoutPopularTv({ data, title }: ILayoutPopularTv) {
         slidesPerGroupSkip={2}
         breakpoints={{
           1650: {
+            slidesPerView: 6,
+            slidesPerGroup: 5,
+          },
+          1230: {
             slidesPerView: 5,
             slidesPerGroup: 5,
           },
-          950: {
+          820: {
             slidesPerView: 4,
             slidesPerGroup: 4,
           },
-          600: {
+          540: {
             slidesPerView: 3,
-            slidesPerGroup: 3,
+            slidesPerGroup: 2,
           },
           280: {
             slidesPerView: 2,
@@ -74,31 +75,31 @@ export default function LayoutPopularTv({ data, title }: ILayoutPopularTv) {
               className=" border-transparent border-2 flex ease-in-out duration-400 hover:bg-[#3F3F46] "
             >
               <Link className="flex flex-col" href={`/tv/${item.id}`}>
-                <CardHeader className="flex justify-between items-center p-0 px-4 ">
-                  <h4 className={cn('font-bold text-large flex items-center', style.rating)}>
-                    <span>
-                      <AiFillStar size={22} />
-                    </span>{' '}
-                    {item.vote_average}
-                  </h4>
-                  <h4 className={cn('font-bold text-large', style.year)}>
-                    {item.first_air_date.split('-')[0]}
-                  </h4>
-                </CardHeader>
-                <CardBody className="overflow-visible py-2 ">
+                <CardBody className="overflow-visible py-0 px-0 ">
                   <NextImage
-                    className="object-cover rounded-sm overflow-hidden"
+                    className="object-cover rounded-t-lg overflow-hidden"
                     src={`${process.env.NEXT_PUBLIC_IMAGE_URL}w342${item.poster_path}`}
                     width={360}
                     height={500}
                     alt={item.name}
                   />
                 </CardBody>
-                <CardFooter className="pb-2 pt-2 px-4 flex flex-col items-start">
+                <CardFooter className="pb-1 pt-2 px-2 flex flex-col items-start">
                   <h2 className={twMerge('font-bold text-6xl ', style.title)}>{item.name}</h2>
                   <small className={twMerge('text-default-500 ', style.subtitle)}>
                     {item.original_name}
                   </small>
+                  <div className="flex justify-between items-center w-full">
+                    <span className={cn('font-bold text-large flex items-center', style.rating)}>
+                      <span className={style.star}>
+                        <AiFillStar />
+                      </span>{' '}
+                      <span className={'pl-0.5'}> {item.vote_average}</span>
+                    </span>
+                    <span className={cn('font-bold text-large', style.year)}>
+                      {item.first_air_date.split('-')[0]}
+                    </span>
+                  </div>
                 </CardFooter>
               </Link>
             </Card>

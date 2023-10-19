@@ -1,10 +1,12 @@
 'use client';
 
-import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { QueryTv } from '@/query/QueryTv';
-import LayoutTv from '@/layout/LayoutTv';
-import { Pagination } from '@nextui-org/react';
+import dynamic from 'next/dynamic';
+
+const DynamicLayoutTv = dynamic(() => import('@/layout/LayoutTv'), {
+  loading: () => <LayoutSkeleton />,
+});
 import LayoutSkeleton from '@/layout/LayoutSkeleton';
 import { useSearchParams } from 'next/navigation';
 import PaginationComponent from '@/components/pagination/PaginationComponent';
@@ -20,7 +22,7 @@ export default function TvPopular() {
       <div>
         {isSuccess ? (
           <>
-            <LayoutTv data={data} isPage={Number(pageParams)} />
+            <DynamicLayoutTv data={data} isPage={Number(pageParams)} />
             <PaginationComponent
               total_pages={data?.total_pages}
               pageParams={Number(pageParams)}

@@ -50,9 +50,11 @@ export default function HomeSliderMobile() {
                 key={item.id}
                 style={{
                   backgroundImage: `url(${process.env.NEXT_PUBLIC_IMAGE_URL}w300/${item.backdrop_path})`,
+                  backgroundRepeat: 'no-repeat',
+                  backgroundSize: '100% 100%',
                 }}
               >
-                <div className={'py-10 px-2 backdrop-blur-[100px]'}>
+                <div className={'py-10 px-2 backdrop-blur-[30px]'}>
                   <Link href={`/${item.media_type}/${item.id}`}>
                     <div className={style.bg_blur_mobile}></div>
                     <div className={cn('relative rounded-lg  overflow-hidden  ')}>
@@ -61,7 +63,7 @@ export default function HomeSliderMobile() {
                         alt={item.title || item.name}
                         quality={50}
                         className={cn(
-                          'object-cover rounded-lg blur-[10px] brightness-75  ',
+                          'object-cover rounded-lg blur-[5px] brightness-75  ',
                           style.bg_image_mobile,
                         )}
                         src={`${process.env.NEXT_PUBLIC_IMAGE_URL}w300/${item.backdrop_path}`}
