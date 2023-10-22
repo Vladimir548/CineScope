@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+import MovieIdMobile from '@/app/pages-ui/movie-page/id/movie-id-mobile/MovieIdMobile';
 
 const DynamicMovieIdPC = dynamic(
   () => import('@/app/pages-ui/movie-page/id/movie-id-pc/MovieIdPC'),
@@ -7,7 +8,7 @@ const DynamicMovieIdPC = dynamic(
 export default function MovieId() {
   return (
     <div>
-      <DynamicMovieIdPC />
+      <MovieIdMobile />
     </div>
   );
 }

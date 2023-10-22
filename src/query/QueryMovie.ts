@@ -2,6 +2,7 @@ import { MoviesResponse } from '@/interface/IMovie';
 import axios from 'axios';
 import { IMovie } from '@/interface/IMovieId';
 import { CollectionMovieResponse } from '@/interface/ICollectionMovie';
+import { ISimilarMovieResponse } from '@/interface/ISimilarMovie';
 
 const key = process.env.NEXT_PUBLIC_KEY_TMDB;
 
@@ -82,6 +83,28 @@ export const QueryMovie = {
       },
     });
     return data as IMovie;
+  },
+  async getMovieIdSimilar(id: number) {
+    const { data } = await axios.get(`/api/movie/${id}/similar`, {
+      params: {
+        language: 'ru-RU',
+      },
+      headers: {
+        Authorization: `Bearer ${key}`,
+      },
+    });
+    return data as ISimilarMovieResponse;
+  },
+  async getMovieIdRecommendations(id: number) {
+    const { data } = await axios.get(`/api/movie/${id}/recommendations`, {
+      params: {
+        language: 'ru-RU',
+      },
+      headers: {
+        Authorization: `Bearer ${key}`,
+      },
+    });
+    return data as ISimilarMovieResponse;
   },
   async getMovieIdCollection(id: number) {
     const { data } = await axios.get(`/api/collection/${id}`, {

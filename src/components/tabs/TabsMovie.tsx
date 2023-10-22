@@ -49,7 +49,7 @@ export default function TabsMovie({ data, isSuccess }: ITabs) {
                 <li className={style.block_info}>
                   <div className={style.text}>Рейтинг</div>
                   <div className={twMerge('flex ', style.text)}>
-                    TMDB {data?.vote_average.toFixed(1)}
+                    TMDb {data?.vote_average.toFixed(1)}
                   </div>
                 </li>
                 <li className={style.block_info}>

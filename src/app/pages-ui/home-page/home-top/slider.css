@@ -26,12 +26,16 @@
 
 }
 
-.mySwiper-popular {
+.mySwiper-popular, .mySwiper-id {
     width: 100%;
     height: 100%;
 }
 
-.mySwiper-mobile .swiper-slide {
+.mySwiper-id .swiper-wrapper {
+    width: 0 !important;
+}
+
+.mySwiper-mobile and .swiper-slide {
     width: 100%;
     height: 70%;
 

@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 
-export function useCertification(certificate: string) {
+export function useCertification(certificate?: string) {
   const [isAge, setIsAge] = useState<string>('');
+
   useEffect(() => {
     switch (certificate) {
       case 'G':
@@ -17,6 +18,8 @@ export function useCertification(certificate: string) {
       case 'NC-17':
       case 'TV-MA':
         return setIsAge('18+');
+      default:
+        return setIsAge('');
     }
   }, [certificate]);
   return isAge;

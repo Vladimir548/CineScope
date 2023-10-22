@@ -1,10 +1,8 @@
 'use client';
 import { Crew } from '@/interface/IMovieId';
-import { Card, CardBody, CardFooter, Image } from '@nextui-org/react';
 import Link from 'next/link';
 import NextImage from 'next/image';
 import style from '../style.module.css';
-import { twMerge } from 'tailwind-merge';
 
 interface ICrew {
   crews: Crew[];
@@ -28,35 +26,27 @@ export default function CrewTabs({ crews }: ICrew) {
 
   const resultArray = Object.values(res);
   return (
-    <div className={'flex flex-wrap gap-[10px] justify-center'}>
-      {resultArray.slice(0, 30).map((crew) => (
-        <Card
-          key={crew.id}
-          className=" border-transparent border-2 hover:border-slate-500 hover:border-2 "
-        >
-          <Link href={`/person/${crew.id}`}>
-            <CardBody className="overflow-visible py-2 flex-none px-1">
-              <Image
-                as={NextImage}
-                alt={crew.name}
-                isBlurred
-                className={twMerge('object-cover rounded-lg', style.profile)}
-                src={`https://image.tmdb.org/t/p/w185${crew.profile_path}`}
-                width={185}
-                height={280}
-                sizes={'50vw'}
-              />
-            </CardBody>
-            <CardFooter className={twMerge('pb-2 pt-1  flex-col items-start', style.footer)}>
-              <h2 className={twMerge('font-bold', style.name)}>{crew.name}</h2>
-              <small className={twMerge('text-default-500 text-sm pt-1', style.job)}>
+    <div className={'flex  gap-[10px]  overflow-x-auto'}>
+      {resultArray.slice(0, 10).map((crew) => (
+        <Link href={`/person/${crew.id}`}>
+          <div className={'flex-col w-[100px] '}>
+            <NextImage
+              className={'rounded-large'}
+              src={`https://image.tmdb.org/t/p/w185${crew.profile_path}`}
+              alt={crew.name}
+              width={100}
+              height={100}
+            />
+            <div className="w-[100px]">
+              <h3 className={style.name}>{crew.name}</h3>
+              <div className={style.character}>
                 {crew.jobs.map((job) => (
-                  <span key={job}>{job + ' '}</span>
+                  <div key={job}>{job + ' '}</div>
                 ))}
-              </small>
-            </CardFooter>
-          </Link>
-        </Card>
+              </div>
+            </div>
+          </div>
+        </Link>
       ))}
     </div>
   );

@@ -11,27 +11,23 @@ import { Card, CardBody, CardFooter } from '@nextui-org/react';
 import { AiFillStar } from 'react-icons/ai';
 import { twMerge } from 'tailwind-merge';
 import { cn } from '@/lib/utils';
-import { MoviesResponse } from '@/interface/IMovie';
 import { useRef } from 'react';
 import SwiperButtonNavigation from '@/app/pages-ui/home-page/home-popular/layout-popular/SwiperButtonNavigation';
+import { ISimilarMovieResponse } from '@/interface/ISimilarMovie';
 
-interface ILayoutPopularMovie {
-  data?: MoviesResponse;
+interface ILayoutSwiper {
+  data: ISimilarMovieResponse;
   title: string;
 }
 
-export default function LayoutPopularMovie({ data, title }: ILayoutPopularMovie) {
+export default function LayoutSwiper({ data, title }: ILayoutSwiper) {
   const swiperRef = useRef<any>(null);
+  if (data?.results.length === 0) return '';
   return (
-    <div className="flex flex-col mx-2 ">
+    <div>
       <div className="flex justify-between items-center  mb-1">
         <div className="flex items-center justify-between w-full  ">
-          <Link href={`/movie/popular`}>
-            <h2 className={style.header}>{title}</h2>
-          </Link>
-          <Link href={`/movie/popular`}>
-            <div className="text-[12px] text-blue-500 block md:hidden">Смотреть больше</div>
-          </Link>
+          <h3 className={'text-[18px]'}>{title}</h3>
           <SwiperButtonNavigation swiperRef={swiperRef} />
         </div>
       </div>
@@ -44,11 +40,11 @@ export default function LayoutPopularMovie({ data, title }: ILayoutPopularMovie)
         breakpoints={{
           1650: {
             slidesPerView: 6,
-            slidesPerGroup: 5,
+            slidesPerGroup: 6,
           },
           1230: {
-            slidesPerView: 5,
-            slidesPerGroup: 5,
+            slidesPerView: 6,
+            slidesPerGroup: 6,
           },
           820: {
             slidesPerView: 4,
@@ -64,7 +60,7 @@ export default function LayoutPopularMovie({ data, title }: ILayoutPopularMovie)
           },
         }}
         spaceBetween={10}
-        className="mySwiper-popular"
+        className="mySwiper-id"
       >
         {data?.results?.map((item) => (
           <SwiperSlide key={item.id}>
@@ -92,7 +88,7 @@ export default function LayoutPopularMovie({ data, title }: ILayoutPopularMovie)
                       <span className={style.star}>
                         <AiFillStar />
                       </span>{' '}
-                      <span className={'pl-0.5'}> {item.vote_average}</span>
+                      <span className={'pl-0.5'}> {item.vote_average.toFixed(1)}</span>
                     </span>
                     <span className={cn('font-bold text-large', style.year)}>
                       {item.release_date.split('-')[0]}
