@@ -83,7 +83,7 @@ export default function MovieIdFullInfo({
                 .map((director) => (
                   <Link key={director.id} href={`/person/${director.id}`}>
                     {' '}
-                    {director.name} &nbsp;{' '}
+                    {director.name} &nbsp;
                   </Link>
                 ))}
             </TableCell>
@@ -96,7 +96,7 @@ export default function MovieIdFullInfo({
                 .map((director) => (
                   <Link key={director.id} href={`/person/${director.id}`}>
                     {' '}
-                    {director.name} &nbsp;{' '}
+                    {director.name} &nbsp;
                   </Link>
                 ))}
             </TableCell>
@@ -104,13 +104,15 @@ export default function MovieIdFullInfo({
           <TableRow key="8">
             <TableCell>Страна</TableCell>
             <TableCell>
-              {countries?.map((country) => <span key={country.iso_3166_1}>{country.name}</span>)}
+              {countries?.map((country) => (
+                <span key={country.iso_3166_1}>{country.name} &nbsp;</span>
+              ))}
             </TableCell>
           </TableRow>
           <TableRow key="9">
             <TableCell>Компания</TableCell>
             <TableCell>
-              {companies?.map((company) => <span key={company.id}>{company.name}</span>)}
+              {companies?.map((company) => <span key={company.id}>{company.name} &nbsp;</span>)}
             </TableCell>
           </TableRow>
           <TableRow key="10">

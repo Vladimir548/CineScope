@@ -50,21 +50,24 @@ export default function MovieIdMobile() {
           backgroundImage: `radial-gradient(circle, rgba(${isPalette[0]},1) 28%, rgba(${isPalette[1]},0.7) 94%)`,
         }}
       >
-        <div ref={refComponent} className="py-5 px-2 object-cover">
+        <div ref={refComponent} className=" object-cover">
           <NextImage
             src={`${process.env.NEXT_PUBLIC_IMAGE_URL}original/${data?.backdrop_path}`}
             alt={data?.title!}
             width={2000}
             height={400}
             sizes={'100vw'}
-            className={'rounded-large '}
+            className={' max-h-[500px] object-cover'}
           />
         </div>
       </div>
 
       <div
         className={` relative  w-full z-50 bg-[#1a1a1a] rounded-t-lg h-full pb-4 px-2 pt-[15px]`}
-        style={{ marginTop: `${isHeightValue}px` }}
+        style={{
+          marginTop: `${isHeightValue}px`,
+          boxShadow: `0 0 150px 65px rgb(${isPalette[0]})`,
+        }}
       >
         <div className=" flex justify-center  pb-[20px]">
           <span className={'w-[66px] h-[5px] rounded-full bg-[#d9d9d9]'}></span>
@@ -81,6 +84,7 @@ export default function MovieIdMobile() {
             </div>
           )}
           <div className="">{data?.release_date?.split('-')[0]}</div>
+
           <div className="">{formattedRuntime}</div>
           <div className={'flex items-center gap-x-2  '}>
             {data?.genres.map((genre) => (
