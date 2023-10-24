@@ -1,4 +1,4 @@
-import { Backdrop, Logo, Poster } from '@/interface/IMovieId';
+import { Backdrop, Logo, Poster, Cast, Crew } from '@/interface/IMovieId';
 
 export interface ISeries {
   backdrop_path: string;
@@ -23,6 +23,7 @@ export interface ISeries {
   number_of_episodes: number;
   number_of_seasons: number;
   origin_country: string[];
+  release_dates: Certification;
   original_language: string;
   original_name: string;
   overview: string;
@@ -78,6 +79,25 @@ export interface Network {
   origin_country: string;
 }
 
+export interface Certification {
+  id: number;
+  results: Certificat[];
+}
+
+export interface Certificat {
+  iso_3166_1: string;
+  release_dates: ReleaseDate[];
+}
+
+export interface ReleaseDate {
+  certification: string;
+  descriptors: any[];
+  iso_639_1: string;
+  note: string;
+  release_date: string;
+  type: number;
+}
+
 export interface ProductionCompany {
   id: number;
   logo_path?: string;
@@ -106,33 +126,33 @@ export interface SpokenLanguage {
   name: string;
 }
 
-export interface Cast {
-  adult: boolean;
-  gender: number;
-  id: number;
-  known_for_department: string;
-  name: string;
-  original_name: string;
-  popularity: number;
-  profile_path: string;
-  character: string;
-  credit_id: string;
-  order: number;
-}
-
-export interface Crew {
-  adult: boolean;
-  gender: number;
-  id: number;
-  known_for_department: string;
-  name: string;
-  original_name: string;
-  popularity: number;
-  profile_path?: string;
-  credit_id: string;
-  department: string;
-  job: string;
-}
+// export interface Cast {
+//   adult: boolean;
+//   gender: number;
+//   id: number;
+//   known_for_department: string;
+//   name: string;
+//   original_name: string;
+//   popularity: number;
+//   profile_path: string;
+//   character: string;
+//   credit_id: string;
+//   order: number;
+// }
+//
+// export interface Crew {
+//   adult: boolean;
+//   gender: number;
+//   id: number;
+//   known_for_department: string;
+//   name: string;
+//   original_name: string;
+//   popularity: number;
+//   profile_path?: string;
+//   credit_id: string;
+//   department: string;
+//   job: string;
+// }
 
 export interface IImages {
   backdrops: Backdrop[];

@@ -6,10 +6,17 @@ import style from './style.module.css';
 import { BiSolidCircle } from 'react-icons/bi';
 import { twMerge } from 'tailwind-merge';
 import { QueryTv } from '@/query/QueryTv';
-import TabsTv from '@/app/pages-ui/tv-page/tabs-tv/TabsTv';
 import LoadingCircular from '@/components/loading/LoadingCircular';
 import { usePalette } from '@/app/get-palette/usePalette';
+import { createRef, useEffect, useState } from 'react';
+import { AiOutlineStar } from 'react-icons/ai';
+import { useCertification } from '@/hooks/useCertification';
+import dynamic from 'next/dynamic';
+import TvSeasons from '@/app/pages-ui/tv-page/id/TvSeasons';
+import TvIdFullInfo from '@/app/pages-ui/tv-page/id/TvIdFullInfo';
 
+const DynamicCredits = dynamic(() => import('@/components/tabs/credits-tabs/CreditsTabs'));
+const DynamicTvIdSimilar = dynamic(() => import('@/app/pages-ui/tv-page/id/TvIdSimilar'));
 export default function TvId() {
   const params = useParams();
   const { data, isSuccess, isLoading } = useQuery(['get-id-tv', params!.id], () =>
@@ -17,6 +24,16 @@ export default function TvId() {
   );
   const backdrop = `${process.env.NEXT_PUBLIC_IMAGE_URL}w300/${data?.backdrop_path}`;
   const isPalette = usePalette(backdrop, 1, 1);
+
+  const certificate = useCertification(
+    data?.content_ratings?.results?.filter((dates) => dates?.iso_3166_1 === 'US')[0].rating,
+  );
+  const refComponent = createRef<any>();
+  const [isHeightValue, setIsHeightValue] = useState<number>(0);
+  useEffect(() => {
+    const height = refComponent?.current?.getBoundingClientRect().height;
+    setIsHeightValue(height);
+  }, [refComponent, isHeightValue]);
   if (isLoading)
     return (
       <div>
@@ -25,79 +42,84 @@ export default function TvId() {
     );
 
   return (
-    <>
-      {isSuccess ? (
-        <div className=" ">
-          <div className={` fixed top-0  object-cover  `}>
-            <ImageNext
-              src={`${process.env.NEXT_PUBLIC_IMAGE_URL}original/${data?.backdrop_path}`}
-              alt={data?.name!}
-              width={2000}
-              height={700}
-              priority={true}
-              sizes=" 100vw"
-            />
+    <div>
+      <div className=" ">
+        <div ref={refComponent} className={` fixed top-0  object-cover  `}>
+          <ImageNext
+            src={`${process.env.NEXT_PUBLIC_IMAGE_URL}original/${data?.backdrop_path}`}
+            alt={data?.name!}
+            width={2000}
+            height={500}
+            sizes=" 100vw"
+            className={'max-h-[500px] object-cover'}
+          />
+        </div>
+      </div>
+      <div
+        className={` relative  w-full z-50 bg-[#1a1a1a] rounded-t-lg h-full pb-4 px-2 pt-[15px]`}
+        style={{
+          marginTop: `${isHeightValue}px`,
+        }}
+      >
+        <div className=" flex justify-center  pb-[20px]">
+          <span className={'w-[66px] h-[5px] rounded-full bg-[#d9d9d9]'}></span>
+        </div>
+        <h1 className={'text-[21px] leading-7'}>{data?.name}</h1>
+        <h2 className={'text-[#ffffffcc] text-[14px]'}>{data?.original_name}</h2>
+        <div className="flex items-center gap-x-2 gap-y-2 flex-wrap text-[#ffffffcc] py-2">
+          <div className={twMerge('flex items-center')}>
+            <AiOutlineStar /> {data?.vote_average?.toFixed(1)}
           </div>
-          <div className={style.wrapper}>
-            <div
-              className={style.top_content}
-              style={{
-                backgroundImage: `linear-gradient(to top, rgba(${isPalette},1) 10%, rgba(${isPalette},1) 10%, rgba(${isPalette},.8) 63%)`,
-                boxShadow: `0px -99px 45px 70px rgba(${isPalette},.8)`,
-              }}
-            >
-              <div className={style.poster}>
-                <ImageNext
-                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}w342/${data?.poster_path} `}
-                  alt={data?.name!}
-                  width={220}
-                  height={322}
-                  className={twMerge('object-cover rounded-lg relative z-10', style.poster)}
-                />
-              </div>
-              <div className={style.information}>
-                <div className={style.titles}>
-                  <h1 className={style.title}>{data?.name}</h1>
-                  <h3 className={style.subtitel}>{data?.original_name}</h3>
-                </div>
-                <div className={style.block_top_info}>
-                  <div className={'flex items-center gap-y-3 mt-2'}>
-                    <div className="px-2 py-2 inline-flex items-center rounded-lg bg-black/50">
-                      <span className={'p-1 text-xl bg-cyan-500 rounded-lg'}>TMDB</span>
-                      <span className={'text-xl pl-1'}>{data?.vote_average?.toFixed(1)}</span>
-                    </div>
-                    <div className="px-2 py-2 inline-flex items-center rounded-lg ml-3 bg-black/50">
-                      <span className={'text-xl'}>{data?.first_air_date}</span>
-                      <span className={'text-sm px-1'}>
-                        <BiSolidCircle />
-                      </span>
-                      <span className={'text-xl'}>{data.episode_run_time}</span>
-                    </div>
-                  </div>
-                  <ul className="flex items-center mt-3 flex-wrap ">
-                    {data?.genres.map((genre) => (
-                      <li
-                        key={genre.id}
-                        className={'text-xl p-2 rounded-lg mr-2 mt-1 capitalize bg-black/50'}
-                      >
-                        {genre.name}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+          {certificate && (
+            <div className="rounded-full py-0.5 px-2 border-1 border-white text-[12px]">
+              {certificate}
             </div>
+          )}
+          <div className="">{data?.first_air_date?.split('-')[0]}</div>
 
-            <div className={style.content}>
-              <div className="sticky top-0 left-0">
-                <TabsTv data={data} isSuccess={isSuccess} />
+          <div className="">{data?.episode_run_time}</div>
+          <div className={'flex items-center gap-x-2  '}>
+            {data?.genres?.map((genre) => (
+              <div
+                className="rounded-full py-0.5 px-2 border-1 border-white text-[12px]"
+                key={genre.id}
+              >
+                {genre.name}
               </div>
-            </div>
+            ))}
           </div>
         </div>
-      ) : (
-        <span>FFFFFFFF</span>
-      )}
-    </>
+        <div className="">
+          <h3 className="text-lg">Описание</h3>
+          <p className="leading-5 text-[#6b6c72]">{data?.overview}</p>
+        </div>
+        <div className="py-2 ">
+          <DynamicCredits cast={data?.credits?.cast!} crew={data?.credits?.crew!} />
+        </div>
+        <div className="">
+          <h3 className="text-lg">Сезоны</h3>
+          <TvSeasons seasons={data?.seasons} />
+        </div>
+        <div className="">
+          <TvIdFullInfo
+            genres={data?.genres}
+            vote={data?.vote_average}
+            runtime={Number(data?.episode_run_time)}
+            date={data?.first_air_date}
+            certificate={certificate}
+            created={data?.created_by}
+            countries={data?.production_countries}
+            companies={data?.production_companies}
+          />
+        </div>
+        {/*<div className="pt-2">*/}
+        {/*<div className="pb-2">*/}
+        {/*  <DynamicTvIdSimilar title={'Похожие'} />*/}
+        {/*</div>*/}
+        {/*  <div className="">*/}
+        {/*    <DynamicMovieIdRecommendations title={'Рекомендуем посмотреть'} />*/}
+        {/*  </div>*/}
+      </div>
+    </div>
   );
 }

@@ -11,3 +11,7 @@
 .mySwiper-id .swiper-wrapper {
     width: 0 !important;
 }
+
+.mySwiper-seasons .swiper-wrapper {
+    max-height: 500px !important;
+}

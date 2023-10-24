@@ -9,7 +9,7 @@ import { twMerge } from 'tailwind-merge';
 import { AiOutlineHeart, AiOutlineStar } from 'react-icons/ai';
 import MovieIdFullInfo from '@/app/pages-ui/movie-page/id/movie-id-mobile/MovieIdFullInfo';
 import dynamic from 'next/dynamic';
-import { createRef, useEffect, useRef, useState } from 'react';
+import { createRef, useEffect, useState } from 'react';
 
 const DynamicCredits = dynamic(() => import('@/components/tabs/credits-tabs/CreditsTabs'));
 const DynamicMovieIdSimilar = dynamic(
@@ -18,7 +18,6 @@ const DynamicMovieIdSimilar = dynamic(
 const DynamicMovieIdRecommendations = dynamic(
   () => import('@/app/pages-ui/movie-page/id/movie-id-mobile/MovieIdRecommendations'),
 );
-
 export default function MovieIdMobile() {
   const params = useParams();
   const { data, isSuccess, isLoading, error } = useQuery(['get-id-movie'], () =>
@@ -32,8 +31,8 @@ export default function MovieIdMobile() {
     data?.release_dates?.results?.filter((dates) => dates?.iso_3166_1 === 'US')[0]?.release_dates[0]
       .certification,
   );
-  const backdrop = `${process.env.NEXT_PUBLIC_IMAGE_URL}w300/${data?.backdrop_path}`;
-  const isPalette = usePalette(backdrop, 2, 1);
+  // const backdrop = `${process.env.NEXT_PUBLIC_IMAGE_URL}w300/${data?.backdrop_path}`;
+  // const isPalette = usePalette(backdrop, 2, 1);
 
   const refComponent = createRef<any>();
   const [isHeightValue, setIsHeightValue] = useState<number>(0);
@@ -41,21 +40,15 @@ export default function MovieIdMobile() {
     const height = refComponent?.current?.getBoundingClientRect().height;
     setIsHeightValue(height);
   }, [refComponent, isHeightValue]);
-
   return (
     <div>
-      <div
-        className="fixed top-0 object-cover "
-        style={{
-          backgroundImage: `radial-gradient(circle, rgba(${isPalette[0]},1) 28%, rgba(${isPalette[1]},0.7) 94%)`,
-        }}
-      >
+      <div className="fixed top-0 object-cover ">
         <div ref={refComponent} className=" object-cover">
           <NextImage
             src={`${process.env.NEXT_PUBLIC_IMAGE_URL}original/${data?.backdrop_path}`}
             alt={data?.title!}
             width={2000}
-            height={400}
+            height={500}
             sizes={'100vw'}
             className={' max-h-[500px] object-cover'}
           />
@@ -66,7 +59,6 @@ export default function MovieIdMobile() {
         className={` relative  w-full z-50 bg-[#1a1a1a] rounded-t-lg h-full pb-4 px-2 pt-[15px]`}
         style={{
           marginTop: `${isHeightValue}px`,
-          boxShadow: `0 0 150px 65px rgb(${isPalette[0]})`,
         }}
       >
         <div className=" flex justify-center  pb-[20px]">
@@ -110,7 +102,7 @@ export default function MovieIdMobile() {
             vote={data?.vote_average}
             runtime={data?.runtime}
             date={data?.release_date}
-            release_dates={data?.release_dates}
+            release_dates={certificate}
             crew={data?.credits?.crew}
             countries={data?.production_countries}
             companies={data?.production_companies}

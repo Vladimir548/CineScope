@@ -1,42 +1,35 @@
-'use client';
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from '@nextui-org/react';
 import { twMerge } from 'tailwind-merge';
-import { Genre } from '@/interface/IGenres';
-import { useCertification } from '@/hooks/useCertification';
-import { Certification, Crew, ProductionCompany, ProductionCountry } from '@/interface/IMovieId';
+
+('use client ');
 import Link from 'next/link';
 
-interface IMovieIdFullInfo {
+import { Genre } from '@/interface/IGenres';
+import { Crew, ProductionCompany, ProductionCountry } from '@/interface/IMovieId';
+import { CreatedBy } from '@/interface/ITvId';
+
+interface ITvIdFullInfo {
   genres?: Genre[];
   vote?: number;
   runtime?: number;
   date?: string;
-  release_dates?: string;
-  crew?: Crew[];
+  certificate: string;
+  created?: CreatedBy[];
   countries?: ProductionCountry[];
   companies?: ProductionCompany[];
-  budget?: number;
-  revenue?: number;
 }
 
-export default function MovieIdFullInfo({
+export default function TvIdFullInfo({
   genres,
   vote,
   runtime,
   date,
-  release_dates,
-  crew,
+  certificate,
+  created,
+
   countries,
   companies,
-  budget,
-  revenue,
-}: IMovieIdFullInfo) {
-  const formattedBudget = budget?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-  const formattedRevenue = revenue?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-  const formattedHours = Math.floor(runtime! / 60);
-  const formattedMinutes = runtime! % 60;
-  const formattedRuntime = `${formattedHours}ч ${formattedMinutes}мин`;
-
+}: ITvIdFullInfo) {
   return (
     <div>
       <h3 className="text-lg">Полная информация</h3>
@@ -62,7 +55,7 @@ export default function MovieIdFullInfo({
           </TableRow>
           <TableRow key="3">
             <TableCell>Время</TableCell>
-            <TableCell>{formattedRuntime}</TableCell>
+            <TableCell>{runtime}</TableCell>
           </TableRow>
           <TableRow key="4">
             <TableCell>Дата выхода</TableCell>
@@ -70,37 +63,21 @@ export default function MovieIdFullInfo({
           </TableRow>
           <TableRow key="5">
             <TableCell>Возраст</TableCell>
-            <TableCell>{release_dates}</TableCell>
+            <TableCell>{certificate}</TableCell>
           </TableRow>
           <TableRow key="6">
-            <TableCell>Режиссер</TableCell>
+            <TableCell>Создатель</TableCell>
             <TableCell>
-              {crew
-                ?.filter((item) => item.job === 'Director')
-                .map((director) => (
-                  <Link key={director.id} href={`/person/${director.id}`}>
-                    {' '}
-                    {director.name} &nbsp;
-                  </Link>
-                ))}
+              {created?.map((create) => (
+                <Link key={create.id} href={`/person/${create.id}`}>
+                  {' '}
+                  {create.name} &nbsp;
+                </Link>
+              ))}
             </TableCell>
           </TableRow>
 
           <TableRow key="7">
-            <TableCell>Сценарист</TableCell>
-            <TableCell>
-              {crew
-                ?.filter((item) => item.job === 'Writer')
-                .map((director) => (
-                  <Link key={director.id} href={`/person/${director.id}`}>
-                    {' '}
-                    {director.name} &nbsp;
-                  </Link>
-                ))}
-            </TableCell>
-          </TableRow>
-
-          <TableRow key="8">
             <TableCell>Страна</TableCell>
             <TableCell>
               {countries?.map((country) => (
@@ -108,19 +85,11 @@ export default function MovieIdFullInfo({
               ))}
             </TableCell>
           </TableRow>
-          <TableRow key="9">
+          <TableRow key="8">
             <TableCell>Компания</TableCell>
             <TableCell>
               {companies?.map((company) => <span key={company.id}>{company.name} &nbsp;</span>)}
             </TableCell>
-          </TableRow>
-          <TableRow key="10">
-            <TableCell>Бюджет</TableCell>
-            <TableCell>{formattedBudget}</TableCell>
-          </TableRow>
-          <TableRow key="11">
-            <TableCell>Сборы</TableCell>
-            <TableCell>{formattedRevenue}</TableCell>
           </TableRow>
         </TableBody>
       </Table>
