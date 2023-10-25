@@ -19,23 +19,24 @@ interface ILayoutSeasons {
 
 export default function LayoutSeasons({ data }: ILayoutSeasons) {
   // console.log(data?.map(i => i.))
-  console.log(data);
   return (
-    <div className={'overflow-hidden h-full'}>
+    <div className={''}>
       <Swiper
         direction={'vertical'}
         slidesPerView={1}
-        spaceBetween={30}
+        autoHeight={true}
+        loop
+        spaceBetween={10}
         mousewheel={true}
         pagination={{
           clickable: true,
         }}
         modules={[Mousewheel, Pagination]}
-        className="mySwiper-seasons"
+        className="mySwiper-seasons "
       >
         <CardBody className={'p-0'}>
           {data?.episodes.map((episode) => (
-            <SwiperSlide>
+            <SwiperSlide className={''}>
               <Card
                 key={episode.id}
                 className="border-none  dark:bg-default-100/50 mb-2"

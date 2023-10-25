@@ -15,8 +15,8 @@ interface ITvIdSimilar {
 
 export default function TvIdSimilar({ title }: ITvIdSimilar) {
   const params = useParams();
-  const { data, isSuccess, isLoading } = useQuery(['get-id-tv-similar', params!.id], () =>
-    QueryTv.getIdTvSimilar(Number(params!.id)),
+  const { data, isSuccess, isLoading } = useQuery(['get-id-tv-recommendations', params!.id], () =>
+    QueryTv.getIdTvRecommendations(Number(params!.id)),
   );
   return (
     <div>

@@ -2,8 +2,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'next/navigation';
 import ImageNext from 'next/image';
-import style from './style.module.css';
-import { BiSolidCircle } from 'react-icons/bi';
 import { twMerge } from 'tailwind-merge';
 import { QueryTv } from '@/query/QueryTv';
 import LoadingCircular from '@/components/loading/LoadingCircular';
@@ -17,6 +15,7 @@ import TvIdFullInfo from '@/app/pages-ui/tv-page/id/TvIdFullInfo';
 
 const DynamicCredits = dynamic(() => import('@/components/tabs/credits-tabs/CreditsTabs'));
 const DynamicTvIdSimilar = dynamic(() => import('@/app/pages-ui/tv-page/id/TvIdSimilar'));
+const DynamicTvIdRecommendations = dynamic(() => import('./TvIdRecommendations'));
 export default function TvId() {
   const params = useParams();
   const { data, isSuccess, isLoading } = useQuery(['get-id-tv', params!.id], () =>
@@ -112,13 +111,14 @@ export default function TvId() {
             companies={data?.production_companies}
           />
         </div>
-        {/*<div className="pt-2">*/}
-        {/*<div className="pb-2">*/}
-        {/*  <DynamicTvIdSimilar title={'Похожие'} />*/}
-        {/*</div>*/}
-        {/*  <div className="">*/}
-        {/*    <DynamicMovieIdRecommendations title={'Рекомендуем посмотреть'} />*/}
-        {/*  </div>*/}
+        <div className="pt-2">
+          <div className="pb-2">
+            <DynamicTvIdSimilar title={'Похожие'} />
+          </div>
+          <div className="">
+            <DynamicTvIdRecommendations title={'Рекомендуем посмотреть'} />
+          </div>
+        </div>
       </div>
     </div>
   );

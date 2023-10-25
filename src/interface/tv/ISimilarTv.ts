@@ -1,23 +1,23 @@
-export type ISimilarMovieResponse = {
+export interface ISimilarTv {
   page: number;
-  results: ISimilarMovie[];
+  results: Result[];
   total_pages: number;
   total_results: number;
-};
+}
 
-export type ISimilarMovie = {
+export interface Result {
   adult: boolean;
   backdrop_path?: string;
   genre_ids: number[];
   id: number;
+  origin_country: string[];
   original_language: string;
-  original_title: string;
+  original_name: string;
   overview: string;
   popularity: number;
-  poster_path: string;
-  release: string;
-  title: string;
-  video: boolean;
+  poster_path?: string;
+  first_air_date: string;
+  name: string;
   vote_average: number;
   vote_count: number;
-};
+}

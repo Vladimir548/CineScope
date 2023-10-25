@@ -12,6 +12,16 @@
     width: 0 !important;
 }
 
-.mySwiper-seasons .swiper-wrapper {
-    max-height: 500px !important;
+.mySwiper-seasons .swiper-slide {
+    height: auto !important;
+    overflow: hidden;
+}
+
+.swiper-pagination-bullet {
+    background: #ffffff !important;
+    opacity: .8 !important;
+}
+
+.swiper-pagination-bullet-active {
+    background: #004cfc !important;
 }

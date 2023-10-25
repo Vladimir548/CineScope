@@ -3,6 +3,7 @@ import { TvResponse } from '@/interface/ITv';
 import { ITvCredits } from '@/interface/TvCredits';
 import { ISeasons } from '@/interface/tv/ISeasons';
 import { ISeries } from '@/interface/ITvId';
+import { ISimilarTv } from '@/interface/tv/ISimilarTv';
 
 const key = process.env.NEXT_PUBLIC_KEY_TMDB;
 
@@ -101,6 +102,17 @@ export const QueryTv = {
         Authorization: `Bearer ${key}`,
       },
     });
-    return data as TvResponse;
+    return data as ISimilarTv;
+  },
+  async getIdTvRecommendations(id: number) {
+    const { data } = await axios.get(`/api/tv/${id}/recommendations`, {
+      params: {
+        language: 'ru-Ru',
+      },
+      headers: {
+        Authorization: `Bearer ${key}`,
+      },
+    });
+    return data as ISimilarTv;
   },
 };
