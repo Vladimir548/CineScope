@@ -19,6 +19,7 @@ export default function SeasonsTvTabs({ seasons }: ISeasonsTabs) {
   const { data, isSuccess, isLoading } = useQuery(['get-seasons', params!.id, isSeason], () =>
     QueryTv.getIdTvSeasons(Number(params!.id), isSeason),
   );
+
   return (
     <div>
       <div className="flex w-full flex-col ">

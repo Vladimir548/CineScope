@@ -10,9 +10,9 @@ import { createRef, useEffect, useState } from 'react';
 import { AiOutlineStar } from 'react-icons/ai';
 import { useCertification } from '@/hooks/useCertification';
 import dynamic from 'next/dynamic';
-import TvSeasons from '@/app/pages-ui/tv-page/id/TvSeasons';
 import TvIdFullInfo from '@/app/pages-ui/tv-page/id/TvIdFullInfo';
 
+const DynamicTvSeasons = dynamic(() => import('@/app/pages-ui/tv-page/id/TvSeasons'));
 const DynamicCredits = dynamic(() => import('@/components/tabs/credits-tabs/CreditsTabs'));
 const DynamicTvIdSimilar = dynamic(() => import('@/app/pages-ui/tv-page/id/TvIdSimilar'));
 const DynamicTvIdRecommendations = dynamic(() => import('./TvIdRecommendations'));
@@ -21,8 +21,8 @@ export default function TvId() {
   const { data, isSuccess, isLoading } = useQuery(['get-id-tv', params!.id], () =>
     QueryTv.getIdTv(Number(params!.id)),
   );
-  const backdrop = `${process.env.NEXT_PUBLIC_IMAGE_URL}w300/${data?.backdrop_path}`;
-  const isPalette = usePalette(backdrop, 1, 1);
+  // const backdrop = `${process.env.NEXT_PUBLIC_IMAGE_URL}w300/${data?.backdrop_path}`;
+  // const isPalette = usePalette(backdrop, 1, 1);
 
   const certificate = useCertification(
     data?.content_ratings?.results?.filter((dates) => dates?.iso_3166_1 === 'US')[0].rating,
@@ -42,8 +42,8 @@ export default function TvId() {
 
   return (
     <div>
-      <div className=" ">
-        <div ref={refComponent} className={` fixed top-0  object-cover  `}>
+      <div className="fixed top-0 object-cover ">
+        <div ref={refComponent} className={`  object-cover  `}>
           <ImageNext
             src={`${process.env.NEXT_PUBLIC_IMAGE_URL}original/${data?.backdrop_path}`}
             alt={data?.name!}
@@ -98,7 +98,7 @@ export default function TvId() {
         </div>
         <div className="">
           <h3 className="text-lg">Сезоны</h3>
-          <TvSeasons seasons={data?.seasons} />
+          <DynamicTvSeasons seasons={data?.seasons} />
         </div>
         <div className="">
           <TvIdFullInfo

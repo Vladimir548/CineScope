@@ -1,16 +1,13 @@
 'use client';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 
 import './styles.css';
 import { Mousewheel, Pagination } from 'swiper/modules';
-import { TvResponse } from '@/interface/ITv';
 import { Card, CardBody, Image } from '@nextui-org/react';
 import NextImage from 'next/image';
-import { ITvSeason } from '@/interface/ITvId';
 import { ISeasons } from '@/interface/tv/ISeasons';
 
 interface ILayoutSeasons {
@@ -18,7 +15,6 @@ interface ILayoutSeasons {
 }
 
 export default function LayoutSeasons({ data }: ILayoutSeasons) {
-  // console.log(data?.map(i => i.))
   return (
     <div className={''}>
       <Swiper
