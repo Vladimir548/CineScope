@@ -75,8 +75,9 @@ export default function TvId() {
             </div>
           )}
           <div className="">{data?.first_air_date?.split('-')[0]}</div>
-
           <div className="">{data?.episode_run_time}</div>
+          <div className="">{data?.number_of_seasons} сезонов</div>
+          <div className="">{data?.number_of_episodes} серий</div>
           <div className={'flex items-center gap-x-2  '}>
             {data?.genres?.map((genre) => (
               <div
@@ -109,6 +110,7 @@ export default function TvId() {
             created={data?.created_by}
             countries={data?.production_countries}
             companies={data?.production_companies}
+            status={data?.status}
           />
         </div>
         <div className="pt-2">

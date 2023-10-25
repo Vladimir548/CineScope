@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { Genre } from '@/interface/IGenres';
 import { Crew, ProductionCompany, ProductionCountry } from '@/interface/IMovieId';
 import { CreatedBy } from '@/interface/ITvId';
+import { useTypeStatus } from '@/hooks/useTypeStatus';
 
 interface ITvIdFullInfo {
   genres?: Genre[];
@@ -17,6 +18,7 @@ interface ITvIdFullInfo {
   created?: CreatedBy[];
   countries?: ProductionCountry[];
   companies?: ProductionCompany[];
+  status?: string;
 }
 
 export default function TvIdFullInfo({
@@ -26,10 +28,11 @@ export default function TvIdFullInfo({
   date,
   certificate,
   created,
-
+  status,
   countries,
   companies,
 }: ITvIdFullInfo) {
+  const isStatus = useTypeStatus(status!);
   return (
     <div>
       <h3 className="text-lg">Полная информация</h3>
@@ -90,6 +93,10 @@ export default function TvIdFullInfo({
             <TableCell>
               {companies?.map((company) => <span key={company.id}>{company.name} &nbsp;</span>)}
             </TableCell>
+          </TableRow>
+          <TableRow key="9">
+            <TableCell>Статус</TableCell>
+            <TableCell>{isStatus}</TableCell>
           </TableRow>
         </TableBody>
       </Table>
